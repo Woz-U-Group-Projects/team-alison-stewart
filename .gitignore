@@ -19,3 +19,6 @@
 
 # OSX specific files
 .DS_Store
+
+# yml files
+/config/database.yml
