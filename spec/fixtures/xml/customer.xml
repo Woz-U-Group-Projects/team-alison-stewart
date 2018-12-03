@@ -1,0 +1,43 @@
+<xml>
+  <customer>
+    <id>USFU14-0092</id>
+    <name>LI    ELAINE</name>
+    <addr_1>7551-MALAHAT AVENUE</addr_1>
+    <addr_2/>
+    <addr_3/>
+    <city>RICHMOND</city>
+    <state>BC</state>
+    <zipcode>V7A4H1</zipcode>
+    <country>CA</country>
+    <contact_email>YILINGL@SFU.CA</contact_email>
+    <contact_fax/>
+    <contact_first_name>ELAINE</contact_first_name>
+    <contact_honorific/>
+    <contact_initial/>
+    <contact_last_name>LI</contact_last_name>
+    <contact_mobile/>
+    <contact_phone>7788989176</contact_phone>
+    <contact_position/>
+    <contact_salutation/>
+    <discount_code/>
+    <free_on_board>BOOKED</free_on_board>
+    <def_sls_tax_grp_id/>
+    <sic_code/>
+    <ind_code/>
+    <notes/>
+    <ship_via/>
+    <modify_date>20140410</modify_date>
+    <model_released/>
+    <all_student_number>301117448</all_student_number>
+    <all_photographed/>
+    <all_gender_male>0</all_gender_male>
+    <all_gender_female>1</all_gender_female>
+    <all_shoot_location/>
+    <all_retake_photographed/>
+    <parent_parents_email>ELAINE9172@GMAIL.COM</parent_parents_email>
+    <parent_home_phone_number/>
+    <conv_degree/>
+    <conv_gown_size/>
+    <conv_height>5FEET5INCHES</conv_height>
+  </customer>
+</xml>

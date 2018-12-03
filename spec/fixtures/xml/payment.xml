@@ -1,0 +1,10 @@
+<xml>
+  <payment>
+    <customer_id>TEST19-123</customer_id>
+    <amount>60.00</amount>
+    <payment_date>11/16/2018</payment_date>
+    <web_payment_method>VISA</web_payment_method>
+    <web_staff_user_id>BS</web_staff_user_id>
+    <web_payment_confirmation>ABC12345</web_payment_confirmation>
+  </payment>
+</xml>
