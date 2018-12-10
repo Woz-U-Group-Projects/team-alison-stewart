@@ -207,66 +207,64 @@ CREATE INDEX INDEX_EVENTS_ON_SCHOOL_ID_AND_EVENT ON EVENTS(SCHOOL_ID, EVENT_TYPE
 
   CREATE UNIQUE INDEX INDEX_SETTINGS_ON_KEY ON SETTINGS (KEY);
 
+  CREATE TABLE SITTINGS (
+    NAME TEXT NOT NULL,
+    DURATION TEXT NOT NULL,
+    SITTING_FEE TEXT,
+    DEPOSIT TEXT,
+    EVENT_TYPE_ID INTEGER NOT NULL,
+    GRAD_PROGRAM_CODE TEXT,
+    CREATED_AT TIMESTAMP,
+    UPDATED_AT TIMESTAMP,
+    SITTING_TYPE TEXT NOT NULL DEFAULT 'GRAD',
+    SCHOOL_ID INTEGER,
+    GRAD_GROUP_CODE TEXT
+  );
 
-  create_table "sittings", force: :cascade do |t|
-    t.string   "name",                               null: false
-    t.string   "duration",                           null: false
-    t.string   "sitting_fee"
-    t.string   "deposit"
-    t.integer  "event_type_id",                      null: false
-    t.string   "grad_program_code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "sitting_type",      default: "grad", null: false
-    t.integer  "school_id"
-    t.string   "grad_group_code"
-  end
+  CREATE TABLE TIME_TRADE_APPOINTMENT_TYPES (
+    TIME_TRADE_META_DATA_ID INTEGER,
+    TYPE_ID TEXT NOT NULL,
+    PHOTO_TYPE TEXT,
+    RESOURCE_ID TEXT NOT NULL,
+    CREATED_AT TIMESTAMP,
+    UPDATED_AT TIMESTAMP
+  );
 
-  create_table "time_trade_appointment_types", force: :cascade do |t|
-    t.integer  "time_trade_meta_data_id"
-    t.string   "type_id",                 null: false
-    t.string   "photo_type"
-    t.string   "resource_id",             null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  CREATE UNIQUE INDEX INDEX_APPOINTMENT_TYPES_ON_META_DATA_AND_PHOTO_TYPE ON TIME_TRADE_APPOINTMENT_TYPES (TIME_TRADE_META_DATA_ID, PHOTO_TYPE);
 
-  add_index "time_trade_appointment_types", ["time_trade_meta_data_id", "photo_type"], name: "index_appointment_types_on_meta_data_and_photo_type", unique: true, using: :btree
+  CREATE TABLE TIME_TRADE_IMPORTS (
+    FILE TEXT NOT NULL,
+    IMPORT_LOG TEXT,
+    CREATED_AT TIMESTAMP,
+    UPDATED_AT TIMESTAMP
+  );
 
-  create_table "time_trade_imports", force: :cascade do |t|
-    t.string   "file",       null: false
-    t.text     "import_log"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  CREATE TABLE TIME_TRADE_META_DATA (
+    CAMPAIGN_ID TEXT,
+    APPOINTMENT_TYPE_GROUP_ID TEXT,
+    COMPANY_NAME TEXT,
+    SCHOOL_CODE TEXT NOT NULL,
+    CREATED_AT TIMESTAMP,
+    UPDATED_AT TIMESTAMP,
+    SCHOOL_ID INTEGER
+  );
 
-  create_table "time_trade_meta_data", force: :cascade do |t|
-    t.string   "campaign_id"
-    t.string   "appointment_type_group_id"
-    t.string   "company_name"
-    t.string   "school_code",               null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "school_id"
-  end
+  CREATE INDEX INDEX_TIME_TRADE_META_DATA_ON_SCHOOL_ID ON TIME_TRADE_META_DATA (SCHOOL_ID);
 
-  add_index "time_trade_meta_data", ["school_id"], name: "index_time_trade_meta_data_on_school_id", using: :btree
+  CREATE TABLE USERS (
+    EMAIL TEXT NOT NULL,
+    CRYPTED_PASSWORD TEXT NOT NULL,
+    SALT TEXT NOT NULL,
+    REMEMBER_TOKEN TEXT,
+    REMEMBER_TOKEN_EXPIRES_AT TIMESTAMP,
+    ENABLED BOOLEAN,
+    ROLE TEXT NOT NULL DEFAULT 'ADMIN',
+    CREATED_AT TIMESTAMP,
+    UPDATED_AT TIMESTAMP,
+    SCHOOL_ID INTEGER
+    );
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                                       null: false
-    t.string   "crypted_password",                            null: false
-    t.string   "salt",                                        null: false
-    t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
-    t.boolean  "enabled"
-    t.string   "role",                      default: "admin", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "school_id"
-  end
+    CREATE UNIQUE INDEX INDEX_USERS_ON_EMAIL ON USERS (EMAIL);
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
-  add_foreign_key "time_trade_meta_data", "schools"
-end      
+  
   
