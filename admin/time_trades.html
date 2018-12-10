@@ -1,0 +1,322 @@
+<!DOCTYPE html><html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Time Trade | Artona Admin</title>
+    <link rel="stylesheet" media="screen" href="/assets/active_admin.css" /><link rel="stylesheet" media="print" href="/assets/active_admin/print.css" /><link rel="stylesheet" media="screen" href="/assets/active_admin/editor.css" /><link rel="stylesheet" media="screen" href="/assets/active_admin/editor/wysiwyg-0b7207260de494d3656bb15c5a907061971c16847888d7d0d0e86cfc1aa854fe.css" /><script src="/assets/active_admin-c68018f82014856df4ee8ab00776b4b5268afd9f8afce011e0d6361db81686ae.js"></script><script src="/assets/active_admin/editor.js"></script><link rel="shortcut icon" type="image/x-icon" href="app/assets/images/favicons/favicon-32x32.png" /><meta name="csrf-param" content="authenticity_token" />
+  <body class="index admin_time_trades active_admin logged_in admin_namespace">
+    <div id="wrapper">
+      <div class="header" id="header">
+        <h1 class="site_title" id="site_title">Artona Admin</h1>
+        <ul class="header-item tabs" id="tabs">
+          <li id="dashboard"><a href="/admin/dashboard.html">Dashboard</a></li>
+          <li class="has_nested" id="artona">
+<a href="#">Artona</a>            <ul>
+              <li id="employees"><a href="/admin/employees.html">Employees</a></li>
+              <li id="job_postings"><a href="/admin/job_postings.html">Job Postings</a></li>
+              <li id="job_types"><a href="/admin/job_types.html">Job Types</a></li>
+              <li id="look_books"><a href="/admin/look_books.html">Look Books</a></li>
+              <li id="products"><a href="/admin/products.html">Products</a></li>
+              <li id="services"><a href="/admin/services.html">Services</a></li>
+            </ul>
+          </li>
+          <li class="has_nested" id="manage_schools">
+<a href="#">Manage Schools</a>            <ul>
+              <li id="electronic_marketings"><a href="/admin/electronic_marketings.html">Electronic Marketings</a></li>
+              <li id="schools"><a href="/admin/schools.html">Schools</a></li>
+            </ul>
+          </li>
+          <li class="has_nested" id="events_and_dates">
+<a href="#">Events And Dates</a>            <ul>
+              <li id="event_types"><a href="/admin/event_types.html">Event Types</a></li>
+              <li id="events"><a href="/admin/events.html">Events</a></li>
+              <li id="important_date_types"><a href="/admin/important_date_types.html">Important Date Types</a></li>
+              <li id="important_dates"><a href="/admin/important_dates.html">Important Dates</a></li>
+            </ul>
+          </li>
+          <li class="current has_nested" id="manage_bookings">
+<a href="#">Manage Bookings</a>            <ul>
+              <li id="bookings"><a href="/admin/bookings.html">Bookings</a></li>
+              <li class="current" id="time_trades"><a href="/admin/time_trades.html">Time Trade</a></li>
+            </ul>
+          </li>
+          <li class="has_nested" id="site">
+<a href="#">Site</a>            <ul>
+              <li id="demo_videos"><a href="/admin/demo_videos.html">Demo Videos</a></li>
+              <li id="feedbacks"><a href="/admin/feedbacks.html">Feedbacks</a></li>
+              <li id="frequently_asked_question_types"><a href="/admin/frequently_asked_question_types.html">Frequently Asked Question Types</a></li>
+              <li id="frequently_asked_questions"><a href="/admin/frequently_asked_questions.html">Frequently Asked Questions</a></li>
+              <li id="settings"><a href="/admin/settings.html">Settings</a></li>
+              <li id="sittings"><a href="/admin/sittings.html">Sittings</a></li>
+              <li id="users"><a href="/admin/users.html">Users</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="header-item tabs" id="utility_nav">
+          <li id="current_user"><a href="/admin/users/6.html">alisons@artonagroup.com</a></li>
+          <li id="logout"><a rel="nofollow" data-method="delete" href="pages/session.html">Logout</a></li>
+        </ul>
+      </div>
+      <div class="title_bar" id="title_bar">
+        <div id="titlebar_left">
+          <span class="breadcrumb">
+<a href="/admin">Admin</a>            <span class="breadcrumb_sep">/</span>
+          </span>
+          <h2 id="page_title">Time Trade</h2>
+        </div>
+        <div id="titlebar_right">
+          <div class="action_items">
+            <span class="action_item"></span>
+            <span class="action_item"><a href="/admin/time_trade_imports/new">Upload new Time Trade Data</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="flashes"></div>
+      <div id="active_admin_content" class="without_sidebar">
+        <div id="main_content_wrapper">
+          <div id="main_content">
+            <div class="paginated_collection">
+              <div class="paginated_collection_contents">
+                <div class="index_content">
+                  <div class="index_as_table">
+                    <table border="0" cellspacing="0" cellpadding="0" id="index_table_time_trades" class="index_table index" paginator="true">
+                      <thead>
+                        <tr>
+                          <th class="col col-school">School</th>
+                          <th class="col col-code">Code</th>
+                          <th class="col col-campaign_id">Campaign ID</th>
+                          <th class="col col-group_id">Group ID</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd" id="time_trade_meta_data_43765">
+                          <td class="col col-school"><a href="/admin/schools/KHAL">Khalsa Secondary School</a></td>
+                          <td class="col col-code">KHAL</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43765">KHAL</a></td>
+                          <td class="col col-group_id">KHAL</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43965">
+                          <td class="col col-school"><a href="/admin/schools/UFV">University of the Fraser Valley</a></td>
+                          <td class="col col-code">UFV</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43965">RETAKES</a></td>
+                          <td class="col col-group_id">RETAKE</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43966">
+                          <td class="col col-school"><a href="/admin/schools/UFV-PS">UFV - Professional Studies</a></td>
+                          <td class="col col-code">UFV-PS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43966">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43967">
+                          <td class="col col-school"><a href="/admin/schools/UFV-SCIENCE">UFV - Science</a></td>
+                          <td class="col col-code">UFV-SCIENCE</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43967">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43968">
+                          <td class="col col-school"><a href="/admin/schools/UFV-HS">UFV - Health Studies</a></td>
+                          <td class="col col-code">UFV-HS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43968">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43969">
+                          <td class="col col-school"><a href="/admin/schools/UFV-ARTS">UFV - Arts</a></td>
+                          <td class="col col-code">UFV-ARTS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43969">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43970">
+                          <td class="col col-school"><a href="/admin/schools/UFV-KIN">UFV - Kinesiology and Physical Education</a></td>
+                          <td class="col col-code">UFV-KIN</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43970">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43971">
+                          <td class="col col-school"><a href="/admin/schools/UFV-ATS">UFV - Applied and Technical Studies</a></td>
+                          <td class="col col-code">UFV-ATS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43971">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43972">
+                          <td class="col col-school"><a href="/admin/schools/UFV-ACE">UFV - Access and Continuing Education</a></td>
+                          <td class="col col-code">UFV-ACE</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43972">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43973">
+                          <td class="col col-school"><a href="/admin/schools/UFV-ABBOTSFORD">University of the Fraser Valley - Abbotsford Campus</a></td>
+                          <td class="col col-code">UFV-ABBOTSFORD</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43973">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43974">
+                          <td class="col col-school"><a href="/admin/schools/UFV-Chilliwack">University of the Fraser Valley - Chilliwack Campus (CEP)</a></td>
+                          <td class="col col-code">UFV-Chilliwack</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43974">UFV-ABB</a></td>
+                          <td class="col col-group_id">UFV-ABB</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43975">
+                          <td class="col col-school"><a href="/admin/schools/UVIC">University of Victoria</a></td>
+                          <td class="col col-code">UVIC</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43975">RETAKES</a></td>
+                          <td class="col col-group_id">RETAKE</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43976">
+                          <td class="col col-school"><a href="/admin/schools/VNCS">Vancouver Christian School</a></td>
+                          <td class="col col-code">VNCS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43976">RETAKES</a></td>
+                          <td class="col col-group_id">RETAKE</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43977">
+                          <td class="col col-school"><a href="/admin/schools/VNCS">Vancouver Christian School</a></td>
+                          <td class="col col-code">VNCS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43977">VNCS</a></td>
+                          <td class="col col-group_id">VNCS</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43978">
+                          <td class="col col-school"><a href="/admin/schools/VCOL">Vancouver College</a></td>
+                          <td class="col col-code">VCOL</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43978">RETAKES</a></td>
+                          <td class="col col-group_id">RETAKE</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43979">
+                          <td class="col col-school"><a href="/admin/schools/VCOL">Vancouver College</a></td>
+                          <td class="col col-code">VCOL</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43979">VCOL</a></td>
+                          <td class="col col-group_id">VCOL</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43980">
+                          <td class="col col-school"><a href="/admin/schools/VCCO">Vancouver Community College</a></td>
+                          <td class="col col-code">VCCO</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43980">VCCO</a></td>
+                          <td class="col col-group_id">VCCO</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43981">
+                          <td class="col col-school"><a href="/admin/schools/VANT">Vancouver Technical Secondary</a></td>
+                          <td class="col col-code">VANT</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43981">VANT</a></td>
+                          <td class="col col-group_id">VANT</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43982">
+                          <td class="col col-school"><a href="/admin/schools/WDER">Windermere Secondary</a></td>
+                          <td class="col col-code">WDER</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43982">WDER</a></td>
+                          <td class="col col-group_id">WDER</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43983">
+                          <td class="col col-school"><a href="/admin/schools/WIND">Windsor Secondary</a></td>
+                          <td class="col col-code">WIND</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43983">WIND</a></td>
+                          <td class="col col-group_id">WIND</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43984">
+                          <td class="col col-school"><a href="/admin/schools/YRKH">York House School</a></td>
+                          <td class="col col-code">YRKH</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43984">YRKH</a></td>
+                          <td class="col col-group_id">YRKH</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43766">
+                          <td class="col col-school"><a href="/admin/schools/KILL">Killarney Secondary</a></td>
+                          <td class="col col-code">KILL</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43766">RETAKES</a></td>
+                          <td class="col col-group_id">RETAKE</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43767">
+                          <td class="col col-school"><a href="/admin/schools/KILL">Killarney Secondary</a></td>
+                          <td class="col col-code">KILL</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43767">KILL</a></td>
+                          <td class="col col-group_id">KILL</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43768">
+                          <td class="col col-school"><a href="/admin/schools/KING">King David High School</a></td>
+                          <td class="col col-code">KING</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43768">RETAKES</a></td>
+                          <td class="col col-group_id">RETAKE</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43769">
+                          <td class="col col-school"><a href="/admin/schools/KING">King David High School</a></td>
+                          <td class="col col-code">KING</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43769">KING</a></td>
+                          <td class="col col-group_id">KING</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43770">
+                          <td class="col col-school"><a href="/admin/schools/KIGE">King George Secondary</a></td>
+                          <td class="col col-code">KIGE</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43770">KIGE</a></td>
+                          <td class="col col-group_id">KIGE</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43771">
+                          <td class="col col-school"><a href="/admin/schools/KITS">Kitsilano Secondary</a></td>
+                          <td class="col col-code">KITS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43771">RETAKES</a></td>
+                          <td class="col col-group_id">RETAKE</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43772">
+                          <td class="col col-school"><a href="/admin/schools/KITS">Kitsilano Secondary</a></td>
+                          <td class="col col-code">KITS</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43772">KITS</a></td>
+                          <td class="col col-group_id">KITS</td>
+                        </tr>
+                        <tr class="odd" id="time_trade_meta_data_43773">
+                          <td class="col col-school"><a href="/admin/schools/KWAN">Ecole Kwantlen Park Secondary</a></td>
+                          <td class="col col-code">KWAN</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43773">KWAN</a></td>
+                          <td class="col col-group_id">KWAN</td>
+                        </tr>
+                        <tr class="even" id="time_trade_meta_data_43774">
+                          <td class="col col-school"><a href="/admin/schools/KPU">Kwantlen Polytechnic University</a></td>
+                          <td class="col col-code">KPU</td>
+                          <td class="col col-campaign_id"><a href="/admin/time_trades/43774">KPU-SURREY</a></td>
+                          <td class="col col-group_id">KPU-SURREY</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div id="index_footer">
+  <nav class="pagination">
+    
+    
+        <span class="page current">
+  1
+</span>
+
+        <span class="page">
+  <a rel="next" href="/admin/time_trades?order=code&amp;page=2">2</a>
+</span>
+
+        <span class="page">
+  <a href="/admin/time_trades?order=code&amp;page=3">3</a>
+</span>
+
+        <span class="page">
+  <a href="/admin/time_trades?order=code&amp;page=4">4</a>
+</span>
+
+        <span class="page">
+  <a href="/admin/time_trades?order=code&amp;page=5">5</a>
+</span>
+
+        <span class="page gap">&hellip;</span>
+
+    <span class="next">
+  <a rel="next" href="/admin/time_trades?order=code&amp;page=2">Next &rsaquo;</a>
+</span>
+
+    <span class="last">
+  <a href="/admin/time_trades?order=code&amp;page=10">Last &raquo;</a>
+</span>
+
+  </nav>
+                <div class="pagination_information">Displaying Time Trades <b>1&nbsp;-&nbsp;30</b> of <b>291</b> in total</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer" id="footer">
+        <p>Powered by <a href="http://www.activeadmin.info">Active Admin</a> 1.0.0.pre2</p>
+      </div>
+    </div>
+  </body>
+</html>

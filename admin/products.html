@@ -1,0 +1,230 @@
+<!DOCTYPE html><html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Products | Artona Admin</title>
+    <link rel="stylesheet" media="screen" href="/assets/active_admin.css" /><link rel="stylesheet" media="print" href="/assets/active_admin/print.css" /><link rel="stylesheet" media="screen" href="/assets/active_admin/editor.css" /><link rel="stylesheet" media="screen" href="/assets/active_admin/editor/wysiwyg-0b7207260de494d3656bb15c5a907061971c16847888d7d0d0e86cfc1aa854fe.css" /><script src="/assets/active_admin-c68018f82014856df4ee8ab00776b4b5268afd9f8afce011e0d6361db81686ae.js"></script><script src="/assets/active_admin/editor.js"></script><link rel="shortcut icon" type="image/x-icon" href="app/assets/images/favicons/favicon-32x32.png" /><meta name="csrf-param" content="authenticity_token" />
+<body class="index admin_products active_admin logged_in admin_namespace">
+    <div id="wrapper">
+      <div class="header" id="header">
+        <h1 class="site_title" id="site_title">Artona Admin</h1>
+        <ul class="header-item tabs" id="tabs">
+          <li id="dashboard"><a href="/admin/dashboard.html">Dashboard</a></li>
+          <li class="current has_nested" id="artona">
+<a href="#">Artona</a>            <ul>
+              <li id="employees"><a href="/admin/employees.html">Employees</a></li>
+              <li id="job_postings"><a href="/admin/job_postings.html">Job Postings</a></li>
+              <li id="job_types"><a href="/admin/job_types.html">Job Types</a></li>
+              <li id="look_books"><a href="/admin/look_books.html">Look Books</a></li>
+              <li class="current" id="products"><a href="/admin/products.html">Products</a></li>
+              <li id="services"><a href="/admin/services.html">Services</a></li>
+            </ul>
+          </li>
+          <li class="has_nested" id="manage_schools">
+<a href="#">Manage Schools</a>            <ul>
+              <li id="electronic_marketings"><a href="/admin/electronic_marketings.html">Electronic Marketings</a></li>
+              <li id="schools"><a href="/admin/schools.html">Schools</a></li>
+            </ul>
+          </li>
+          <li class="has_nested" id="events_and_dates">
+<a href="#">Events And Dates</a>            <ul>
+              <li id="event_types"><a href="/admin/event_types.html">Event Types</a></li>
+              <li id="events"><a href="/admin/events.html">Events</a></li>
+              <li id="important_date_types"><a href="/admin/important_date_types.html">Important Date Types</a></li>
+              <li id="important_dates"><a href="/admin/important_dates.html">Important Dates</a></li>
+            </ul>
+          </li>
+          <li class="has_nested" id="manage_bookings">
+<a href="#">Manage Bookings</a>            <ul>
+              <li id="bookings"><a href="/admin/bookings.html">Bookings</a></li>
+              <li id="time_trades"><a href="/admin/time_trades.html">Time Trade</a></li>
+            </ul>
+          </li>
+          <li class="has_nested" id="site">
+<a href="#">Site</a>            <ul>
+              <li id="demo_videos"><a href="/admin/demo_videos.html">Demo Videos</a></li>
+              <li id="feedbacks"><a href="/admin/feedbacks.html">Feedbacks</a></li>
+              <li id="frequently_asked_question_types"><a href="/admin/frequently_asked_question_types.html">Frequently Asked Question Types</a></li>
+              <li id="frequently_asked_questions"><a href="/admin/frequently_asked_questions.html">Frequently Asked Questions</a></li>
+              <li id="settings"><a href="/admin/settings.html">Settings</a></li>
+              <li id="sittings"><a href="/admin/sittings.html">Sittings</a></li>
+              <li id="users"><a href="/admin/users.html">Users</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="header-item tabs" id="utility_nav">
+          <li id="current_user"><a href="/admin/users/6.html">alisons@artonagroup.com</a></li>
+          <li id="logout"><a rel="nofollow" data-method="delete" href="pages/session.html">Logout</a></li>
+        </ul>
+      </div>
+      <div class="title_bar" id="title_bar">
+        <div id="titlebar_left">
+          <span class="breadcrumb">
+<a href="/admin">Admin</a>            <span class="breadcrumb_sep">/</span>
+          </span>
+          <h2 id="page_title">Products</h2>
+        </div>
+        <div id="titlebar_right">
+          <div class="action_items">
+            <span class="action_item"><a href="/admin/products/new">New Product</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="flashes"></div>
+      <div id="active_admin_content" class="with_sidebar">
+        <div id="main_content_wrapper">
+          <div id="main_content">
+            <div class="paginated_collection">
+              <div class="paginated_collection_contents">
+                <div class="index_content">
+                  <div class="index_as_table">
+                    <table border="0" cellspacing="0" cellpadding="0" id="index_table_products" class="index_table index" paginator="true">
+                      <thead>
+                        <tr>
+                          <th class="sortable col col-name"><a href="/admin/products?order=name_desc">Name</a></th>
+                          <th class="sortable col col-description"><a href="/admin/products?order=description_desc">Description</a></th>
+                          <th class="sortable col col-position"><a href="/admin/products?order=position_desc">Position</a></th>
+                          <th class="sortable col col-updated_at"><a href="/admin/products?order=updated_at_desc">Updated At</a></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd" id="product_18">
+                          <td class="col col-name"><a href="/admin/products/18">8x10: The Latitude</a></td>
+                          <td class="col col-description">A bold and clean line to elegantly frame your image.</td>
+                          <td class="col col-position">7</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:11</td>
+                        </tr>
+                        <tr class="even" id="product_15">
+                          <td class="col col-name"><a href="/admin/products/15">10x13: The Compilation</a></td>
+                          <td class="col col-description">A timeless collage with four selectable poses in full colour.</td>
+                          <td class="col col-position">8</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:13</td>
+                        </tr>
+                        <tr class="odd" id="product_13">
+                          <td class="col col-name"><a href="/admin/products/13">10x18: Midtown Trio</a></td>
+                          <td class="col col-description">A simple collage with three selectable poses.</td>
+                          <td class="col col-position">9</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:14</td>
+                        </tr>
+                        <tr class="even" id="product_12">
+                          <td class="col col-name"><a href="/admin/products/12">10x18: 5 Star Collage</a></td>
+                          <td class="col col-description">An elegant collage with five selectable poses and a personalized profile.</td>
+                          <td class="col col-position">10</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:16</td>
+                        </tr>
+                        <tr class="odd" id="product_14">
+                          <td class="col col-name"><a href="/admin/products/14">10x18: Classic Collage</a></td>
+                          <td class="col col-description">A classic collage personalized with your name, graduation year and school logo.</td>
+                          <td class="col col-position">11</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:18</td>
+                        </tr>
+                        <tr class="even" id="product_11">
+                          <td class="col col-name"><a href="/admin/products/11">10x18: Six Pics Collage</a></td>
+                          <td class="col col-description">A timeless collage with 6 selectable poses. Personalized with your school logo.</td>
+                          <td class="col col-position">12</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:20</td>
+                        </tr>
+                        <tr class="odd" id="product_16">
+                          <td class="col col-name"><a href="/admin/products/16">10x18: Group of Seven</a></td>
+                          <td class="col col-description">Our most extensive collage with seven selectable poses.</td>
+                          <td class="col col-position">13</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:22</td>
+                        </tr>
+                        <tr class="even" id="product_19">
+                          <td class="col col-name"><a href="/admin/products/19">Traditional Frame</a></td>
+                          <td class="col col-description">Glossy unique bevelled edge profile. Available in Rosewood or Black.</td>
+                          <td class="col col-position">14</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:24</td>
+                        </tr>
+                        <tr class="odd" id="product_20">
+                          <td class="col col-name"><a href="/admin/products/20">Modern Frame</a></td>
+                          <td class="col col-description">Trendy and clean look in matte finish. Available in Rosewood or Black.</td>
+                          <td class="col col-position">15</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:25</td>
+                        </tr>
+                        <tr class="even" id="product_21">
+                          <td class="col col-name"><a href="/admin/products/21">Classic Frame</a></td>
+                          <td class="col col-description">A modern, bold frame with clean cut lines. Elegant inner detail on frame.</td>
+                          <td class="col col-position">16</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:30</td>
+                        </tr>
+                        <tr class="odd" id="product_24">
+                          <td class="col col-name"><a href="/admin/products/24">Shadow Box Frame</a></td>
+                          <td class="col col-description">Inset shadow box with a modern matte finish.</td>
+                          <td class="col col-position">17</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:33</td>
+                        </tr>
+                        <tr class="even" id="product_22">
+                          <td class="col col-name"><a href="/admin/products/22">Gold Antique Frame</a></td>
+                          <td class="col col-description">Gold patina with a touch of ornateness for added beauty.</td>
+                          <td class="col col-position">18</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:36</td>
+                        </tr>
+                        <tr class="odd" id="product_1">
+                          <td class="col col-name"><a href="/admin/products/1">Canvas Wraps</a></td>
+                          <td class="col col-description">Beautifully printed &amp; wrapped! Transform your image into a timeless piece of art.</td>
+                          <td class="col col-position">3</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:38</td>
+                        </tr>
+                        <tr class="even" id="product_26">
+                          <td class="col col-name"><a href="/admin/products/26">Tassel Trio Frame</a></td>
+                          <td class="col col-description">The perfect frame to display your photo with your diploma and graduation tassel.</td>
+                          <td class="col col-position">21</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:40</td>
+                        </tr>
+                        <tr class="odd" id="product_25">
+                          <td class="col col-name"><a href="/admin/products/25">Tassel Frame</a></td>
+                          <td class="col col-description">Features two recessed displays for a photo and a graduation tassel.</td>
+                          <td class="col col-position">20</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:45</td>
+                        </tr>
+                        <tr class="even" id="product_23">
+                          <td class="col col-name"><a href="/admin/products/23">Diploma Frame</a></td>
+                          <td class="col col-description">Ideal to display your graduation certificate. Three mattes in different colours included.</td>
+                          <td class="col col-position">19</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:46</td>
+                        </tr>
+                        <tr class="odd" id="product_4">
+                          <td class="col col-name"><a href="/admin/products/4">Session Portfolios</a></td>
+                          <td class="col col-description">High quality 8x10 montage prints. Includes 8 or 16 poses.</td>
+                          <td class="col col-position">1</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:49</td>
+                        </tr>
+                        <tr class="even" id="product_5">
+                          <td class="col col-name"><a href="/admin/products/5">Digital Downloads</a></td>
+                          <td class="col col-description">Download your complete Portrait Session in high resolution.</td>
+                          <td class="col col-position">2</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:50</td>
+                        </tr>
+                        <tr class="odd" id="product_27">
+                          <td class="col col-name"><a href="/admin/products/27">Presentation Folder</a></td>
+                          <td class="col col-description">Black heavy weight stock. Available in several sizes, horizontal or vertical.</td>
+                          <td class="col col-position">4</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:51</td>
+                        </tr>
+                        <tr class="even" id="product_17">
+                          <td class="col col-name"><a href="/admin/products/17">Digital Matte</a></td>
+                          <td class="col col-description">A unique portrait personalized with your name.</td>
+                          <td class="col col-position">5</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:51</td>
+                        </tr>
+                        <tr class="odd" id="product_2">
+                          <td class="col col-name"><a href="/admin/products/2">Retouching</a></td>
+                          <td class="col col-description">Our professional retouching options help you achieve a flawless look.</td>
+                          <td class="col col-position">6</td>
+                          <td class="col col-updated_at">Dec 09, 2018 20:51</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer" id="footer">
+        <p>Powered by <a href="http://www.activeadmin.info">Active Admin</a> 1.0.0.pre2</p>
+      </div>
+    </div>
+  </body>
+</html>
