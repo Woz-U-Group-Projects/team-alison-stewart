@@ -13,7 +13,7 @@
 
     <!--Favicons -->
     <!-- Apple favicons -->
-  <link rel="apple-icon-precomposed" type="image/png" href="app/assets/images/favicons/apple-icon-57x57.png" sizes="57x57" />
+  <link rel="apple-icon-precomposed" type="image/png" href="website/app/assets/images/favicons/apple-icon-57x57.png" sizes="57x57" />
   <link rel="apple-icon-precomposed" type="image/png" href="app/assets/images/favicons/apple-icon-60x60.png" sizes="60x60" />
   <link rel="apple-icon-precomposed" type="image/png" href="app/assets/images/favicons/apple-icon-72x72.png" sizes="72x72" />
   <link rel="apple-icon-precomposed" type="image/png" href="app/assets/images/favicons/apple-icon-76x76.png" sizes="76x76" />
@@ -45,146 +45,6 @@
 <meta content="images/favicons/ms-icon-144x144.png", name="msapplication-TileImage"} />
 <meta content="images/favicons/ms-icon-150x150.png", name="msapplication-square150x150logo"} />
 <meta content="images/favicons/ms-icon-310x310.png", name="msapplication-square310x310logo"} />
-
-    <!-- Custom header tags -->
-    
-    <script>
-      var mapStyles = [
-        {
-          "featureType":"landscape",
-          "stylers":[
-            {
-              "hue":"#FFBB00"
-            },
-            {
-              "saturation":43.400000000000006
-            },
-            {
-              "lightness":37.599999999999994
-            },
-            {
-              "gamma":1
-            }
-          ]
-        },
-        {
-          "featureType":"road.highway",
-          "stylers":[
-            {
-              "hue":"#FFC200"
-            },
-            {
-              "saturation":-61.8
-            },
-            {
-              "lightness":45.599999999999994
-            },
-            {
-              "gamma":1
-            }
-          ]
-        },
-        {
-          "featureType":"road.arterial",
-          "stylers":[
-            {
-              "hue":"#FF0300"
-            },
-            {
-              "saturation":-100
-            },
-            {
-              "lightness":51.19999999999999
-            },
-            {
-              "gamma":1
-            }
-          ]
-        },
-        {
-          "featureType":"road.local",
-          "stylers":[
-            {
-              "hue":"#FF0300"
-            },
-            {
-              "saturation":-100
-            },
-            {
-              "lightness":52
-            },
-            {
-              "gamma":1
-            }
-          ]
-        },
-        {
-          "featureType":"water",
-          "stylers":[
-            {
-              "hue":"#0078FF"
-            },
-            {
-              "saturation":-13.200000000000003
-            },
-            {
-              "lightness":2.4000000000000057
-            },
-            {
-              "gamma":1
-            }
-          ]
-        },
-        {
-          "featureType":"poi",
-          "stylers":[
-            {
-              "hue":"#00FF6A"
-            },
-            {
-              "saturation":-1.0989010989011234
-            },
-            {
-              "lightness":11.200000000000017
-            },
-            {
-              "gamma":1
-            }
-          ]
-        }
-      ];
-  
-      function initMap() {
-        var mapElement = document.getElementById('map');
-  
-        // Basic options for a simple Google Map
-        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-        var mapOptions = {
-          zoom: 15,
-          center: new google.maps.LatLng(49.265798, -123.111826),
-          styles: mapStyles,
-          mapTypeControl: false,
-          streetViewControl: false,
-          zoomControl: true,
-          zoomControlOptions: {
-            position: google.maps.ControlPosition.LEFT_TOP
-          }
-        };
-  
-        // Create the Google Map using our element and options defined above
-        var map = new google.maps.Map(mapElement, mapOptions);
-  
-        // Let's also add a marker while we're at it
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(49.2649109, -123.1121831),
-          map: map,
-          title: 'Artona'
-        });
-      }
-    </script>
-  
-    <script src="https://maps.googleapis.com/maps/api/js?key=My-API-KEY-HERE&callback=initMap" async defer></script>
-      
   </head>
   <body class="body">
     
@@ -231,78 +91,36 @@
       </div>
     </header>
 
-
     <!-- Render the flashes -->
     <div class="container flash-container center">
     </div>
 
     <div class="page-content">
-      <div class="static-contact">
-  <div class="hero" style="background-image: url(app/assets/images/heroes/contact.png)">
+      <div class="schools-find">
+  <div class="hero" style="background-image: url(app/assets/images/heroes/find.png)">
     <div class="container">
       <div class="center hero__content hero__content--right">
-        <h1 class="hero__title">Contact Us</h1>
+        <h1 class="hero__title">Find Your School</h1>
       </div>
     </div>
   </div>
 
-  <div class="content">
+
+  <div class="filter-container filter-container--light">
     <div class="container">
-      <div class="columns-4 center fill-small columns--border-right contact__meta-container">
-        <i class="fa fa-map-marker icon--large"></i>
-        <h5 class="headline">Studio & Mailing Address</h5>
-        <p>
-          <div><strong>Vancouver Studio</strong></div>
-          <div>353 West 7th Ave</div>
-          Vancouver B.C, Canada V5Y 1M2
-        </p>
-        <p>
-          Find your school's session location <a class="link link--dark link--underlined" href="pages/schools/find.html">here</a>
-        </p>
-      </div>
-      <div class="columns-4 center fill-small contact__meta-container">
-        <i class="fa fa-clock-o icon--large"></i>
-        <h5 class="headline">Hours of Operation</h5>
-        <p>
-          <div><strong>September - February</strong></div>
-          9:00am - 9:00pm (All Days)
-        </p>
-        <p>
-          <div><strong>March - August</strong></div>
-          9:00am - 5:00pm (Mon - Sat)
-        </p>
-        <p class="paragraph--subtext">
-          * Closed on statutory holidays, and Christmas Eve and New Years eve at 4PM.
-        </p>
-      </div>
-      <div class="columns-4 omega center fill-small columns--border-left contact__meta-container">
-        <i class="fa fa-envelope icon--large"></i>
-        <h5 class="headline">Get in Touch With Us</h5>
-        <p>
-          <div><strong>Telephone</strong></div>
-          (604) 872-7272 or +1 (800) 668-3866
-        </p>
-        <p>
-          <div><strong>Live Chat</strong></div>
-          8 am to 10 pm Daily
-        </p>
-        <p>
-          <div><strong>Email</strong></div>
-          <a class="link link--underlined link--dark" href="mailto:alisons@artona.com">csr@artona.com</a>
-        </p>
-        <p>
-          <div><strong>Social Media</strong></div>
-          <a class="link link--underlined link--dark" href=https://www.facebook.com/ArtonaGroup>Facebook</a>,
-          <a class="link link--underlined link--dark" href=https://www.instagram.com/artonagroup>Instagram</a>,
-          <a class="link link--underlined link--dark" href=https://twitter.com/Artona>Twitter</a>
-        </p>
-      </div>
+      <form id="school-search" novalidate="novalidate" class="simple_form school" action="find" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+  <div class="container-flex single-field-form-container">
+    <div class="left-container">
+      <div class="input string required school_name"><input class="string required" placeholder="What school are you from?" type="text" name="school[name]" id="school_name" /></div>
+    </div>
+
+    <div class="right-container">
+      <input type="submit" name="commit" value="Find" class="link link--button link--button-maroon" />
     </div>
   </div>
-
-  
-<div id="map"></div>
-
+</form>
+    </div>
+  </div>
 </div>
 
     </div>
@@ -355,4 +173,3 @@
     
       </body>
     </html>
-    
