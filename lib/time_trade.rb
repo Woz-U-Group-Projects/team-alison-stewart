@@ -46,7 +46,7 @@ class TimeTrade
   private
 
   def self.host
-    if Rails.env.production?
+    if Rails.env.production-live?
       'www.timetrade.com'
     else
       'ui-stage.timetradesystems.com'
