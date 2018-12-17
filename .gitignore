@@ -13,12 +13,14 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/tmp/*
 !/log/.keep
-/tmp
-/public/uploads
+!/tmp/.keep
 
-# OSX specific files
-.DS_Store
+/node_modules
+/yarn-error.log
+
+.byebug_history
 
 # yml files
 /config/database.yml
