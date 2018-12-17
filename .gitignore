@@ -25,3 +25,4 @@
 # yml files
 /config/database.yml
 /config/secrets.yml
+/config/cable.yml
