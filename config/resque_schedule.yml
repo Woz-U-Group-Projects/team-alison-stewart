@@ -1,0 +1,4 @@
+queue_highrise_importer:
+  cron: "0 */1 * * *"
+  class: HighriseImporter
+  queue: high
