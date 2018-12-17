@@ -12,97 +12,89 @@ gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 #gem 'sqlite3'
 
 # Use PostgreSQL for the database
-gem 'pg',
+gem 'pg', '~> 1.1', '>= 1.1.3'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.7'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 4.1', '>= 4.1.20'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
 # Use the jquery ui widgets
-gem 'jquery-ui-rails', '5.0.5'
-
-# Use PostgreSQL for the database
-gem 'pg', '0.18.4'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 # Used for full text search
-gem 'pg_search', '1.0.5'
+gem 'pg_search', '~> 2.1', '>= 2.1.3'
 
 # Used for SCSS general library
-gem 'bourbon', '4.2.2'
+gem 'bourbon', '~> 5.1'
+
 # Used on top of bourbon for basic styling
-gem 'neat', '1.7.2'
+gem 'neat', '~> 3.0'
+
 # Used for fonts and icons
-gem 'font-awesome-sass', '4.3.0'
+gem 'font-awesome-sass', '~> 5.5', '>= 5.5.0.1'
 
 # Used for SEO meta tags
-gem 'meta-tags', '2.0.0'
+gem 'meta-tags', '~> 2.11'
 
 # Used for the admin console
-gem 'activeadmin', '1.0.0.pre2'
+gem 'activeadmin', '~> 1.4', '>= 1.4.3'
 
 # Used for interactive form selects
-gem 'select2-rails', '4.0.1'
-
-# Used for running long lasting jobs
-gem 'delayed_job_active_record', '4.1.0'
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 
 # Used for authorization
-gem 'cancancan', '1.13.1'
+gem 'cancancan', '~> 2.3'
 
 # Used for error reporting
-gem 'rollbar', '2.9.1'
+gem 'rollbar', '~> 2.18', '>= 2.18.2'
 
 # Used for long running jobs
-gem 'resque', '1.24.1'
-gem 'resque-scheduler', '2.2.0'
-gem 'resque-web', '0.0.7', require: 'resque_web'
+gem 'resque', '~> 2.0'
+gem 'resque-scheduler', '~> 4.3', '>= 4.3.1'
+gem 'resque-web', '~> 0.0.12'
 
 # Used for accessing the Highrise API
-gem 'highrise', '3.2.3'
+gem 'highrise', '~> 3.2', '>= 3.2.3'
 
 # Used for making lists out of active record
-gem 'acts_as_list', '0.7.4'
+gem 'acts_as_list', '~> 0.9.17'
 
 # Used for scopes in index actions in controllers
-gem 'has_scope', '0.6.0'
+gem 'has_scope', '~> 0.7.2'
 
 # Used for rich text editor
-gem 'active_admin_editor', github: 'ejholmes/active_admin_editor', ref: '86f964be3071cd938c3cd17ad00df94ece3a50c0'
-
-# Used for sending emails
-gem 'postmark-rails', '0.12.0'
-gem 'recipient_interceptor', '0.1.2'
+gem 'active_admin_editor', '~> 1.1'
 
 # Used for connecting to Visual
-gem 'activerecord-sqlserver-adapter', '4.2.11'
-gem 'tiny_tds', '0.7.0'
+gem 'activerecord-sqlserver-adapter', '~> 5.1', '>= 5.1.6'
+gem 'tiny_tds', '~> 2.1', '>= 2.1.2'
 
 # Used for accessing country data
-gem 'countries', '1.2.5', require: 'countries/global'
+gem 'countries', '~> 2.2', require: 'countries/global'
 
 # Used for detecting browser being used
-gem 'browser', '2.1.0'
+gem 'browser', '~> 2.5', '>= 2.5.3'
 
 # Used for image processing
-gem 'mini_magick', '4.5.1'
+gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 
 # Used for putting react into rails
-gem 'react-rails', '1.5.0'
-gem 'sprockets-coffee-react', '3.4.1'
+gem 'react-rails', '~> 2.4', '>= 2.4.7'
+gem 'sprockets-coffee-react', '~> 4.0', '>= 4.0.1'
 
 # Used for serializing in the API
 gem 'active_model_serializers', '0.10.0.rc3'
