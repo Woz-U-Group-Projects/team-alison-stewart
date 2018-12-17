@@ -1,0 +1,6 @@
+// Omega Reset
+// Usage: in order to use omega-reset, $nth needs to be the same as the omega on the next smallest media breakpoint
+@mixin omega-reset($nth, $columns: $grid-columns) {
+  &:nth-child(#{$nth})    { margin-right: flex-gutter($columns); }
+  &:nth-child(#{$nth}+1)  { clear: none }
+}

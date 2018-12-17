@@ -1,0 +1,70 @@
+.electronic-marketings-list-item {
+  margin-bottom: 2em;
+  position: relative;
+}
+
+.electronic-marketings-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.electronic-marketings-list-item * {
+  max-width: 100%;
+}
+
+.timeline-date {
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 600;
+  position: absolute;
+  bottom: 36%;
+}
+@media (max-width: 1100px) {
+  .timeline-date {
+    font-size: 1.7vw;
+  }
+}
+
+.bulk-delivery {
+  #photo-day {
+    left: 4.5%;
+  }
+
+  #twenty-four-hours-left {
+    left: 14.5%;
+  }
+
+  #order-by-day {
+    left: 25.5%;
+  }
+
+  #orders-shipped-by-one {
+    left: 39.5%;
+  }
+
+  #absentee-retake-day {
+    left: 53.5%;
+  }
+
+  #twenty-four-hours-right {
+    left: 63%;
+  }
+
+  #absentee-retake-order-by-day {
+    left: 74%;
+  }
+
+  #final-delivery {
+    left: 88.5%;
+  }
+}
+
+.home-delivery {
+  #photo-day {
+    left: 10%;
+    top: 57%;
+  }
+
+  #absentee-retake-day {
+    left: 54.3%;
+    top: 57%;
+  }
+}

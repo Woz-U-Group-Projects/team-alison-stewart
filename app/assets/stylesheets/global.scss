@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: $base-font-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Palatino Linotype", sans-serif;
+}
+
+p {
+  line-height: 2em;
+}
+
+p:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+input[type="submit"] {
+  border: none;
+}
+
+strong {
+  color: $font-color-medium;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: $base-border;
+}

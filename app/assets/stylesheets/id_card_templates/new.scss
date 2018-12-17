@@ -1,0 +1,12 @@
+.node-photo-preview {
+  display: block;
+
+  img {
+    max-height: 400px;
+  }
+}
+
+.node-photo-preview__thumb {
+  visibility: hidden;
+  margin-bottom: 2em;
+}

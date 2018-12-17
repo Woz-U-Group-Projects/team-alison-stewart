@@ -1,0 +1,74 @@
+// Import bourbon base stuff
+@import 'bourbon';
+@import 'neat';
+
+// Import font awesome stuff
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+// Import any jQuery plugins
+@import 'jquery-ui/autocomplete';
+@import 'select2';
+
+// Import any vendor styles
+@import 'vendor/jquery.slick';
+@import 'vendor/cropper';
+
+// Import global styles and variables
+@import 'fonts';
+@import 'variables';
+@import 'global';
+
+// Import shared styles
+@import 'shared/manifest';
+
+// Import common styles
+@import 'common/manifest';
+
+// Import event styles
+@import 'events/manifest';
+
+// Import sitting styles
+@import 'sittings/manifest';
+
+// Import demo video styles
+@import 'demo_videos/manifest';
+
+// Import porgram styles
+@import 'programs/manifest';
+
+// Import frequently asked question styles
+@import 'frequently_asked_questions/manifest';
+
+// Import job postings styles
+@import 'job_postings/manifest';
+
+// Import product styles
+@import 'products/manifest';
+
+// Import modal styles
+@import 'modals/manifest';
+
+// Import electronic marketing styles
+@import 'electronic_marketings/manifest';
+
+// Import employee styles
+@import 'employees/manifest';
+
+// Import service styles
+@import 'services/manifest';
+
+// Import react component styles
+@import 'components/manifest';
+
+// Import id card request styles
+@import 'id_card_requests/manifest';
+
+// Import static styles
+@import 'static/manifest';
+
+// Import important date styles
+@import 'important_dates/manifest';
+
+// Import feature styles
+@import 'features/manifest';

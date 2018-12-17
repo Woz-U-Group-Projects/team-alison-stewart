@@ -1,0 +1,20 @@
+.program-list-item {
+  border: $base-border;
+  padding-bottom: 1em;
+
+  @media screen and (max-width: $small) {
+    margin-bottom: 50px;
+  }
+}
+
+.program-list-item__image {
+  overflow: hidden;
+  background-size: cover;
+  background-image: url(image-path('heroes/root.png'));
+  height: 300px;
+}
+
+.program-list-item__description {
+  padding: 0 0.5em;
+  min-height: 40px;
+}

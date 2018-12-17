@@ -1,0 +1,24 @@
+.flash-container {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  z-index: $z-index-low;
+}
+
+.flash {
+  @include transition(all .25s ease-in-out);
+
+  max-width: 500px;
+  padding: .5em 1em;
+  color: $white;
+  margin: 0 auto 10px;
+}
+
+.flash--error {
+  background-color: $bg-error;
+}
+
+.flash--notice {
+  background-color: $bg-success;
+}

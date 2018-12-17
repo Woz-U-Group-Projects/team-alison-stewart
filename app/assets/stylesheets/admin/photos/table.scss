@@ -1,0 +1,16 @@
+.sortable-photos-table {
+  i {
+    font-size: 2em;
+    cursor: pointer;
+  }
+
+  img {
+    max-width: 100px;
+  }
+}
+
+#photo-drag-helper {
+  img {
+    max-width: 100px;
+  }
+}

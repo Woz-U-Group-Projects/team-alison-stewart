@@ -1,0 +1,52 @@
+// Text fonts
+
+@font-face {
+  font-family: 'Palatino Linotype';
+  src: font-url('Palatino_Linotype.ttf') format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Palatino Linotype Italic';
+  src: font-url('Palatino_Linotype_Italic.ttf') format(truetype);
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Palatino Linotype Bold';
+  src: font-url('Palatino_Linotype_Bold.ttf') format(truetype);
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Palatino Linotype Bold Italic';
+  src: font-url('Palatino_Linotype_Bold_Italic.ttf') format(truetype);
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica-Bold';
+  src: font-url('Helvetica-Bold.ttf') format(truetype);
+  font-weight: bold;
+  font-style: normal;
+}
+
+// Barcode fonts
+
+@font-face {
+  font-family: 'Code39Eight';
+  src: font-url('Code39Eight.ttf') format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CodabarTwo';
+  src: font-url('CodabarTwo.ttf') format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}

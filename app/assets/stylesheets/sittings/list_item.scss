@@ -1,0 +1,35 @@
+.sitting-list-item {
+  padding: 2em 0;
+
+  .meta-right-container {
+    text-align: right;
+  }
+
+  .meta-left-container, .meta-right-container {
+    @media screen and (max-width: $small) {
+      text-align: center;
+    }
+  }
+}
+
+.sitting-booking-button {
+  height: 50px;
+  width: 200px;
+  padding: 1em 2em;
+  text-align: center;
+}
+
+.sitting-list-item__meta {
+  margin-bottom: 10px;
+}
+
+.sitting-list-item__icon {
+  margin-right: 5px;
+}
+
+.sitting-list-item__features {
+  padding-top: 1.25em;
+  padding-bottom: 1.25em;
+  border-top: $base-border;
+  border-bottom: $base-border;
+}

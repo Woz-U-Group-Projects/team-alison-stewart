@@ -1,0 +1,49 @@
+.headline {
+  text-transform: uppercase;
+  color: $artona-maroon;
+  letter-spacing: 4px;
+}
+
+.headline--sub {
+  color: $artona-gold;
+}
+
+.headline--white {
+  color: $white;
+}
+
+.headline--grey {
+  color: $font-color-light;
+}
+
+.headline--thin {
+  font-weight: 400;
+}
+
+.headline--regular {
+  font-weight: 500;
+}
+
+.headline--bold {
+  font-weight: 700;
+}
+
+.headline--outlined {
+  text-shadow: $heavy-text-shadow;
+}
+
+.headline--no-spacing {
+  letter-spacing: 0;
+}
+
+.headline--no-transform {
+  text-transform: none;
+}
+
+.headline--no-top-margin {
+  margin-top: 0;
+}
+
+.headline--underlined {
+  border-bottom: $base-border;
+}

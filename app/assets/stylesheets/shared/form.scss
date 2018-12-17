@@ -1,0 +1,82 @@
+#error-explanation {
+  border: $base-border;
+  border-color: $error;
+  background-color: $bg-dark;
+  padding: 1em;
+  margin-bottom: 2em;
+
+  h2 {
+    font-size: 1em;
+  }
+
+  li {
+    color: $error;
+  }
+}
+
+.single-field-form-container {
+  $actions-height: 48px;
+
+  background-color: $white;
+
+  .left-container {
+    @include flex(1);
+
+    overflow: hidden;
+    display: inline-block;
+
+    .input {
+      margin: 0;
+    }
+
+    input {
+      height: $actions-height;
+      background-color: $white;
+      margin: 0;
+
+      @media screen and (max-width: $small) {
+        float: none;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: $small) {
+      @include flex(none);
+
+      width: 100%;
+    }
+  }
+
+  .right-container {
+    display: inline-block;
+    width: 155px;
+    border-left: $base-border;
+
+    input[type='submit'] {
+      float: right;
+      width: 155px;
+      border-radius: 0;
+      cursor: pointer;
+      height: $actions-height;
+      font-size: 0.9em;
+
+      @media screen and (max-width: $small) {
+        float: none;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: $small) {
+      min-width: 100%;
+      border-left: none;
+      border-top: $base-border;
+    }
+  }
+}
+
+.select2-container {
+  display: block;
+  margin-top: 5px;
+}

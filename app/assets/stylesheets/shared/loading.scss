@@ -1,0 +1,21 @@
+$size: 24px;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  @include animation(spin 1s infinite linear);
+
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  border: .25rem solid rgba($artona-maroon, 0.2);
+  border-top-color: $artona-maroon;
+  margin-bottom: 2em;
+}

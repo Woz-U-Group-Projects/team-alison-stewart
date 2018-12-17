@@ -1,0 +1,29 @@
+.frequently-asked-question-list-item {
+  margin-bottom: 15px;
+
+  .question {
+    cursor: pointer;
+
+    &:hover {
+      color: darken($base-font-color, 10);
+    }
+
+    &.active {
+      color: $artona-gold;
+    }
+  }
+
+  .answer {
+    display: none;
+    margin: 1em 0 2em 0;
+    padding-left: 1em;
+
+    p {
+      margin: 0 0 15px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

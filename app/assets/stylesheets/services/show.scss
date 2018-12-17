@@ -1,0 +1,49 @@
+.services-show {}
+
+.service-booking-button {
+  padding: 0.6em
+ }
+
+.service__preview {
+  width: 75%;
+  height: 250px;
+  overflow: hidden;
+  background-size: cover;
+  border: $base-border;
+
+  @media screen and (max-width: $small) {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+}
+
+.service__work-example {
+  @include span-columns(4);
+  @include omega(3n);
+
+  margin-bottom: 50px;
+
+  @media screen and (max-width: $medium) {
+    @include span-columns(6);
+    @include omega-reset(3n);
+    @include omega(2n);
+  }
+
+  @media screen and (max-width: $small) {
+    @include fill-parent;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.service__work-example-img {
+  height: 200px;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.service__work-example-title {
+  margin: 5px 0 0 0;
+}

@@ -1,0 +1,137 @@
+// General colors
+$black: #000000;
+$white: #FFFFFF;
+$success: #1ABC9C;
+$warning: #F1C40F;
+$error: #E74C3C;
+$steel: #D2D5D7;
+
+// Artona colors
+$artona-gold: #897F6D;
+$artona-grey: #4C4D4C;
+$artona-grey-medium: #7A7A7A;
+$artona-dark-tan: #C0B9AD;
+$artona-light-tan: #D4D0BF;
+$artona-maroon: #644145;
+$artona-tan: #C0B9AD;
+
+// Filters
+$filter-black-dark: rgba(0, 0, 0, .75);
+$filter-black-medium: rgba(0, 0, 0, .5);
+$filter-black-light: rgba(0, 0, 0, .25);
+
+// Background colors
+$bg-error: $error;
+$bg-warning: $warning;
+$bg-success: $success;
+$bg-white: $white;
+$bg-dark: #F6F6F6;
+$bg-gold: $artona-gold;
+$bg-maroon: $artona-maroon;
+$bg-steel: $steel;
+
+// Box shadows
+$base-box-shadow: 0 2px 2px transparentize($artona-grey, .8);
+$box-shadow-large: 0 4px 4px transparentize($artona-grey, .8);
+
+// Font colors
+$base-font-color: #545554;
+$font-color-dark: #323232;
+$font-color-medium: #767676;
+$font-color-light: #D8D8D8;
+
+// Text shadows
+$base-text-shadow: 1px 1px rgba(0, 0, 0, .5);
+$heavy-text-shadow: 2px 2px rgba(0, 0, 0, .5);
+
+// Buttons
+$button-radius: 4px;
+$button-radius-large: 5px;
+
+// Border colors
+$base-border-color: #D8D8D8;
+$border-color-dark: #676767;
+
+// Borders
+$base-border: 1px solid $base-border-color;
+$base-border-thick: 2px solid $base-border-color;
+
+// Resolutions
+$small: 767px;
+$medium: 1023px;
+$large: 1900px;
+
+// Z-index
+$z-index-negative: -1;
+$z-index-zero: 0;
+$z-index-low: 1;
+$z-index-medium: 2;
+$z-index-high: 3;
+
+// Inputs
+$inputs-list: 'input[type="email"]',
+              'input[type="number"]',
+              'input[type="password"]',
+              'input[type="search"]',
+              'input[type="tel"]',
+              'input[type="text"]',
+              'input[type="url"]',
+              'input[type="color"]',
+              'input[type="date"]',
+              'input[type="datetime"]',
+              'input[type="datetime-local"]',
+              'input[type="month"]',
+              'input[type="time"]',
+              'input[type="week"]';
+
+$unquoted-inputs-list: ();
+
+@each $input-type in $inputs-list {
+  $unquoted-inputs-list: append($unquoted-inputs-list, unquote($input-type), comma);
+}
+
+$inputs-list-hover:'input[type="email"]:hover',
+                'input[type="number"]:hover',
+                'input[type="password"]:hover',
+                'input[type="search"]:hover',
+                'input[type="tel"]:hover',
+                'input[type="text"]:hover',
+                'input[type="url"]:hover',
+                'input[type="color"]:hover',
+                'input[type="date"]:hover',
+                'input[type="datetime"]:hover',
+                'input[type="datetime-local"]:hover',
+                'input[type="month"]:hover',
+                'input[type="time"]:hover',
+                'input[type="week"]:hover';
+
+$unquoted-inputs-list-hover: ();
+
+@each $input-type-hover in $inputs-list-hover {
+  $unquoted-inputs-list-hover: append($unquoted-inputs-list-hover, unquote($input-type-hover), comma);
+}
+
+$inputs-list-focus:'input[type="email"]:focus',
+                'input[type="number"]:focus',
+                'input[type="password"]:focus',
+                'input[type="search"]:focus',
+                'input[type="tel"]:focus',
+                'input[type="text"]:focus',
+                'input[type="url"]:focus',
+                'input[type="color"]:focus',
+                'input[type="date"]:focus',
+                'input[type="datetime"]:focus',
+                'input[type="datetime-local"]:focus',
+                'input[type="month"]:focus',
+                'input[type="time"]:focus',
+                'input[type="week"]:focus';
+
+$unquoted-inputs-list-focus: ();
+
+@each $input-type-focus in $inputs-list-focus {
+  $unquoted-inputs-list-focus: append($unquoted-inputs-list-focus, unquote($input-type-focus), comma);
+}
+
+$all-text-inputs: $unquoted-inputs-list;
+$all-text-inputs-hover: $unquoted-inputs-list-hover;
+$all-text-inputs-focus: $unquoted-inputs-list-focus;

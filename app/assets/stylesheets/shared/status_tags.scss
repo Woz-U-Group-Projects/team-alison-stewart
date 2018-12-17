@@ -1,0 +1,17 @@
+.status-tag {
+  background: $bg-steel;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 3px 5px;
+  font-size: 0.8em;
+}
+
+.status-tag--success {
+  background-color: $bg-success;
+}
+
+.status-tag--warning {
+  background-color: $bg-warning;
+}
+

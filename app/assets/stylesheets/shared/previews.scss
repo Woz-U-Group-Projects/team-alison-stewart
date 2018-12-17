@@ -1,0 +1,43 @@
+.preview {
+  @include fill-parent;
+
+  border: $base-border;
+  background-color: $bg-dark;
+  margin-bottom: 2em;
+}
+
+.preview__image-container {
+  display: inline-block;
+  width: 50%;
+  overflow: hidden;
+  background-size: cover;
+  position: relative;
+  background-color: $bg-gold;
+
+  @media screen and (max-width: $small) {
+    display: block;
+    width: 100%;
+    height: 250px;
+  }
+}
+
+.preview__image-icon {
+  border-radius: 50%;
+  font-size: 120px;
+  position: absolute;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+  color: $font-color-light;
+}
+
+.preview__info-container {
+  vertical-align: top;
+  display: inline-block;
+  width: 50%;
+  padding: 2.5em 1.5em;
+
+  @media screen and (max-width: $small) {
+    display: block;
+    width: 100%;
+  }
+}

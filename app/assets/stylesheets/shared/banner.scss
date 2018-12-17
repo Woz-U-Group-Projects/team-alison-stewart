@@ -1,0 +1,30 @@
+.banner {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  padding: 4em 1em;
+}
+
+.banner__icon {
+  @include transition(all .25s ease-in-out);
+
+  border-radius: 50%;
+  font-size: 8em;
+  cursor: pointer;
+  color: $artona-dark-tan;
+}
+
+.banner__icon:hover {
+  color: darken($artona-dark-tan, 10%);
+}
+
+.banner__title {
+  color: $white;
+  text-shadow: $base-text-shadow;
+}
+
+.banner_subtitle {
+  color: $white;
+  text-shadow: $box-shadow-large;
+  font-size: 1.25em;
+}

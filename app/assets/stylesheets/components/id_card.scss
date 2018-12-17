@@ -1,0 +1,22 @@
+.id-card-request {}
+
+.id-card-request__pre-render {
+  margin-bottom: 2em;
+  position: relative;
+  display: inline-block;
+}
+
+.id-card-request__pre-render-image {
+  border: $base-border;
+}
+
+.id-card-request__pre-render-text {
+  position: absolute;
+  display: block;
+  white-space: pre;
+}
+
+.id-card-request__pre-render-photo-container {
+  position: absolute;
+  overflow: hidden;
+}

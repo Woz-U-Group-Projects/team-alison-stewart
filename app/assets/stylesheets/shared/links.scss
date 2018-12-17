@@ -1,0 +1,166 @@
+.link {
+  @include transition(all, .25s, ease-in-out);
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.link--underlined {
+  text-decoration: underline;
+}
+
+.link--underlined:hover {
+  text-decoration: underline;
+}
+
+.link--white {
+  color: $white;
+}
+
+.link--white:hover {
+  color: darken($white, 10);
+}
+
+.link--light {
+  color: $font-color-light;
+}
+
+.link--light:hover {
+  color: darken($font-color-light, 10);
+}
+
+.link--dark {
+  color: $font-color-dark;
+}
+
+.link--dark:hover {
+  color: darken($font-color-dark, 10);
+}
+
+.link--button {
+  display: inline-block;
+  padding: .75em 1em;
+  border-radius: $button-radius;
+}
+
+.link--button-large {
+  display: block;
+  padding: 1.5em 1em;
+  border-radius: $button-radius;
+}
+
+.link--button-large-radius {
+  border-radius: $button-radius-large;
+}
+
+.link--button:hover {
+  background-color: lighten($artona-gold, 10);
+  color: $white;
+}
+
+.link--button-maroon {
+  background-color: $artona-maroon;
+  color: $white;
+}
+
+.link--button-maroon:hover {
+  background-color: lighten($artona-maroon, 10);
+}
+
+.link--button-gold {
+  background-color: $artona-gold;
+  color: $white;
+}
+
+.link--button-logout {
+  background-color: $white;
+  color: $artona-gold;
+}
+
+.link--button-gold:hover {
+  background-color: lighten($artona-gold, 10);
+}
+
+.link--button-grey-medium {
+  background-color: $artona-grey-medium;
+  color: $white;
+}
+
+.link--button-grey-medium-inverse {
+  background-color: $white;
+  color: $artona-grey-medium;
+}
+
+.link--button-grey-medium:hover {
+  background-color: lighten($artona-grey-medium, 10);
+}
+
+.link--button-filter-light {
+  background-color: $filter-black-light;
+  color: $white;
+}
+
+.link--button-filter-light:hover {
+  background-color: $filter-black-medium;
+}
+
+.link-card {
+  @include span-columns(4);
+  @include omega(3n);
+
+  margin-top: 10px;
+  text-align: center;
+
+  @media screen and (max-width: $medium) {
+    @include span-columns(6);
+    @include omega-reset(3n);
+    @include omega(2n);
+  }
+
+  @media screen and (max-width: $small) {
+    @include fill-parent;
+  }
+}
+
+.link-card--square {
+  height: 300px;
+
+  @media screen and (max-width: $small) {
+    height: auto;
+  }
+}
+
+.link-card__image {
+  @include transition(all, .25s, ease-in-out);
+
+  border: $base-border-thick;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  display: table;
+}
+
+.link-card__image:hover {
+  border-color: $artona-maroon;
+}
+
+.link-card__title {
+  @include transition(all, .25s, ease-in-out);
+
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.link-card__title:hover {
+  font-size: 1.25em;
+  color: darken($white, 2%);
+}
+
+.link-card__title--square {
+  padding: 4em 0;
+}

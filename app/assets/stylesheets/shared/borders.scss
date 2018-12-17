@@ -1,0 +1,34 @@
+.border--fade {
+  position: relative;
+  border-top: $base-border;
+}
+
+.border--fade:before,
+.border--fade:after {
+  position: absolute;
+  content: "";
+
+  background-image: linear-gradient($base-border-color, transparent);
+
+  top: 0;
+  bottom: 0;
+  width: 1px;
+
+  max-height: 100px;
+}
+
+.border--fade:before {
+  left: -1px;
+}
+
+.border--fade:after {
+  right: -1px;
+}
+
+.border--bottom {
+  border-bottom: $base-border;
+}
+
+.border--bottom-padded {
+  padding-bottom: 1em;
+}

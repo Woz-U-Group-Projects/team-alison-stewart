@@ -1,0 +1,22 @@
+.event-list-item {
+  .right-container {
+    text-align: center;
+  }
+
+  .left-container, .right-container {
+    @media screen and (max-width: $small) {
+      text-align: center;
+    }
+  }
+
+  .event-icon {
+    font-size: 4em;
+    float: left;
+    margin-right: 30px;
+    color: $artona-grey-medium;
+  }
+}
+
+.event-list-item__title {
+  margin-top: 0;
+}

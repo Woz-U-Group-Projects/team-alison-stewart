@@ -1,0 +1,23 @@
+.body {
+  font-family: "Helvetica-Light", "Helvetica Light", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.body--light {
+  font-weight: 200;
+}
+
+.body--regular {
+  font-weight: 400;
+}
+
+.body--bold {
+  font-weight: 400;
+}
+
+.body--white {
+  color: $white;
+}
+
+.body--grey {
+  color: $font-color-light;
+}

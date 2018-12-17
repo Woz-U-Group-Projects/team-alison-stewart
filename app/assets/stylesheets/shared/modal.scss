@@ -1,0 +1,50 @@
+.modal {
+  @include transition(all .25s ease-in-out);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: scroll;
+  padding-bottom: 2em;
+  background-color: $filter-black-dark;
+  opacity: 0;
+  visibility: hidden;
+  z-index: $z-index-high;
+}
+
+.modal--light {
+  background-color: rgba(246, 246, 246, 0.95);
+}
+
+.modal__title {
+  color: $white;
+  min-height: 2em;
+}
+
+.modal__title--dark {
+  color: $base-font-color;
+}
+
+.modal__close {
+  cursor: pointer;
+  color: $white;
+  font-size: 1.35em;
+}
+
+.modal__close:hover {
+  color: darken($white, 10);
+}
+
+.modal__close--dark {
+  color: $base-font-color;
+}
+
+.modal__close--dark:hover {
+  color: darken($base-font-color, 10);
+}
+
+.modal__video {
+  width: 100%;
+}

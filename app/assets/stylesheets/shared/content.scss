@@ -1,0 +1,38 @@
+.content {
+  padding: 48px 0;
+}
+
+.content--small {
+  padding: 24px 0;
+}
+
+.filter-container {
+  padding: 1em;
+}
+
+.filter-container--medium {
+  background-color: $filter-black-medium;
+}
+
+.filter-container--light {
+  background-color: $filter-black-light;
+}
+
+.filter-container--round {
+  border-radius: $button-radius;
+}
+
+.relative {
+  position: relative;
+}
+
+.paragraph--small {
+  margin-bottom: 16px;
+  line-height: 2em;
+}
+
+.paragraph--subtext {
+  margin-bottom: 16px;
+  line-height: 1.5em;
+  font-size: 0.75em;
+}

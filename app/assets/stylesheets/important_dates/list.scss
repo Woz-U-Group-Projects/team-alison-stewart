@@ -1,0 +1,11 @@
+.schoolday-important-date-list-item {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media (max-width: 600px) {
+  .schoolday-important-date-list-item {
+    background-position: left;
+  }
+}
