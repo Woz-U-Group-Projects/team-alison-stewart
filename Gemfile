@@ -63,9 +63,9 @@ gem 'cancancan', '~> 2.3'
 gem 'rollbar', '~> 2.18', '>= 2.18.2'
 
 # Used for long running jobs
-gem 'resque', '~> 2.0'
-gem 'resque-scheduler', '~> 4.3', '>= 4.3.1'
-gem 'resque-web', '~> 0.0.12'
+#gem 'resque', '~> 2.0'
+#gem 'resque-scheduler', '~> 4.3', '>= 4.3.1'
+#gem 'resque-web', '~> 0.0.12'
 
 # Used for accessing the Highrise API
 gem 'highrise', '~> 3.2', '>= 3.2.3'
@@ -81,7 +81,7 @@ gem 'active_admin_editor', '~> 1.1'
 
 # Used for connecting to Visual
 gem 'activerecord-sqlserver-adapter', '~> 5.1', '>= 5.1.6'
-gem 'tiny_tds', '~> 2.1', '>= 2.1.2'
+#gem 'tiny_tds', '~> 2.1', '>= 2.1.2'
 
 # Used for accessing country data
 gem 'countries', '~> 2.2', require: 'countries/global'
@@ -97,34 +97,35 @@ gem 'react-rails', '~> 2.4', '>= 2.4.7'
 gem 'sprockets-coffee-react', '~> 4.0', '>= 4.0.1'
 
 # Used for serializing in the API
-gem 'active_model_serializers', '0.10.0.rc3'
+gem 'active_model_serializers', '~> 0.10.8'
 
 # Used for color picker
-gem 'jquery-minicolors-rails', '2.2.3.0'
+gem 'jquery-minicolors-rails', '~> 2.2', '>= 2.2.6.1'
 
 # Used for pagination
-gem 'kaminari', '0.16.3'
-gem 'api-pagination', '4.3.0'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'api-pagination', '~> 4.8', '>= 4.8.2'
 
 # Used for build URI parameters
-gem 'addressable', '2.3.6'
+gem 'addressable', '~> 2.5', '>= 2.5.2'
 
 # Used for mocking external requests
-gem 'vcr', '3.0.3'
-gem 'webmock', '2.1.0'
+gem 'vcr', '~> 4.0'
+gem 'webmock', '~> 3.4', '>= 3.4.2'
 
 # Used for nested forms
-gem 'cocoon', '1.2.9'
+gem 'cocoon', '~> 1.2', '>= 1.2.12'
 
 # Used for stripping white space from model attributes
-gem 'auto_strip_attributes', '2.1.0'
-
-gem 'hirb'
+gem 'auto_strip_attributes', '~> 2.5'
+gem 'hirb', '~> 0.7.3'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.2'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.8'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -141,25 +142,26 @@ group :development, :test do
   gem 'spring'
 
   # Rspec for testing
-  gem 'rspec-rails', '~> 3.4.2'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.1'
   gem 'guard-rspec'
 
   # Model factories
-  gem 'factory_girl', '4.5.0'
+  #gem 'factory_girl', '~> 4.9'
+  gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
 
   # For DOM testing
-  gem 'capybara', '2.5.0'
-  gem 'capybara-webkit'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'capybara', '~> 3.12'
+  #gem 'capybara-webkit'
+  #gem 'selenium-webdriver', '~> 3.141'
+  #gem 'chromedriver-helper'
 
   # For integration testing
-  gem 'cucumber-rails', '1.4.3', require: false
+  gem 'cucumber-rails', '~> 1.6', require: false
 
   # Test Metadata collection
   gem 'rspec_junit_formatter'
   # For database transactions during testing
-  gem 'database_cleaner', '1.5.1'
+  gem 'database_cleaner', '~> 1.7'
 end
 
 group :development do
@@ -167,7 +169,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 
    # Get a better error screen for debugging
-  gem 'better_errors', '2.1.1'
+  gem 'better_errors', '~> 2.5'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
