@@ -1,0 +1,46 @@
+<% link   = TimeTrade.url_for_booking(@booking) %>
+
+<div class="bookings-confirmation">
+  <div class="hero" style="background-image: none;">
+    <div class="hero__cycle">
+      <% @school.photos.map(&:file_name).each do |photo_url| %>
+        <div class="hero__image", style="background-image: url(<%= photo_url  %>);"></div>
+      <% end %>
+    </div>
+    <div class="hero__gradient"></div>
+    <div class="container">
+      <div class="hero__content hero__content--large hero__content--left">
+        <%= image_tag @school.logo_photo, class: 'hero__title-logo' %>
+        <h1 class="hero__title headline headline--white headline--regular headline--outlined">Booking Confirmation</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container center">
+      <%= render partial: 'shared/progress_bar', locals: { items: booking_progress_bar_items(@booking), active: 2 } %>
+
+      <% if @booking.payment %>
+        <h2 class="headline">Payment Received</h2>
+
+        <p>
+          Payment confirmation number: <%= @booking.payment.gateway_transaction.reference %>
+        </p>
+      <% else %>
+        <h2 class="headline">Booking Received</h2>
+
+        <p>
+          One last step, select your sitting time!
+        </p>
+      <% end %>
+
+      <p class="center">
+        <% if link %>
+          <%= link_to 'Select your photo session time!', link, class: 'link link--button link--button-maroon', target: '_blank' %>
+        <% else %>
+          Time Trade is currently unavailable. Sorry for the inconvenience.
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

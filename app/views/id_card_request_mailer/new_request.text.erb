@@ -1,0 +1,20 @@
+ID Card Request Received
+
+Thanks for submitting!
+
+<%= "Reference: #{@id_card_request.uuid}" %>
+
+Your ID Card will be rendered momentarily.
+
+Requester - <%= @id_card_request.attention_of %>
+Requester Email - <%= @id_card_request.attention_of_email %>
+Student Name - <%= @id_card_request.student_name %>
+Student Number - <%= @id_card_request.student_number %>
+<% if @id_card_request.comments.size == 1 %>
+  Comment - <%= @id_card_request.comments.first.text %>
+<% end %>
+
+<%= link_to 'View your request', id_card_request_url(@id_card_request.uuid) %>
+<%= link_to 'Edit your request', edit_id_card_request_url(@id_card_request.uuid) %>
+
+Artona

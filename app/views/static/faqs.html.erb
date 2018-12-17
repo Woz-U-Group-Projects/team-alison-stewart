@@ -1,0 +1,69 @@
+<div class="static-help">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/help.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">FAQs</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-container filter-container--light">
+    <div class="container">
+      <%= simple_form_for :faq, html: { id: 'faq-filter' } do |f| %>
+        <div class="container-flex single-field-form-container">
+          <div class="left-container">
+            <%= f.input :text, label: false, placeholder: 'What do you need help with?' %>
+          </div>
+
+          <div class="right-container">
+            <%= f.submit 'Filter', class: 'link link--button link--button-maroon' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container frequently-asked-question-list-items">
+      <% if FrequentlyAskedQuestion.all.length > 0 %>
+        <% FrequentlyAskedQuestionType.all.each do |frequently_asked_question_type| %>
+          <% @faqs = FrequentlyAskedQuestion.frequently_asked_question_type(frequently_asked_question_type).order(:position) %>
+
+          <% if @faqs.length > 0 %>
+            <h3 id="<%= frequently_asked_question_type.name %>" class="headline"><%= frequently_asked_question_type.name.humanize.capitalize %></h3>
+
+            <% @faqs.each do |faq| %>
+              <%= render partial: 'frequently_asked_questions/list_item', locals: { frequently_asked_question: faq } %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <p class="filter-empty center">
+          Nothing has matched your filter!
+        </p>
+      <% else %>
+        <p>
+          There doesn't seem to be anything here. Check back soon!
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="banner center" style="background-image: url(<%= image_path('heroes/prepare.jpg') %>);">
+    <i class="fa fa-play-circle banner__icon" data-modal-id="video-1"></i>
+    <h2 class="banner__title">
+      Preparing for a photo session at Artona?
+    </h2>
+    <p class="banner_subtitle">
+      Check out this how to prepare video.
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="content center">
+      <%= render partial: 'shared/general_help' %>
+    </div>
+  </div>
+
+  <%= render partial: 'modals/video_modal', locals: { id: 'video-1', source: 'https://s3.amazonaws.com/assets.artona.com/videos/artona-studio.mp4' } %>
+</div>

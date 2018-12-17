@@ -1,0 +1,212 @@
+<div class="static-prepare">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/prepare.jpg') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">How To Prepare</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content center">
+    <div class="container">
+      <h2 class="headline">What are you preparing for?</h2>
+
+      <div class="center">
+        <%= simple_form_for :program, url: '' do |f| %>
+            <%= f.input :program_slug, label: false, required: false, collection: Program.all.map { |p| [p.name, p.slug] }, prompt: 'Event', input_html: { style: 'margin: 0 auto' } %>
+        <% end %>
+      </div>
+
+      <ul class="list list--horizontal start">
+        <li style="display: none;" program-dependant convocation graduation><%= link_to 'Basics', '#basics', class: 'link link--dark link--underlined' %></li>
+        <li><%= link_to 'Clothing', '#clothing', class: 'link link--dark link--underlined' %></li>
+        <li><%= link_to 'Grooming', '#grooming', class: 'link link--dark link--underlined' %></li>
+        <li style="display: none;" program-dependant graduation><%= link_to 'Glasses', '#glasses', class: 'link link--dark link--underlined' %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content" style="display: none;" program-dependant convocation graduation>
+    <div class="container">
+      <h2 id="basics" class="headline">Basics</h2>
+
+      <ul class="list list--vertical list--left-padded list--disc">
+        <li>
+          <strong>Arrive 15 minutes early</strong>; your session will take up to one full hour.
+          Invite parents or friends to watch, whatever makes you most comfortable.
+        </li>
+        <li>
+          <strong>Bring a $60.00 deposit</strong> (cash, debit, cheque, Visa, Master Card, AMEX) and up
+          to two outfits. There is no labour charge for your sitting - however, we do
+          require a deposit which will be deducted from your purchase total during the ordering process and
+          if ordered within the specified timeframe. Your deposit is also 100% refundable within 30
+          calendar days of notification. Simply return your portrait session portfolio previews.
+          Failure to return this portfolio will result in forfeit of the deposit. This portfolio is generally
+          delivered to you approximately two weeks following your sitting appointment.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="banner center" style="display: none; background-image: url(<%= image_path('heroes/men.jpg') %>);" program-dependant graduation>
+    <i class="fa fa-play-circle banner__icon" data-modal-id="video-1"></i>
+    <h2 class="banner__title">
+      Preparing for a photo session taken at Artona 353 West 7th?
+    </h2>
+    <p class="banner_subtitle">
+      Check out this how to prepare video.
+    </p>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2 id="clothing" class="headline">Clothing</h2>
+
+      <ul class="list list--vertical list--left-padded list--disc">
+        <li>
+          <strong>Solid</strong> colours are best.
+        </li>
+        <li>
+          <strong>Long sleeve</strong> dresses and shirts are recommended for close-ups because
+          they focus attention on the face.
+        </li>
+        <li>
+          <strong>Coordinate</strong> your attire from head to toe.
+        </li>
+        <li style="display: none;" program-dependant school_photo>
+          If you have a school uniform then that is all you need.
+        </li>
+        <li style="display: none;" program-dependant graduation>
+          You may be required to wear your school uniform for your grad photos.
+        </li>
+        <li>
+          Please do not leave valuables unattended, Artona is not responsible
+          for lost or stolen items.
+        </li>
+      </ul>
+
+      <div class="container">
+        <div class="columns-6 fill-small" style="display: none;" program-dependant convocation graduation>
+          <h4 class="headline headline--sub">For Her</h4>
+
+          <ul class="list list--vertical list--left-padded list--disc">
+            <li>
+              For casuals in the White, Black & White or Living Room studios,
+              wear something that is <strong>you in any colour</strong>. Grad gowns, full length
+              outﬁts, team regalia — anything that you can think of. You are only
+              allowed one change of clothing between the White and the Black &
+              White rooms.
+            </li>
+            <li>
+              For yearbook photos and in the Composite and Library room studios,
+              you will be in a gown. A <strong>white collared</strong> blouse or v-neck shirts to
+              wear under gown are suitable. Look at previous years wall composites
+              for ideas.
+            </li>
+          </ul>
+        </div>
+
+        <div class="columns-6 omega fill-small" style="display: none;" program-dependant convocation graduation>
+          <h4 class="headline headline--sub">For Him</h4>
+
+          <ul class="list list--vertical list--left-padded list--disc">
+            <li>
+              <strong>Suits and tuxedos</strong> are the most popular choices for guys. If you
+              have had the chance to get your grad outfit coordinated, bring
+              it. A collared dress shirt and tie are a must for formal shots.
+            </li>
+            <li>
+              We suggest selecting a fresh, clean, pressed <strong>white dress shirt</strong>.
+              Other light colors or very, very subtle patterns are acceptable
+              — however white is the safest choice. Choose a nice tie to match
+              or contrast the blue or black gowns.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner center" style="display: none; background-image: url(<%= image_path('heroes/school.jpg') %>);" program-dependant graduation>
+    <i class="fa fa-play-circle banner__icon" data-modal-id="video-2"></i>
+    <h2 class="banner__title">
+      Preparing for a grad photo session on site at your school?
+    </h2>
+    <p class="banner_subtitle">
+      Check out this how to prepare video.
+    </p>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2 id="grooming" class="headline">Grooming</h2>
+
+      <div class="container">
+        <div class="columns-6 fill-small">
+          <h4 class="headline headline--sub">For Her</h4>
+
+          <ul class="list list--vertical list--left-padded list--disc">
+            <li>
+              Make sure you like your hair style <strong>before your session</strong>.
+            </li>
+            <li>
+              If you do get a trim, make it just that — a <strong>small</strong> trim.
+            </li>
+            <li style="display: none;" program-dependant convocation graduation>
+              Make sure your <strong>bangs</strong> are not too short. You will be wearing a
+              graduation hat that covers part of your forehead towards the
+              end of your session.
+            </li>
+            <li>
+              Use your regular makeup. Touch up all blemishes. Do your nails
+              the day before. Bring all of the stuff you need to groom yourself.
+              You do not need to have a heavy application of makeup for
+              professional photography. <strong>Look natural</strong> and your
+              photographs will reflect that.
+            </li>
+          </ul>
+        </div>
+
+        <div class="columns-6 omega fill-small">
+          <h4 class="headline headline--sub">For Him</h4>
+
+          <ul class="list list--vertical list--left-padded list--disc">
+            <li>
+              Casual hair is popular, but stray ends cannot be retouched. A haircut,
+              <strong>one week before</strong> your sitting is perfect.
+            </li>
+            <li>
+              We cannot retouch a five o’clock shadow. We recommend you shave a
+              couple of hours prior to your session.
+            </li>
+            <li>
+              <strong>Wash your face</strong> before coming in, to clean any unwanted oils from
+              your skin.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" style="display: none;" program-dependant graduation>
+    <div class="container">
+      <h2 id="glasses" class="headline">Glasses</h2>
+
+      <ul class="list list--vertical list--left-padded list--disc">
+        <li>
+          We recommend removing the lenses from your glasses as long as
+          they are not plastic frames. If you would like to bring a pair
+          of empty frames, we would be pleased to use them.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'shared/general_help' %>
+  </div>
+
+  <%= render partial: 'modals/video_modal', locals: { id: 'video-1', source: 'https://s3.amazonaws.com/assets.artona.com/videos/artona-studio.mp4' } %>
+  <%= render partial: 'modals/video_modal', locals: { id: 'video-2', source: 'https://s3.amazonaws.com/assets.artona.com/videos/artona-on-location.mp4' } %>
+</div>

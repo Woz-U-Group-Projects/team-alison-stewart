@@ -1,0 +1,15 @@
+<h2 class="headline">Meta</h2>
+
+<ul class="list list--vertical">
+  <li><strong>Reference:</strong> <%= id_card_request.id %></li>
+  <li><strong>Status:</strong> <%= render partial: 'shared/status_tag', locals: { text: id_card_request.state } %></li>
+  <p class="paragraph--small">
+    <% if id_card_request.rendered? %>
+      Your ID card request is waiting to be printed.
+    <% elsif id_card_request.processed? %>
+      Your ID card request has been printed.
+    <% end %>
+  </p>
+  <li><strong>Requester:</strong> <%= id_card_request.attention_of %></li>
+  <li><strong>Requester Email:</strong> <%= id_card_request.attention_of_email %></li>
+</ul>

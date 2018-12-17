@@ -1,0 +1,38 @@
+<div class="employee-list-item">
+  <h4 class="headline"><%= employee.full_name %></h4>
+  <h5><%= employee.title %></h5>
+
+  <% if employee.description %>
+    <p><%= employee.description %></p>
+  <% end %>
+
+  <hr />
+
+  <table>
+  <tr>
+    <% unless employee.email_address.blank? %>
+      <td><strong>Email:</strong></td>
+      <td><a class="link link--underlined link--dark" href="mailto:<%= employee.email_address%>"><%= employee.email_address %></a></td>
+    <% end %>
+  </tr>
+  <tr>
+    <% unless employee.telephone_number.blank? %>
+      <td><strong>Phone:</strong></td>
+      <td>
+        <%= employee.telephone_number %>
+        <% unless employee.extension.blank? %>
+          #<%= employee.extension %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+  <tr>
+    <% unless employee.cellphone_number.blank? %>
+      <td><strong>Cell:</strong></td>
+      <td>
+        <%= employee.cellphone_number %>
+      </td>
+    <% end %>
+  </tr>
+  </table>
+</div>

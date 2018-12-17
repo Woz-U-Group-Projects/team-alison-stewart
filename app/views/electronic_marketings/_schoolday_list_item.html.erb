@@ -1,0 +1,29 @@
+<% new_tab ||= false %>
+<% target = new_tab ? '_blank' : '' %>
+
+<div class="container">
+  <div class="columns-6 border--fade">
+    <div class="container--narrow">
+      <div class="border--bottom border--bottom-padded">
+        <h3 class="headline headline--sub"><%= photo_day.name %></h3>
+        <h2 class="headline headline--no-spacing headline--no-transform headline--white event-list-item__title">
+          <%= photo_day.value %>
+        </h2>
+        <% if retake_day %>
+          <i class="fa fa-clock-o body--grey inline"></i>
+          <h4 class="headline--white inline"><%= retake_day.name %>: </h4> <p class="body--grey inline"><%= retake_day.value %></p>
+        <% end %>
+      </div>
+      <h4 class="headline headline--sub">What's included?</h4>
+      <div class="fill-small border--bottom border--bottom-padded">
+        <ul class="list list--vertical list--left-padded list--disc body--white">
+          <li class="body--grey">FREE <strong class="body--grey">School ID & ID Card</strong></li>
+          <li class="body--grey">Be in the <strong class="body--grey">School Yearbook</strong></li>
+          <li class="body--grey"><strong class="body--grey">FAST</strong> 24 hour image previews</strong></li>
+        </ul>
+      </div>
+      <%= link_to 'How to Prepare', prepare_static_path, class: 'link link-card link--button sitting-booking-button link--button-grey-medium-inverse' %>
+      <%= link_to 'View Your Images', Program::JUNIOR_LINK, class: 'link link-card link--button sitting-booking-button link--button-gold', target: new_tab %>
+    </div>
+  </div>
+</div>

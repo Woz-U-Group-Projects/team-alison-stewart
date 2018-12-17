@@ -1,0 +1,24 @@
+<% id ||= 'modal-1' %>
+
+<div id="<%= id %>" class="modal modal--light">
+  <div class="grad-portraits-modal-container">
+    <div class="container">
+      <h2 class="modal__title modal__title--dark">
+        How do Grad Portraits work?
+        <i class="fa fa-close float-right modal__close modal__close--dark"></i>
+      </h2>
+
+      <p class="center hide-small">
+        <%= image_tag 'portraits_infographic.png' %>
+      </p>
+
+      <p class="center show-small">
+        <%= image_tag 'portraits_infographic_mobile.png' %>
+      </p>
+
+      <p class="center">
+        <%= link_to 'Book Now', book_schools_path, class: 'link link--button link--button-maroon' %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="id-card-requests-index">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/artona.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">ID Card Requests</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container center">
+      <h3 class="headline">What Would You Like To Do?</h3>
+
+      <p>
+        Generate an ID Card online <%= link_to 'here', find_id_card_requests_path %>.
+      </p>
+
+      <p>
+        Fill out an offline form by downloading it
+        <%= link_to 'here', 'https://s3.amazonaws.com/assets.artona.com/documents/IdCard+Authorization+Form+for+Schools+-+Re-Order+Form.pdf', class: 'link link--dark link--underlined', target: '_blank' %>.
+      </p>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'id_card_requests/help' %>
+  </div>
+</div>

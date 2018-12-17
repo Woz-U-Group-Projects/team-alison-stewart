@@ -1,0 +1,76 @@
+<div class="static-contact">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/contact.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Contact Us</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="columns-4 center fill-small columns--border-right contact__meta-container">
+        <i class="fa fa-map-marker icon--large"></i>
+        <h5 class="headline">Studio & Mailing Address</h5>
+        <p>
+          <div><strong>Vancouver Studio</strong></div>
+          <div>353 West 7th Ave</div>
+          Vancouver B.C, Canada V5Y 1M2
+        </p>
+        <p>
+          Find your school's session location <%= link_to 'here', find_schools_path, class: 'link link--dark link--underlined' %>
+        </p>
+      </div>
+      <div class="columns-4 center fill-small contact__meta-container">
+        <i class="fa fa-clock-o icon--large"></i>
+        <h5 class="headline">Hours of Operation</h5>
+        <p>
+          <div><strong>September - February</strong></div>
+          9:00am - 9:00pm (All Days)
+        </p>
+        <p>
+          <div><strong>March - August</strong></div>
+          9:00am - 5:00pm (Mon - Sat)
+        </p>
+        <p class="paragraph--subtext">
+          * Closed on statutory holidays, and Christmas Eve and New Years eve at 4PM.
+        </p>
+      </div>
+      <div class="columns-4 omega center fill-small columns--border-left contact__meta-container">
+        <i class="fa fa-envelope icon--large"></i>
+        <h5 class="headline">Get in Touch With Us</h5>
+        <p>
+          <div><strong>Telephone</strong></div>
+          (604) 872-7272 or +1 (800) 668-3866
+        </p>
+        <p>
+          <div><strong>Live Chat</strong></div>
+          8 am to 10 pm Daily
+        </p>
+        <p>
+          <div><strong>Email</strong></div>
+          <a class="link link--underlined link--dark" href="mailto:csr@artona.com">csr@artona.com</a>
+        </p>
+        <p>
+          <div><strong>Social Media</strong></div>
+          <a class="link link--underlined link--dark" href=<%= Utils.generate_facebook_url(browser.platform.android?, browser.platform.ios?) %>>Facebook</a>,
+          <a class="link link--underlined link--dark" href=<%= Utils::INSTAGRAM_URL %>>Instagram</a>,
+          <a class="link link--underlined link--dark" href=<%= Utils::TWITTER_URL %>>Twitter</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <%= render partial: 'shared/map' %>
+
+  <div class="content">
+    <div class="container">
+      <h2 class="headline">Find Your Session Location</h2>
+      <p>
+        Your Grad Portrait session can take place in our Vancouver
+        Studio or at your school.  Enter your school name to find out.
+      </p>
+      <%= render partial: 'schools/search' %>
+    </div>
+  </div>
+</div>

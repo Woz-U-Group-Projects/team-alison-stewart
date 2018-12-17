@@ -1,0 +1,30 @@
+<div class="bookings-confirmation">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/location.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Booking Complete</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2 class="headline">Booking complete</h2>
+
+      <p>
+        Thank you for completing your booking! Please make sure to
+        check your email for your confirmation notice.
+      </p>
+
+      <p>
+        Looking for what's next? Check out our
+        <%= link_to 'how to prepare guide', prepare_static_path %> for tips
+        on how to prepare for your photos.
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= render partial: 'shared/general_help' %>
+  </div>
+</div>

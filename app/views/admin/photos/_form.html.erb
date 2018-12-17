@@ -1,0 +1,18 @@
+<%
+  path    = resource.persisted? ? send("admin_#{@path}_photo_path", @photo) : send("admin_#{@path}_photos_path")
+  method  = resource.persisted? ? :put : :post
+%>
+
+<%= semantic_form_for [:admin, @path, @photo], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :file_name, as: :file %>
+    <%= f.input :title %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit %>
+    <%= f.action :cancel %>
+  <% end %>
+<% end %>

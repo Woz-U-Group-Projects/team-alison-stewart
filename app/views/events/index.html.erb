@@ -1,0 +1,64 @@
+<% @electronic_marketings = @school.electronic_marketings.where(program_slug: Program::GRADUATION_SLUG) %>
+
+<div class="events-index">
+  <div class="hero" style="background-image: none;">
+    <div class="hero__cycle">
+      <% @school.photos.map(&:file_name).each do |photo_url| %>
+        <div class="hero__image", style="background-image: url(<%= photo_url  %>);"></div>
+      <% end %>
+    </div>
+    <div class="hero__gradient"></div>
+    <div class="container">
+      <div class="hero__content hero__content--large hero__content--full">
+      <%= image_tag @school.logo_photo, class: 'hero__title-logo' %>
+        <h1 class="hero__title headline headline--white headline--regular headline--outlined"><%= @school.name %> Events</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <% if @school.events.count > 0 %>
+      <% @school.events.each do |event| %>
+        <%= render partial: 'events/list_item', locals: { event: event, electronic_marketings: @electronic_marketings } %>
+      <% end %>
+    <% else %>
+      <div class="container center">
+        <h2 class="headline">No upcoming events</h2>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @school.important_dates.count > 0 %>
+    <div class="content">
+      <div class="container">
+        <h2 class="headline">Important Dates</h2>
+
+        <div class="border--fade">
+          <div class="container--narrow">
+            <h3 class="headline headline--sub">Key Activities</h3>
+
+            <p class="border--bottom border--bottom-padded">
+              Make a note of these important dates related <%= @school.name %>.
+            </p>
+
+            <%= render partial: 'important_dates/list', locals: { important_dates: @school.important_dates, more: false } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="content center">
+    <h2 class="headline">
+      What event are you looking for?
+    </h2>
+
+    <div class="container center">
+      <%= render partial: 'schools/program_selector', locals: { school: @school } %>
+    </div>
+  </div>
+
+  <div class="content center">
+    <%= render partial: 'shared/general_help' %>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="id-card-requests-find">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/artona.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">ID Card Request</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <p>
+        Please provide the necessary data below to get started.
+      </p>
+
+
+      <%= simple_form_for :id_card_request, url: new_id_card_request_path, html: { method: :get } do |f| %>
+        <%= f.input :id_card_template_id, label: "ID Card Template", as: :select, input_html: { class: 'select2' }, collection: @id_card_templates.map { |ict| ["#{ict.school.name} - #{ict.name}", ict.id] }, include_blank: false %>
+        <%= f.input :student_number, required: false %>
+
+        <div class="center">
+          <%= f.submit 'Continue', class: 'link link--button link--button-maroon' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="content center">
+    <div class="container">
+      <h2 class="headline">Manual Form</h2>
+      <p>
+        An offline form can also be filled out by downloading it
+        <%= link_to 'here', 'https://s3.amazonaws.com/assets.artona.com/documents/IdCard+Authorization+Form+for+Schools+-+Re-Order+Form.pdf', class: 'link link--dark link--underlined', target: '_blank' %>.
+      </p>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'id_card_requests/help' %>
+  </div>
+</div>

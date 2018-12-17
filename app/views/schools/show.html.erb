@@ -1,0 +1,50 @@
+<div class="schools-show">
+  <div class="hero" style="background-image: none;">
+    <div class="hero__cycle">
+      <% @school.photos.map(&:file_name).each do |photo_url| %>
+        <div class="hero__image", style="background-image: url(<%= photo_url  %>);"></div>
+      <% end %>
+    </div>
+    <div class="hero__gradient"></div>
+    <div class="container">
+      <div class="hero__content hero__content--large hero__content--full">
+        <%= image_tag @school.logo_photo, class: 'hero__title-logo' %>
+        <h1 class="hero__title headline headline--white headline--regular headline--outlined"><%= @school.name %></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content center">
+      <% if @school.schools.count > 0 %>
+        <h2 class="headline">
+          Select Your Faculty
+        </h2>
+
+        <ul class="list list--vertical">
+          <% @school.schools.order('name ASC').each do |school| %>
+            <li>
+              <%= link_to school.name, school_path(school.code), class: 'link link--dark' %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <h2 class="headline">
+          What event are you looking for?
+        </h2>
+
+        <div class="container center">
+          <%= render partial: 'schools/program_selector', locals: { school: @school } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @school.events.count > 0 && @school.schools.count == 0 %>
+    <div class="content center">
+      <div class="container">
+        <%= link_to 'See all school events', school_events_path(@school.code), class: 'link link--dark link--underlined' %>
+      <div class="container">
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,56 @@
+<div style="background-color: #F6F6F6; font-family: Helvetica;">
+  <div style="margin:0 auto; max-width:560px; background-color: white; padding: 30px;">
+    <h1 style="text-align: center; margin-bottom: 50px;">
+      ID Card Request Received
+    </h1>
+
+    <h3 style="text-align: center; margin-bottom: 50px;">
+      Thanks for submitting!
+    </h3>
+
+    <p>
+      <%= "Reference: #{@id_card_request.id}" %>
+    </p>
+
+    <p>
+      Your ID Card will be rendered momentarily.
+    </p>
+
+    <table style="width: 100%; margin-top: 50px; margin-bottom: 50px">
+      <tr>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: left;">Requester:</td>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: right;"><%= @id_card_request.attention_of %></td>
+      </tr>
+      <tr>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: left;">Requester Email:</td>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: right;"><%= @id_card_request.attention_of_email %></td>
+      </tr>
+      <tr>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: left;">Student Name:</td>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: right;"><%= @id_card_request.student_name %></td>
+      </tr>
+      <tr>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: left;">Student Number:</td>
+        <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: right;"><%= @id_card_request.student_number %></td>
+      </tr>
+
+      <% if @id_card_request.comments.size == 1 %>
+        <tr>
+          <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: left;">Comment:</td>
+          <td style="border-top: 1px solid #EEEEEE; padding: 7px 0; text-align: right;"><%= @id_card_request.comments.first.text %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <p style="text-align: center;">
+      <%= link_to 'View your request', id_card_request_url(@id_card_request.uuid) %>
+    </p>
+    <p style="text-align: center;">
+      <%= link_to 'Edit your request', edit_id_card_request_url(@id_card_request.uuid) %>
+    </p>
+
+    <p style="text-align: center;">
+      Artona
+    </p>
+  </div>
+</div>

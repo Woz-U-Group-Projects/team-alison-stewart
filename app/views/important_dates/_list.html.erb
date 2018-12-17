@@ -1,0 +1,57 @@
+<% more ||= false %>
+
+<div class="important-date-list">
+  <div class="outer-container">
+    <div class="columns-6 hide-small">
+      <h4 class="headline headline--sub">Event</h4>
+    </div>
+    <div class="columns-6 hide-small omega">
+      <h4 class="headline headline--sub">Date</h4>
+    </div>
+
+    <% if @individual_session || @group_session %>
+    <div class="important-date-list-item">
+      <div class="columns-12 fill-small">
+        <h4 class="headline headline--no-transform important-date-list-item__name">
+          Graduation Portrait Sessions
+        </h4>
+        <% if @individual_session %>
+        <div class="columns-5 fill-small shift-1">
+          <h4 class="headline--sub important-date-list-item__name">
+            Individual Sittings
+          </h4>
+        </div>
+        <div class="columns-6 fill-small omega">
+          <p class="important-date-list-item__name">
+            <%= @individual_session.date %>
+          </p>
+        </div>
+        <% end %>
+        <% if @group_session %>
+        <div class="columns-5 fill-small shift-1">
+          <h4 class="headline--sub important-date-list-item__name">
+            Group Sittings
+          </h4>
+        </div>
+        <div class="columns-6 fill-small omega">
+          <p class="important-date-list-item__name">
+            <%= @group_session.date %>
+          </p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+    <% important_dates.each do |important_date| %>
+      <%= render partial: 'important_dates/list_item', locals: { important_date: important_date } %>
+    <% end %>
+    
+    <% if more %>
+      <p class="headline--sub">
+        <%= link_to 'Click here', school_events_path(@school.code), class: 'link link--dark link--underlined' %>
+        to see all important dates.
+      </p>
+    <% end %>
+  </div>
+</div>

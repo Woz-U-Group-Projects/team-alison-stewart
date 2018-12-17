@@ -1,0 +1,42 @@
+<div class="static-order">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/order.jpg') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">View and Order</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <h2 class="headline center">What kind of images are you looking for?</h2>
+
+      <div class="container center">
+        <div class="columns-4 fill-small">
+          <%= render partial: 'programs/list_item', locals: { slug: Program::SCHOOL_PHOTO_SLUG, link: Program::JUNIOR_LINK, button_text: 'View and Order', new_tab: true } %>
+        </div>
+
+        <div class="columns-4 fill-small">
+          <%= render partial: 'programs/list_item', locals: { slug:  Program::GRADUATION_SLUG, link: Program::SENIOR_LINK, button_text: 'View and Order', new_tab: true } %>
+        </div>
+
+        <div class="columns-4 omega fill-small">
+          <%= render partial: 'programs/list_item', locals: { slug:  Program::CONVOCATION_SLUG, link: Program::SENIOR_LINK, button_text: 'View and Order', new_tab: true } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="content--small">
+      <div class="container center">
+        <div class="columns-12 fill-small">
+          <%= render partial: 'programs/list_item', locals: { color: 'grey-medium', link: Program::SENIOR_LINK, title: 'Special Events, Family, Business, And Other Images', description: 'For all other images from special portrait sessions, please click on the button below to get started', button_text: 'View and Order', new_tab: true } %>
+        </div>
+      </div>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= render partial: 'shared/general_help' %>
+  </div>
+</div>

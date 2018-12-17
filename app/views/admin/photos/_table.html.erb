@@ -1,0 +1,33 @@
+<% @clazz  = who_do_i_belong_to?.to_s.camelize.constantize %>
+<% @param  = (who_do_i_belong_to?.to_s + '_id').to_sym %>
+<% @path   = who_do_i_belong_to?.to_s %>
+
+<div class="panel_contents">
+  <table class="sortable-photos-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Photo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% photos.order('position ASC').each do |photo| %>
+        <tr class="photo <%= cycle('even', 'odd') %>" id="photo-<%= photo.id %>">
+          <td>
+            <i class="fa fa-arrows"></i>
+          </td>
+          <td>
+            <%= image_tag photo.file_name.thumbnail.url %>
+          </td>
+          <td>
+            <%= link_to 'Remove', send("admin_#{@path}_photo_path", photo.owner, photo.id), method: :delete, data: { confirm: 'Are you sure you want to remove this photo?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'Add a new photo', send("new_admin_#{@path}_photo_path", resource.id), class: 'btn' %>

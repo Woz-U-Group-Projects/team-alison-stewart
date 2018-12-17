@@ -1,0 +1,28 @@
+<div class="sessions-new">
+  <div class="hero">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Sign In</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content center">
+      <h2 class="headline">
+        Sign in using the form below
+      </h2>
+
+      <div class="container">
+        <div class="columns-6 shift-3 fill-medium">
+          <%= simple_form_for :user, url: session_path, method: :post do |f| %>
+            <%= f.input :email, required: true, label: 'Email' %>
+            <%= f.input :password, required: true, label: 'Password' %>
+
+            <%= f.submit 'Submit', class: 'class="link link--button link--button-maroon' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

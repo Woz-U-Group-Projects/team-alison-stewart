@@ -1,0 +1,49 @@
+<%
+   school_photo = school.important_date_types.where(highrise_field: ImportantDateType::PHOTO_DAY).count > 0 ||
+                  school.important_date_types.where(highrise_field: ImportantDateType::RETAKE_DAY).count > 0
+
+   graduation = school.event_types.where(highrise_field: EventType::GRAD_SESSIONS).count > 0
+
+   convocation = school.important_date_types.where(highrise_field: ImportantDateType::HS_CONVOCATION).count > 0 ||
+                 school.event_types.where(highrise_field: EventType::UNIV_CONV_FALL).count > 0
+                 school.event_types.where(highrise_field: EventType::UNIV_CONV_SPRING).count > 0
+
+   school_photo_shift = ''
+   school_photo_shift += 'shift-2' if graduation && !convocation
+   school_photo_shift += 'shift-4' if !graduation && !convocation
+
+   graduation_shift = ''
+   graduation_shift += 'shift-2' if !school_photo && convocation
+   graduation_shift += 'shift-4' if !school_photo && !convocation
+
+   convocation_shift = ''
+   convocation_shift += 'shift-4' if !school_photo && !graduation
+%>
+
+
+
+<div>
+  <% if school_photo %>
+    <div class="columns-4 <%= school_photo_shift %> fill-small">
+      <%= render partial: 'programs/list_item', locals: { slug: Program::SCHOOL_PHOTO_SLUG, link: school_program_path(school.code, Program::SCHOOL_PHOTO_SLUG), button_text: 'View' } %>
+    </div>
+  <% end %>
+
+  <% if graduation %>
+    <div class="columns-4 <%= graduation_shift %> fill-small">
+      <%= render partial: 'programs/list_item', locals: { slug:  Program::GRADUATION_SLUG, link: school_program_path(school.code, Program::GRADUATION_SLUG), button_text: 'View' } %>
+    </div>
+  <% end %>
+
+  <% if convocation %>
+    <div class="columns-4 <%= convocation_shift %> omega fill-small">
+      <%= render partial: 'programs/list_item', locals: { slug:  Program::CONVOCATION_SLUG, link: school_program_path(school.code, Program::CONVOCATION_SLUG), button_text: 'View' } %>
+    </div>
+  <% end %>
+
+  <% if !school_photo && !graduation && !convocation %>
+    <p>
+      There are no events scheduled for this school.
+    </p>
+  <% end %>
+</div>

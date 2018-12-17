@@ -1,0 +1,32 @@
+<% id ||= 'modal-1' %>
+
+<div id="<%= id %>" class="modal modal--light">
+  <div class="codabar-modal-container">
+    <div class="container">
+      <h2 class="modal__title modal__title--dark">
+        Generate a Codabar value
+        <i class="fa fa-close float-right modal__close modal__close--dark"></i>
+      </h2>
+
+      <div class="input string required codabar__input">
+        <label class="string required" for="codabar_input">
+          Student ID #
+        </label>
+
+        <input class="string required" type="text" name="codabar_input" />
+
+        <span class="hint">
+          <strong>Copy and Paste</strong> the calculated value into all barcode/codebar form fields.
+        </span>
+      </div>
+
+      <div class="codabar__output">
+        <h4 class="headline headline--sub">Calculated value</h4>
+
+        <p>
+          Type the student number in the input box above to see the calculated value here. (Barcode/Codabar)
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

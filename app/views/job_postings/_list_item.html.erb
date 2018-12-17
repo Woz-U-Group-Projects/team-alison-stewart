@@ -1,0 +1,19 @@
+<div class="job-posting-list-item">
+  <div class="job-title headline--bold">
+    <%= job_posting.title %>
+  </div>
+
+  <div class="job-information">
+    <% if job_posting.responsibilities %>
+      <h4 class="headline--thin">Responsibilities:</h4>
+      <%= job_posting.responsibilities&.html_safe %>
+    <% end %>
+    <% if job_posting.responsibilities %>
+      <h4 class="headline--thin">Requirements:</h4>
+      <%= job_posting.requirements&.html_safe %>
+    <% end %>
+    <p class="headline--bold">
+      To apply for this position: Email your resume and cover letter to <a class="link link--underlined link--dark" href="mailto:careers@artona.com">careers@artona.com</a> (Please include the job title in your email subject line.)
+    </p>
+  </div>
+</div>

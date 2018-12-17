@@ -1,0 +1,19 @@
+<%
+  id ||= 'modal-1'
+  to_emails ||= 'csr@artonagroup.com'
+%>
+
+<div id="<%= id %>" class="modal modal--light">
+  <div class="contact-request-container">
+    <div class="container">
+      <h2 class="modal__title modal__title--dark">
+        Get in touch!
+        <i class="fa fa-close float-right modal__close modal__close--dark"></i>
+      </h2>
+
+      <div class="modal__content">
+        <%= render partial: 'contact_requests/form', locals: { to_emails: to_emails } %>
+      </div>
+    </div>
+  </div>
+</div>

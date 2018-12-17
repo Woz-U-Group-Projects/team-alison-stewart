@@ -1,0 +1,46 @@
+<div class="id-card-requests-thank-you">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/idcards.jpg') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">ID Card Request</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <h2 class="headline">Result</h2>
+
+      <% if @id_card_request.requested? %>
+        <p>
+          This ID card is still being rendered. Check back soon!
+        </p>
+      <% else %>
+        <%= image_tag @id_card_request.result_photo_url, class: 'id-card-request__preview-image' %>
+
+        <% if @id_card_request.result_pdf_url %>
+          <p>
+            <%= link_to 'Download PDF', @id_card_request.result_pdf_url, target: '_blank', class: 'link link--underlined link--dark' %>
+          </p>
+        <% end %>
+      <% end %>
+
+      <% if !(@id_card_request.processed? || @id_card_request.shipped?) %>
+        <p>
+          <%= link_to 'Click here', edit_id_card_request_path(@id_card_request.uuid), class: 'link link--underlined link--dark' %>
+          to EDIT your ID card request.
+        </p>
+      <% else %>
+        <p>
+          Your card has already been processed or shipped and is no longer editable at this time. Please make a new ID card request or contact us at <a class="link link--underlined link--dark" href="mailto:idcard@artona.com">idcard@artona.com</a> for assistance.
+        </p>
+      <% end %>
+
+      <%= render partial: 'id_card_requests/meta', locals: { id_card_request: @id_card_request } %>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'id_card_requests/help' %>
+  </div>
+</div>

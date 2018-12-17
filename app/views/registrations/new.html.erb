@@ -1,0 +1,77 @@
+<div class="registrations-new">
+  <div class="hero" style="background-image: none;">
+    <div class="hero__cycle">
+      <% @school.photos.map(&:file_name).each do |photo_url| %>
+        <div class="hero__image", style="background-image: url(<%= photo_url  %>);"></div>
+      <% end %>
+    </div>
+    <div class="hero__gradient"></div>
+    <div class="container">
+      <div class="hero__content hero__content--large hero__content--left">
+        <%= image_tag @school.logo_photo, class: 'hero__title-logo' %>
+        <h1 class="hero__title headline headline--white headline--regular headline--outlined">Registration</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <p>
+        Looking for more information for <%= @school.name %>?
+        <%= link_to 'Click here', school_path(@school.code), class: 'link link--underlined link--dark' %>.
+      <p>
+
+      <%= simple_form_for @registration, url: school_registrations_path(@school.code), method: :post do |f| %>
+        <h3 class="headline headline--sub ">Personal Information</h3>
+        <div class="container">
+          <div class="columns-4 fill-small">
+            <%= f.input :first_name %>
+          </div>
+
+          <div class="columns-4 fill-small">
+            <%= f.input :middle_name %>
+          </div>
+
+          <div class="columns-4 omega fill-small">
+            <%= f.input :last_name %>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="columns-6 fill-small">
+            <%= f.input :student_number %>
+          </div>
+
+          <div class="columns-6 omega fill-small">
+            <%= f.input :email_address %>
+          </div>
+        </div>
+
+        <div class="container">
+          <%= f.input :degree %>
+        </div>
+
+        <h3 class="headline headline--sub ">Address</h3>
+        <%= render partial: 'addresses/form', locals: { form: f, address: @registration.address, form_root: 'registration' } %>
+
+        <h3 class="headline headline--sub ">Convocation</h3>
+        <div class="container">
+          <div class="columns-6 fill-small">
+            <p class="paragraph--small">
+              Are you a proud relative or friend of the graduate?
+            </p>
+            <%= f.collection_radio_buttons :registration_type, Registration::REGISTRATION_TYPES, :first, :last %>
+          </div>
+
+          <div class="columns-6 omega fill-small">
+            <%= f.input :ceremony, as: :select, collection: @school.convocations.map { |c| [c.ceremony.strftime('%B %d, %Y, %H:%M'), c.ceremony] }, include_blank: true %>
+          </div>
+        </div>
+
+        <div class="center">
+          <%= f.submit 'Submit', class: 'submit-form link link--button link--button-maroon' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

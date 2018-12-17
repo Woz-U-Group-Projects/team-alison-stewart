@@ -1,0 +1,19 @@
+<%
+  path    = resource.persisted? ? send("admin_#{@path}_feature_path", @owner, @feature) : send("admin_#{@path}_features_path")
+  method  = resource.persisted? ? :put : :post
+%>
+
+<%= semantic_form_for [:admin, @path, @feature], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :icon, as: :file %>
+    <%= f.input :description, hint: 'If you want to bold some text, wrap it like: <strong>This will be bold</strong>' %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit %>
+    <%= f.action :cancel %>
+  <% end %>
+<% end %>

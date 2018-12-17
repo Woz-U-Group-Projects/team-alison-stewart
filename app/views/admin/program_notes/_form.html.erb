@@ -1,0 +1,18 @@
+<%
+  path    = resource.persisted? ? admin_school_program_note_path(@school.code, resource.id) : admin_school_program_notes_path(@school.code)
+  method  = resource.persisted? ? :put : :post
+%>
+
+<%= semantic_form_for [:admin, @school, resource], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :text, as: :html_editor %>
+    <%= f.input :program_slug, label: 'Program', as: :select, collection: Program.all.map { |p| [p.name, p.slug] } %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit %>
+    <%= f.action :cancel %>
+  <% end %>
+<% end %>

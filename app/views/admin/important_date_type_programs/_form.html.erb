@@ -1,0 +1,17 @@
+<%
+  path    = admin_important_date_type_important_date_type_programs_path(@important_date_type.id)
+  method  = :post
+%>
+
+<%= semantic_form_for [:admin, @important_date_type, resource], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :program_slug, as: :select, collection: Program.all.map { |p| [p.name, p.slug] } %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit %>
+    <%= f.action :cancel %>
+  <% end %>
+<% end %>

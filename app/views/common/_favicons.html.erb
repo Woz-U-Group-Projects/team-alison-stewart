@@ -1,0 +1,24 @@
+<!-- Apple favicons -->
+<% %w(57 60 72 76 114 120 144 152 180).each do |s| %>
+  <%= favicon_link_tag "favicons/apple-icon-#{s}x#{s}.png", rel: 'apple-icon-precomposed', type: 'image/png', sizes: "#{s}x#{s}" %>
+<% end %>
+
+<!-- Android favicons -->
+<link rel="manifest" href=<%= image_path('favicons/manifest.json') %> />
+
+<% %w(36 48 72 96 144 192).each do |s| %>
+  <%= favicon_link_tag "favicons/android-icon-#{s}x#{s}.png", rel: 'icon', type: 'image/png', sizes: "#{s}x#{s}" %>
+<% end %>
+
+<!-- Web favicons -->
+<% %w(16 32 96).each do |s| %>
+  <%= favicon_link_tag "favicons/favicon-#{s}x#{s}.png", rel: 'icon', type: 'image/png', sizes: "#{s}x#{s}" %>
+<% end %>
+
+<!-- Microsoft icons -->
+<meta content="#ffffff", name="msapplication-TileColor"} />
+<meta name="theme-color" content="#ffffff" />
+<meta content="favicons/ms-icon-70x70.png", name="msapplication-square70x70logo"} />
+<meta content="favicons/ms-icon-144x144.png", name="msapplication-TileImage"} />
+<meta content="favicons/ms-icon-150x150.png", name="msapplication-square150x150logo"} />
+<meta content="favicons/ms-icon-310x310.png", name="msapplication-square310x310logo"} />

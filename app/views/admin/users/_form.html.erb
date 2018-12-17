@@ -1,0 +1,41 @@
+<%
+  path    = resource.persisted? ? admin_user_path(resource.id) : admin_users_path
+  method  = resource.persisted? ? :put : :post
+%>
+
+<%= semantic_form_for [:admin, resource], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.input :role, as: :select, include_blank: false, collection: User::ROLES.map { |r| [r.humanize, r] } %>
+    <%= f.input :enabled %>
+  <% end %>
+
+  <%= f.inputs id: 'school-fields' do %>
+    <%= f.input :school_id, input_html: { class: 'select2', style: 'width:80%; align:right' }, as: :select, collection: School.all.map { |s| [s.name, s.id] } %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit %>
+    <%= f.action :cancel %>
+  <% end %>
+<% end %>
+
+<script language="javascript">
+  var updateRole = function(value) {
+    if (value == "teacher") {
+      $("#school-fields").css("display", "block");
+    } else {
+      $("#school-fields").css("display", "none");
+    }
+  }
+
+  $("#user_role").on("change", function(e) {
+    updateRole(e.target.value);
+  });
+
+  updateRole($("#user_role").val());
+</script>

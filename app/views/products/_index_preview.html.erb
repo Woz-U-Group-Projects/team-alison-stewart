@@ -1,0 +1,20 @@
+<div class="preview container-flex">
+  <div class="preview__info-container">
+    <h4 class="headline headline--sub">
+      See our collection of products
+    </h4>
+
+    <p>
+      Display your Graduation Portraits with beautifully
+      designed and crafted products from Artona.
+    </p>
+
+    <ul class="list list--vertical list--disc list--left-padded">
+      <li>Tailor-made collages</li>
+      <li>Premium quality frames</li>
+    </ul>
+  </div>
+
+  <%= link_to products_path, class: 'preview__image-container center', style: "background-image: url(#{image_path('products/index_preview.png')});" do %>
+  <% end %>
+</div>

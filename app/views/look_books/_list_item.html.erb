@@ -1,0 +1,13 @@
+<% if look_book.photos.count > 0 %>
+  <div class="look-book-list-item">
+    <div class="container--full">
+      <div class="carousel carousel-photo" data-slides="<%= carousel_length(look_book.photos.count) %>" data-center="<%= carousel_highlighted?(look_book.photos.count) ? 'true' : '' %>">
+        <% look_book.photos.each do |photo| %>
+          <div class="carousel__image-container <%= carousel_highlighted?(look_book.photos.count) ? 'carousel__image--highlight' : nil %>">
+            <%= image_tag photo.file_name.thumbnail.url %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<%= f.simple_fields_for :nodes do |n| %>
+  <%= n.input :id,    as: :hidden %>
+  <%= n.input :type,    as: :hidden %>
+  <%= n.input :name,    as: :hidden %>
+  <%= n.input :x,       as: :hidden %>
+  <%= n.input :y,       as: :hidden %>
+  <%= n.input :width,   as: :hidden %>
+  <%= n.input :height,  as: :hidden %>
+  <%= n.input :junior_field, as: :hidden %>
+
+  <% if n.object.type == 'Nodes::Text' %>
+    <%= n.input :font_family, as: :hidden %>
+    <%= n.input :color,       as: :hidden %>
+    <%= n.input :alignment,   as: :hidden %>
+    <%= n.input :uppercase,   as: :hidden %>
+    <%= n.input :point_size,  as: :hidden %>
+
+    <% hint = '' %>
+    <% hint = "#{link_to('Click here', '#', class: 'link link--dark link--underlined', data: { 'modal-id' => 'codabar-1' })} to generate a Codabar value.".html_safe if n.object.font_family == 'CodabarTwo' %>
+    <% hint = "Should be the same as the above Barcode/Codebar field." if n.object.name == ('Barcode (Visible)' || 'Codabar (Visible)') %>
+
+    <%= n.simple_fields_for :phrases do |p| %>
+      <%= p.input :name,    as: :hidden %>
+      <%= p.input :prefix,  as: :hidden %>
+      <%= p.input :suffix,  as: :hidden %>
+      <%= p.input :junior_field, as: :hidden %>
+
+      <%= p.input :text, label: p.object.name, required: true, hint: hint %>
+    <% end %>
+
+  <% elsif n.object.type == 'Nodes::Photo' %>
+    <%= n.input :crop_x,                as: :hidden %>
+    <%= n.input :crop_y,                as: :hidden %>
+    <%= n.input :crop_width,            as: :hidden %>
+    <%= n.input :crop_height,           as: :hidden %>
+    <%= n.input :remote_node_photo_url, as: :hidden %>
+    <%= n.input :remote_mask_url,       as: :hidden %>
+
+    <%= n.input :node_photo, as: :file %>
+
+    <div class="node-photo-preview">
+      <%= image_tag (n.object.node_photo_url || n.object.remote_node_photo_url) %>
+    </div>
+  <% end %>
+<% end %>

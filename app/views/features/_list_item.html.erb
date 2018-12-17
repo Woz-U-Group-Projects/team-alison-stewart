@@ -1,0 +1,17 @@
+<div class="feature-list-item">
+  <% if feature.icon_url %>
+    <div class="columns-3 fill-small center">
+      <%= image_tag feature.icon_url, class: 'feature-list-item__icon' %>
+    </div>
+  <% end %>
+
+  <div class="feature-list-item__content <%= feature.icon_url ? 'shift-1 columns-8' : 'columns-12' %> omega fill-small">
+    <% if feature.title %>
+      <h3 class="headline headline--no-top-margin headline--underlined center"><%= feature.title %></h3>
+    <% end %>
+
+    <p class="feature-list-item__description">
+      <%= feature.description.html_safe %>
+    </p>
+  </div>
+</div>

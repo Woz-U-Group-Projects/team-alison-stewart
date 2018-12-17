@@ -1,0 +1,17 @@
+<%
+  path    = resource.persisted? ? admin_school_convocation_path(@school.code, resource.id) : admin_school_convocations_path(@school.code)
+  method  = resource.persisted? ? :put : :post
+%>
+
+<%= semantic_form_for [:admin, @school, resource], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :ceremony %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit %>
+    <%= f.action :cancel %>
+  <% end %>
+<% end %>

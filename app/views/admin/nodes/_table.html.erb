@@ -1,0 +1,61 @@
+<% @clazz  = who_do_i_belong_to?.to_s.camelize.constantize %>
+<% @param  = (who_do_i_belong_to?.to_s + '_id').to_sym %>
+<% @path   = who_do_i_belong_to?.to_s %>
+<% value   ||= false %>
+
+<div class="panel_contents">
+  <table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Node Type</th>
+        <th>Junior Field</th>
+        <% if value %>
+          <th>Value</th>
+        <% end %>
+        <% unless value %>
+          <th>Actions</th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% nodes.order(:position).each do |node| %>
+        <tr class="node <%= cycle('even', 'odd') %>" id="node-<%= node.id %>">
+          <td>
+            <%= node.position %>
+          </td>
+          <td>
+            <%= node.name %>
+          </td>
+          <td>
+            <%= node.type %>
+          </td>
+          <td>
+            <%= node.junior_field %>
+          </td>
+          <% if value %>
+            <td>
+              <% if node.type == 'Nodes::Text' %>
+                <%= node.text %>
+              <% elsif node.type == 'Nodes::Photo' %>
+                <%= image_tag node.node_photo.thumbnail.url %>
+              <% end %>
+            </td>
+          <% end %>
+          <td>
+            <% unless value %>
+              <%= link_to 'Edit', send("edit_admin_#{@path}_node_path", node.owner, node.id), method: :get %>
+              <%= link_to 'Remove', send("admin_#{@path}_node_path", node.owner, node.id), method: :delete, data: { confirm: 'Are you sure you want to remove this node?' } %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% unless value %>
+  <%= link_to 'Add a new node', send("new_admin_#{@path}_node_path", resource.id), class: 'btn' %>
+<% end %>

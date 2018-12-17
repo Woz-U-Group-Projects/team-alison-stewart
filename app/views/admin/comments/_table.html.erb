@@ -1,0 +1,37 @@
+<% @clazz  = who_do_i_belong_to?.to_s.camelize.constantize %>
+<% @param  = (who_do_i_belong_to?.to_s + '_id').to_sym %>
+<% @path   = who_do_i_belong_to?.to_s %>
+
+<div class="panel_contents">
+  <table class="sortable-comments-table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Comment</th>
+        <th>Custom Comment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% comments.each do |comment| %>
+        <tr class="comment <%= cycle('even', 'odd') %>" id="comment-<%= comment.id %>">
+          <td>
+            <%= comment.user.email %>
+          </td>
+          <td>
+            <%= comment.text %>
+          </td>
+          <td>
+            <%= comment.custom_text %>
+          </td>
+          <td>
+            <%= link_to 'Remove', send("admin_#{@path}_comment_path", comment.owner, comment.id), method: :delete, data: { confirm: 'Are you sure you want to remove this comment?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'Add a new comment', send("new_admin_#{@path}_comment_path", resource.id), class: 'btn' %>

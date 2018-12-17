@@ -1,0 +1,31 @@
+<div class="errors-show">
+  <div class="hero">
+    <div class="container">
+      <div class="center hero__content">
+        <h1 class="hero__title">Error</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content center">
+      <div class="container">
+        <div class="columns-6 shift-3 fill-medium">
+          <h2 class="headline">Whoops!</h2>
+          <% if @message %>
+            <p><%= @message %></p>
+          <% else %>
+            <p>
+              A <%= @status_code ? @status_code : nil %> error was caused
+              by your request.
+            <p>
+
+            <p>
+              Please make sure you are visiting the correct page, or try again.
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

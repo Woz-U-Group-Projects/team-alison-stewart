@@ -1,0 +1,30 @@
+<% id ||= 'modal-1' %>
+
+<div id="<%= id %>" class="modal modal--light">
+  <div class="booking-modal-container">
+    <div class="container">
+      <h2 class="modal__title modal__title--dark">
+        <% if @school.name == 'Digital Business Portraits' %>
+          Continue to Digital Business Portrait booking?
+        <% else %>
+          What is your student number?
+        <% end %>
+        <i class="fa fa-close float-right modal__close modal__close--dark"></i>
+      </h2>
+
+      <div class="modal__content">
+        <%= simple_form_for :booking, url: school_bookings_path(@school), html: { method: :post } do |f| %>
+          <%= f.input :sitting_type, as: :hidden, input_html: { value: sitting.sitting_type } %>
+          <% if @school.name == 'Digital Business Portraits' %>
+            <%= f.input :graduation_year, as: :hidden, input_html: { value: "20#{Utils.photography_year}" }  %>
+            <%= f.input :student_number, as: :hidden, input_html: { value: rand(1..1000).to_s } %>
+          <% else %>
+            <%= f.input :graduation_year, collection: Utils.graduation_years, include_blank: false, selected: "20#{Utils.photography_year}", input_html: { class: 'select2', style: 'width:100%;' } %>
+            <%= f.input :student_number %>
+          <% end %>
+          <%= f.submit 'Continue', class: 'link link--button link--button-maroon' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

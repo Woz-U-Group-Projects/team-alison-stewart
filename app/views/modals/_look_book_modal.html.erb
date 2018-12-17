@@ -1,0 +1,24 @@
+<% id ||= 'modal-1' %>
+
+<div id="<%= id %>" class="modal modal--light">
+  <div class="look-book-modal-container">
+    <div class="container">
+      <h2 class="modal__title modal__title--dark">
+        <%= look_book.title || 'Look Book' %>
+
+        <i class="fa fa-close float-right modal__close modal__close--dark"></i>
+      </h2>
+
+      <div class="modal__content">
+        <%= render partial: 'look_books/list_item', locals: { look_book: look_book } %>
+      </div>
+
+      <div class="content center">
+        <p>
+          Check out our <%= link_to 'how to prepare', prepare_static_path, class: 'link link--dark link--underlined' %>
+          guide for all your preparation needs!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

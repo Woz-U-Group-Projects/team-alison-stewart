@@ -1,0 +1,11 @@
+<%= simple_form_for :contact_request, url: contact_requests_path, method: :post do |f| %>
+  <%= f.input :to_emails, as: :hidden, input_html: { value: to_emails } %>
+
+  <%= f.input :from_email, label: 'Email', hint: 'Your email address we can respond to' %>
+  <%= f.input :subject %>
+  <%= f.input :body, as: :text, input_html: { rows: 5 } %>
+
+  <div class="center">
+    <%= f.submit 'Submit', class: 'submit-form link link--button link--button-maroon' %>
+  </div>
+<% end %>

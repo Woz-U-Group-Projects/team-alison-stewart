@@ -1,0 +1,29 @@
+<div class="employees-index">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/artona.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Employees</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <% if @employees.count > 0 %>
+        <% @employees.each do |employee| %>
+          <%= render partial: 'employees/list_item', locals: { employee: employee } %>
+        <% end %>
+      <% else %>
+        <p class="center">
+          There doesn't seem to be anything here. Check back soon!
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container center">
+      <%= render partial: 'shared/general_help' %>
+    </div>
+  </div>
+</div>

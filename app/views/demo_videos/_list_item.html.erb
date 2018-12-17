@@ -1,0 +1,25 @@
+<div class="demo-video-list-item">
+  <div class="preview container-flex">
+    <div class="preview__image-container center" style="background-image: url(<%= demo_video.still_screen %>);">
+      <i class="fa fa-play-circle preview__image-icon link link--light" data-modal-id="<%= "demo-video-#{index}" %>"></i>
+    </div>
+
+    <div class="preview__info-container">
+      <h4 class="headline headline--sub">
+        <%= demo_video.title %>
+      </h4>
+
+      <p>
+        <%= demo_video.description %>
+      </p>
+
+      <ul class="list list--vertical list--disc list--left-padded">
+        <% demo_video.features.each do |feature| %>
+          <li><%= feature.description.html_safe %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <%= render partial: 'modals/video_modal', locals: { id: "demo-video-#{index}", source: demo_video.video_url } %>
+</div>

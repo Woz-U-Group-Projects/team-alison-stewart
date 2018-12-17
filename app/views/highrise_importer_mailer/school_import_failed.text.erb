@@ -1,0 +1,11 @@
+=================================
++++ School Failed to Import: ++++
+=================================
+
+School: <%= @school.name %>
+
+Error Information
+===================
+<% @school.errors.messages.each do |key, value| %>
+  <%= key %>: <%= value %>
+<% end %>

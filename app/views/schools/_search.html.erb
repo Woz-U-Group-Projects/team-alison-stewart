@@ -1,0 +1,11 @@
+<%= simple_form_for :school, url: find_schools_path, html: { id: 'school-search', method: :get } do |f| %>
+  <div class="container-flex single-field-form-container">
+    <div class="left-container">
+      <%= f.input :name, label: false, placeholder: 'What school are you from?' %>
+    </div>
+
+    <div class="right-container">
+      <%= f.submit 'Find', class: 'link link--button link--button-maroon' %>
+    </div>
+  </div>
+<% end %>

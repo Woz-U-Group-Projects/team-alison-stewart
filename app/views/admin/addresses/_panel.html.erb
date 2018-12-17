@@ -1,0 +1,50 @@
+<% @clazz  = who_do_i_belong_to?.to_s.camelize.constantize %>
+<% @param  = (who_do_i_belong_to?.to_s + '_id').to_sym %>
+<% @path   = who_do_i_belong_to?.to_s %>
+
+<div class="panel">
+  <h3>Address</h3>
+
+  <div class="panel_contents">
+    <% if address %>
+      <div class="attributes_table address">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr class="row row-address1">
+              <th>Address1</th>
+              <td><%= address.address1 %></td>
+            </tr>
+            <tr class="row row-address2">
+              <th>Address2</th>
+              <td><%= address.address2 %></td>
+            </tr>
+            <tr class="row row-address3">
+              <th>Address3</th>
+              <td><%= address.address3 %></td>
+            </tr>
+            <tr class="row row-city">
+              <th>City</th>
+              <td><%= address.city %></td>
+            </tr>
+            <tr class="row row-province">
+              <th>Province</th>
+              <td><%= address.province %></td>
+            </tr>
+            <tr class="row row-country">
+              <th>Country</th>
+              <td><%= address.country %></td>
+            </tr>
+            <tr class="row row-postal_code">
+              <th>Postal Code</th>
+              <td><%= address.postal_code %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <%= link_to 'Edit address', send("edit_admin_#{@path}_address_path", address.owner, address.id) %>
+    <% else %>
+      <%= link_to 'Create address', send("new_admin_#{@path}_address_path", resource.id), class: 'btn' %>
+    <% end %>
+  </div>
+</div>

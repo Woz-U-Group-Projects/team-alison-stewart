@@ -1,0 +1,291 @@
+<% event = @school.events.where(event_type_id: @program.event_type_ids).first %>
+<% @school.events.map { |e| @individual_session = e if e.event_type.highrise_field == EventType::GRAD_SESSIONS } %>
+<% @school.events.map { |e| @group_session = e if e.event_type.highrise_field == EventType::GRAD_GROUP_SESSIONS } %>
+<% photo_day = @school.important_dates.find_by name: "Photo Day" %>
+<% retake_day = @school.important_dates.find_by name: "Retake Day" %>
+<% sitting = Sitting.find_by grad_program_code: @school.grad_program_code %>
+
+<div class="programs-show">
+  <div class="hero" style="background-image: none;">
+    <div class="hero__cycle">
+      <% @school.photos.map(&:file_name).each do |photo_url| %>
+        <div class="hero__image", style="background-image: url(<%= photo_url  %>);"></div>
+      <% end %>
+    </div>
+    <div class="hero__gradient"></div>
+    <div class="container">
+      <div class="hero__content hero__content--large hero__content--full">
+      <%= image_tag @school.logo_photo, class: 'hero__title-logo' %>
+        <h1 class="hero__title headline headline--white headline--regular headline--outlined"><%= @school.name %></h1>
+        <h3 class="hero__title headline headline--white headline--light headline--outlined"><%= @program.name %></h3>
+      </div>
+    </div>
+  </div>
+
+  <% if @program.slug == Program::GRADUATION_SLUG %>
+    <% if @school.events.where(event_type_id: @program.event_type_ids).count > 0 && @individual_session %>
+      <% sitting = @individual_session.school.sitting_for_event_type(event.event_type) %>
+      <div class="content grad-list-item" style="background-image: url(<%= image_path('heroes/grad-banner.jpg') %>)">
+        <%= render partial: 'electronic_marketings/grad_list_item', locals: { event: @individual_session, sitting: sitting } %>
+      </div>
+    <% end %>
+    <div class="content grad-list-item" style="background-image: url(<%= image_path('heroes/modern-look.jpg') %>)">
+      <div class="container">
+        <div class="columns-6 border--fade shift-6 border--bottom border--bottom-padded">
+          <div class="container--narrow">
+            <h3 class="headline headline--sub">Individual Photo Session</h3>
+            <h2 class="headline headline--no-spacing headline--no-transform event-list-item__title border--bottom border--bottom-padded">
+              Modern Look
+            </h2>
+            <p>
+              This is where it all begins. A unique, fashionable, studio set. <br />
+              We recommend a coordinated full length outfit. <br />
+              You can see any of our props or bring any from home.
+            </p>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/modern-look-1.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/modern-look-2.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/modern-look-3.jpg') %>)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content grad-list-item border--bottom border--bottom-padded" style="background-image: url(<%= image_path('heroes/classic-look.jpg') %>)">
+      <div class="container">
+        <div class="columns-6 border--fade shift-6 border--bottom border--bottom-padded">
+          <div class="container--narrow">
+            <h3 class="headline headline--sub">Individual Photo Session</h3>
+            <h2 class="headline headline--grey headline--no-spacing headline--no-transform event-list-item__title border--bottom border--bottom-padded">
+              Classic Look
+            </h2>
+            <p class="body--grey">
+              Get inspired with bold style and creative flare in our classic <br />
+              Black & White set. A variety of close-ups come to life in your <br />
+              second photographic experience.
+            </p>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/classic-look-1.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/classic-look-2.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/classic-look-3.jpg') %>)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content grad-list-item border--bottom border--bottom-padded" style="background-image: url(<%= image_path('heroes/traditional-look.jpg') %>)">
+      <div class="container">
+        <div class="columns-6 border--fade border--bottom border--bottom-padded">
+          <div class="container--narrow">
+            <h3 class="headline headline--sub">Individual Photo Session</h3>
+            <h2 class="headline headline--grey headline--no-spacing headline--no-transform event-list-item__title border--bottom border--bottom-padded">
+              Traditional Look
+            </h2>
+            <p class="body--grey">
+              Celebrating graduation means connecting with your family, <br />
+              friends, and classmates. It also means connecting your Artona <br />
+              portrait with the school yearbook and graduation composite.
+            </p>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/traditional-look-1.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/traditional-look-2.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/traditional-look-3.jpg') %>)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content grad-list-item border--bottom border--bottom-padded" style="background-image: url(<%= image_path('heroes/grand-library-look.jpg') %>)">
+      <div class="container">
+        <div class="columns-6 border--fade border--bottom border--bottom-padded">
+          <div class="container--narrow">
+            <h3 class="headline headline--grey headline--sub">Individual Photo Session</h3>
+            <h2 class="headline headline--white headline--no-spacing headline--no-transform event-list-item__title border--bottom border--bottom-padded">
+              Grand Library Look
+            </h2>
+            <p class="body--grey">
+              Formal cap and gown presentation in our elegant library setting. <br />
+              Gentlemen are required to wear a white or light coloured dress <br />
+              shirt and tie. Ladies, we suggest a plain white blouse with a simple <br />
+              neckline or wear a top that fits under the gown neckline.
+            </p>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/grand-library-look-1.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/grand-library-look-2.jpg') %>)"></div>
+            <div class="columns-4 grad-list-item grad-model-image" style="background-image: url(<%= image_path('models/grand-library-look-3.jpg') %>)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @school.events.where(event_type_id: @program.event_type_ids).count > 0 %>
+    <% @school.events.where(event_type_id: @program.event_type_ids).each do |event| %>
+      <%= render partial: 'events/list_item', locals: { event: event } %>
+    <% end %>
+    <% electronic_marketing = @school.electronic_marketing_for_program(@program.slug) %>
+    <% if electronic_marketing %>
+    <div class="content center container">
+      <%= render partial: 'electronic_marketings/list_item', locals: { electronic_marketing: electronic_marketing, photo_day: nil, retake_day: nil } %>
+    </div>
+    <% end %>
+  <% end %>
+
+  <% if @program.slug != Program::SCHOOL_PHOTO_SLUG && event %>
+    <% if event.event_type.code == "grad_sessions" %>
+      <% if Program::IN_STUDIO.include? @school.grad_program_code %>
+        <div class="banner center" style="background-image: url(<%= image_path('heroes/men.jpg') %>);" program-dependant graduation>
+          <i class="fa fa-play-circle banner__icon" data-modal-id="video-1"></i>
+          <h2 class="banner__title">
+            Preparing for a photo session taken at Artona 353 West 7th?
+          </h2>
+          <p class="banner_subtitle">
+            Check out this how to prepare video.
+          </p>
+        </div>
+      <% end %>
+      <% if Program::ON_LOCATION.include? @school.grad_program_code %>
+        <div class="banner center" style="background-image: url(<%= image_path('heroes/school.jpg') %>);" program-dependant graduation>
+          <i class="fa fa-play-circle banner__icon" data-modal-id="video-2"></i>
+          <h2 class="banner__title">
+            Preparing for a grad photo session on site at your school?
+          </h2>
+          <p class="banner_subtitle">
+            Check out this how to prepare video.
+          </p>
+        </div>
+      <% end %>
+      <% if Program::MOBILE.include? @school.grad_program_code %>
+        <div class="banner center" style="background-image: url(<%= image_path('heroes/mobile-studio.jpg') %>);" program-dependant graduation>
+          <i class="fa fa-play-circle banner__icon" data-modal-id="video-3"></i>
+          <h2 class="banner__title">
+            Preparing for a grad photo session at our mobile studio?
+          </h2>
+          <p class="banner_subtitle">
+            Check out this how to prepare video.
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+
+  <%= render partial: 'modals/video_modal', locals: { id: 'video-1', source: 'https://s3.amazonaws.com/assets.artona.com/videos/artona-studio.mp4' } %>
+  <%= render partial: 'modals/video_modal', locals: { id: 'video-2', source: 'https://s3.amazonaws.com/assets.artona.com/videos/artona-on-location.mp4' } %>
+  <%= render partial: 'modals/video_modal', locals: { id: 'video-3', source: 'https://s3.amazonaws.com/assets.artona.com/videos/artona-mobile.mp4' } %>
+
+    <div class="content">
+      <div class="container center">
+      <%= link_to 'Your school day portraits, yearbook portraits, and ID card images are here.', school_program_path(event.school.code, Program::SCHOOL_PHOTO_SLUG), class: 'link link--dark link--underlined' %>
+    </div>
+  <% end %>
+</div>
+
+  <% if @school.important_dates.count > 0 %>
+    <% if @program.slug == Program::SCHOOL_PHOTO_SLUG %>
+      <% if photo_day %>
+        <div class="content schoolday-important-date-list-item" style="background-image: url(<%= image_path('heroes/schoolday-banner.jpg') %>)">
+          <%= render partial: 'electronic_marketings/schoolday_list_item', locals: { photo_day: photo_day, retake_day: retake_day } %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="content" >
+          <div class="container">
+            <% if @school.important_dates.where(important_date_type_id: @program.important_date_type_ids).count > 0 %>
+              <h2 class="headline">School Events</h2>
+
+              <div class="border--fade">
+                <div class="container--narrow">
+              <h3 class="headline headline--sub">Key Events</h3>
+
+                  <p class="border--bottom border--bottom-padded">
+                    Make a note of these important dates related to
+                    <%= @school.name %>.
+                  </p>
+
+                  <%= render partial: 'important_dates/list', locals: { important_dates: @school.important_dates, more: true } %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if @program.slug == Program::SCHOOL_PHOTO_SLUG %>
+    <div class="content center">
+      <div class="container">
+        <% electronic_marketing = @school.electronic_marketing_for_program(@program.slug) %>
+        <% if electronic_marketing %>
+          <%= render partial: 'electronic_marketings/list_item', locals: { electronic_marketing: electronic_marketing, photo_day: photo_day, retake_day: retake_day } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="content" >
+        <div class="container">
+          <% if @school.important_dates.where(important_date_type_id: @program.important_date_type_ids).count > 0 %>
+            <h2 class="headline">School Events</h2>
+
+            <div class="border--fade">
+              <div class="container--narrow">
+                <h3 class="headline headline--sub">Key Activities</h3>
+
+                <p class="border--bottom border--bottom-padded">
+                  Make a note of these important dates related to <%= @school.name %>.
+                </p>
+
+                <%= render partial: 'important_dates/list', locals: {slug: @program.slug, important_dates: @school.important_dates.where(important_date_type: @program.important_date_type_ids),  individual_session: @individual_session, group_session: @group_session, photo_day: photo_day, retake_day: retake_day, more: true } %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  <% end %>
+
+  <% if @school.program_notes_for_program(@program).count > 0 %>
+    <div class="content">
+      <div class="container">
+        <h2 class="headline">
+          Special Notes
+        </h2>
+        <ul class="list list--vertical list--disc list--left-padded">
+          <% @school.program_notes_for_program(@program).each do |program_note| %>
+            <%= render partial: 'program_notes/list_item', locals: { program_note: program_note } %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <% if @program.slug != Program::SCHOOL_PHOTO_SLUG %>
+      <div class="content">
+        <h2 class="headline">
+          Becoming Artona Ready
+        </h2>
+
+        <% if @demo_videos.count > 0 %>
+          <% @demo_videos.each_with_index do |demo_video, index| %>
+
+            <%= render partial: 'demo_videos/list_item', locals: { demo_video: demo_video, index: index } %>
+          <% end %>
+        <% else %>
+          <p>
+            Check out our <%= link_to 'how to prepare', prepare_static_path, class: 'link link--dark link--underlined' %>
+            guide for all your preparation needs!
+          </p>
+        <% end %>
+
+        <%= render partial: 'products/index_preview' %>
+      </div>
+    <% end %>
+
+    <div class="content">
+      <h2 class="headline">
+        Need Help?
+      </h2>
+      <% if @program.slug != Program::SCHOOL_PHOTO_SLUG %>
+        <p>
+          Please feel free to <%= link_to 'contact us', '#', class: 'link link--dark link--underlined' %>
+          if you have any questions about your upcoming Graduation Portrait Session with Artona.
+        </p>
+      <% else %>
+        <p>
+          Please feel free to <%= link_to 'contact us', '#', class: 'link link--dark link--underlined' %>
+          if you have any questions about your upcoming School Day Photo Session with Artona.
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

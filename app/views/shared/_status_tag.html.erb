@@ -1,0 +1,9 @@
+<% if %w{ processed }.include? text %>
+  <% extra = 'status-tag--success' %>
+<% elsif %w{ requested rendered }.include? text %>
+  <% extra = 'status-tag--warning' %>
+<% end %>
+
+<span class="status-tag <%= extra %>">
+  <%= text %>
+</span>

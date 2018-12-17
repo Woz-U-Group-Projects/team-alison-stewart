@@ -1,0 +1,15 @@
+<% active ||= 0 %>
+<% items  ||= ['First', 'Second', 'Third'] %>
+
+<div class="progress-bar">
+  <% items.each_with_index do |item, index| %>
+    <div class="progress-bar__circle <%= active > index ? 'done' : nil %> <%= active == index ? 'active' : nil %>">
+      <span class="progress-bar__circle-label"><%= index %></span>
+      <span class="progress-bar__circle-title"><%= item %></span>
+    </div>
+
+    <% if index < items.length - 1 %>
+      <span class="progress-bar__bar <%= active - 1 > index ? 'done' : nil %> <%= active - 1 == index ? 'half' : nil %>"></span>
+    <% end %>
+  <% end %>
+</div>

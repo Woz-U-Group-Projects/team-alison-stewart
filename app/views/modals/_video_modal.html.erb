@@ -1,0 +1,20 @@
+<% id ||= 'modal-1' %>
+<% title ||= '' %>
+<% source ||= '' %>
+
+<div id="<%= id %>" class="modal">
+  <div class="container">
+    <h2 class="modal__title">
+      <%= title %>
+      <i class="fa fa-close float-right modal__close"></i>
+    </h2>
+
+    <div class="modal__content center">
+      <video class="modal__video" controls>
+        <source src="<%= source %>">
+
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  </div>
+</div>

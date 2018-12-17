@@ -1,0 +1,17 @@
+<div class="nested-fields">
+  <%= f.inputs do %>
+    <%= f.input :id,        as: :hidden %>
+    <%= f.input :node_id,   as: :hidden %>
+    <%= f.input :_destroy,  as: :hidden %>
+
+    <%= f.input :name %>
+    <%= f.input :junior_field, as: :select, collection: Node::JUNIOR_FIELDS %>
+    <%= f.input :suffix %>
+    <%= f.input :prefix %>
+    <%= f.input :position %>
+
+    <li>
+      <%= link_to_remove_association 'Remove', f %>
+    </li>
+  <% end %>
+</div>

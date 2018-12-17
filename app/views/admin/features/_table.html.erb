@@ -1,0 +1,39 @@
+<% @clazz  = who_do_i_belong_to?.to_s.camelize.constantize %>
+<% @param  = (who_do_i_belong_to?.to_s + '_id').to_sym %>
+<% @path   = who_do_i_belong_to?.to_s %>
+
+<div class="panel features-section">
+  <h3>Features</h3>
+
+  <div class="panel_contents">
+    <table class="sortable-features-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% features.order('position ASC').each do |feature| %>
+          <tr class="feature <%= cycle('even', 'odd') %>" id="feature-<%= feature.id %>">
+            <td>
+              <i class="fa fa-arrows"></i>
+            </td>
+            <td>
+              <%= feature.description %>
+            </td>
+            <td>
+              <%= link_to 'Edit', send("edit_admin_#{@path}_feature_path", feature.owner, feature.id) %>
+              <%= link_to 'Remove', send("admin_#{@path}_feature_path", feature.owner, feature.id), method: :delete, data: { confirm: 'Are you sure you want to remove this feature?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to 'Add a new feature', send("new_admin_#{@path}_feature_path", resource.id), class: 'btn' %>
+  </div>
+</div>
+

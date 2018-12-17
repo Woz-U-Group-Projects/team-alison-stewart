@@ -1,0 +1,197 @@
+<%
+  template_serializer = IdCardTemplateSerializer.new(id_card_template)
+  request_serializer  = IdCardRequestSerializer.new(id_card_request)
+  template_adapter    = ActiveModel::Serializer::Adapter.create(template_serializer)
+  request_adapter     = ActiveModel::Serializer::Adapter.create(request_serializer, include: 'nodes, nodes.phrases')
+  path    = id_card_request.persisted? ? id_card_request_path(id_card_request.uuid) : id_card_requests_path
+  method  = id_card_request.persisted? ? :patch : :post
+%>
+
+<div class="id-card-requests-new">
+  <div class="container">
+    <p>
+      Please modify the data below to continue.
+    </p>
+
+    <%= render partial: 'shared/form_error_messages', locals: { object: id_card_request } %>
+
+    <%= simple_form_for id_card_request, url: path, method: method do |f| %>
+      <%= f.input :id_card_template_id, as: :hidden %>
+      <%= f.input :school_id, as: :hidden %>
+      <%= f.input :student_name, as: :hidden %>
+      <%= f.input :student_number, as: :hidden %>
+
+      <%= react_component('IdCardRequest',
+        idCardTemplate: template_adapter.as_json,
+        idCardRequest: request_adapter.as_json) %>
+
+      <%= render partial: 'nodes/form', locals: { f: f } %>
+
+
+      <%= f.input :attention_of %>
+      <%= f.input :attention_of_email, hint: 'A confirmation email will be sent to you after you submit the request.' %>
+
+      <%= f.simple_fields_for :comments do |c| %>
+        <%= c.input :user_id, as: :hidden %>
+
+        <%= c.input :text, label: 'Reason', as: :select, collection: Comment::SELECTIONS, selected: 'New Student', input_html: { onchange: "handleReasonSelect(this);" } %>
+        <%= c.input :custom_text, input_html: { id: :custom_comment }, placeholder: 'type your reason here', as: :hidden %>
+      <% end %>
+
+      <p>
+        ID cards are printed and shipped every Friday. You should receive them the following mid week via Canada Post.
+      </p>
+
+      <p>
+        Please note: any image uploaded on this form is only for an ID Card; it will not appear in the yearbook, pictorial, or MyEdBC.
+      </p>
+
+      <div class="center">
+        <%= f.submit 'Submit', class: 'submit-form link link--button link--button-maroon' %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <%= render partial: 'modals/codabar_modal', locals: { id: 'codabar-1' } %>
+</div>
+
+<script language="javascript">
+  var idCardRequest = <%= request_adapter.to_json.html_safe %>;
+  function initializeTextNode(node, index) {
+    if (node.attributes.type !== 'Nodes::Text') return;
+    node.relationships.phrases.data.forEach(function(phrase, p_index) {
+      $("#id_card_request_nodes_attributes_" + index + "_phrases_attributes_" + p_index + "_text").on("keyup", function(event) {
+        updateFontSize(node, index);
+      });
+    });
+    updateFontSize(node, index);
+  };
+  // Handle dynamically updating font size
+  function updateFontSize(node, index) {
+    var value = "";
+    // Build the text from all the phrases
+    node.relationships.phrases.data.forEach(function(phrase, p_index) {
+      var text    =  $("#id_card_request_nodes_attributes_" + index + "_phrases_attributes_" + p_index + "_text").val();
+      var prefix  =  $("#id_card_request_nodes_attributes_" + index + "_phrases_attributes_" + p_index + "_prefix").val();
+      var suffix  =  $("#id_card_request_nodes_attributes_" + index + "_phrases_attributes_" + p_index + "_suffix").val();
+      if (text) {
+        value += prefix + text + suffix
+      }
+    });
+    var resizer = $('<span />').hide().appendTo(document.body);
+    resizer.html(value);
+    var $size = $("#id_card_request_nodes_attributes_" + index + "_point_size");
+    var initial_size = node.attributes.point_size
+    // Add properties that affect size
+    resizer.css('font-family', node.attributes.font_family);
+    resizer.css('font-size', initial_size);
+    resizer.css('white-space', 'pre');
+    var size = initial_size + 1;
+    while (resizer.width() > node.attributes.width) {
+      size = parseInt(resizer.css('font-size'));
+      resizer.css('font-size', size - 1);
+    }
+    while (resizer.height() > node.attributes.height) {
+      size = parseInt(resizer.css('font-size'));
+      resizer.css('font-size', size - 1);
+    }
+    // Set the final size in the input
+    $size.val(size - 1);
+    resizer.remove();
+  };
+  function initializePhotoNode(node, index) {
+    if (node.attributes.type !== 'Nodes::Photo') return;
+    $("#id_card_request_nodes_attributes_" + index + "_node_photo").on("change", function(event) {
+      handleFileSelect(index, event);
+    });
+    // This initialization of the cropper is done in the react components
+  };
+  function handleFileSelect(index, event) {
+    var $img, $output, file, files, $photo, i, len, reader;
+    $photo = $("#id_card_request_nodes_attributes_" + index + "_node_photo");
+    $output = $photo.parent().next();
+    $img = $($output.find('img')[0]);
+    files = event.target.files;
+    for (i = 0, len = files.length; i < len; i++) {
+      file = files[i];
+      if (!file.type.match('image.*')) continue;
+      reader = new FileReader;
+      reader.onload = function(event) {
+        return setPhotoPreview(index, $output, event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  function setPhotoPreview(index, $output, src) {
+    var img = document.createElement('img');
+    img.onload = function() {
+      return initializeCropper(index);
+    };
+    img.className = 'node-photo-preview__thumb';
+    img.src = src;
+    $output.html(img);
+  }
+  function initializeCropper(index) {
+    var $photo = $("#id_card_request_nodes_attributes_" + index + "_node_photo");
+    var $output = $photo.parent().next();
+    var $img = $($output.find('img')[0]);
+    var width = $("#id_card_request_nodes_attributes_" + index + "_width").val();
+    var height = $("#id_card_request_nodes_attributes_" + index + "_height").val();
+    $img.cropper({
+      viewMode: 1,
+      rotatable: false,
+      scalable: false,
+      zoomable: false,
+      aspectRatio: width / height,
+      checkCrossOrigin: false,
+      data: {
+        x:      parseInt($("#id_card_request_nodes_attributes_" + index + "_crop_x").val()) || 0,
+        y:      parseInt($("#id_card_request_nodes_attributes_" + index + "_crop_y").val()) || 0,
+        width:  parseInt($("#id_card_request_nodes_attributes_" + index + "_crop_width").val()) || 9999,
+        height: parseInt($("#id_card_request_nodes_attributes_" + index + "_crop_height").val()) || 9999
+      },
+      preview: "div#photo-preview-" + index,
+      crop: function(event) {
+        updateCrops(index, event);
+      },
+      built: function(event) {
+        // Force a re-render of the react component
+        ReactRailsUJS.mountComponents();
+      }
+    });
+  };
+  function updateCrops(index, event) {
+    var x = parseInt(event.x);
+    var y = parseInt(event.y);
+    var width = parseInt(event.width);
+    var height = parseInt(event.height);
+    $("#id_card_request_nodes_attributes_" + index + "_crop_x").val(x)
+    $("#id_card_request_nodes_attributes_" + index + "_crop_y").val(y)
+    $("#id_card_request_nodes_attributes_" + index + "_crop_width").val(width)
+    $("#id_card_request_nodes_attributes_" + index + "_crop_height").val(height)
+  }
+  var nodes = idCardRequest.included.filter(function(item) {
+    return (item.attributes.type === 'Nodes::Text' ||
+            item.attributes.type === 'Nodes::Photo');
+  })
+  // Initialize all text node dynamics
+  nodes.forEach(initializeTextNode)
+  // Initialize all photo node dynamics
+  nodes.forEach(initializePhotoNode)
+  $(':input').on("keyup", function(event) {
+    // Force a re-render of the react component
+    ReactRailsUJS.mountComponents();
+  });
+</script>
+<script>
+  function handleReasonSelect(that) {
+    if ($(that).val() === 'Other') {
+      $('.id_card_request_comments_text').addClass('string optional').removeClass('hidden')
+      $('#custom_comment').addClass('string optional').removeClass('hidden').attr('type', 'text')
+    } else {
+      $('.id_card_request_comments_text').addClass('hidden').removeClass('string optional')
+      $('#custom_comment').addClass('hidden').removeClass('string optional').attr('type', 'hidden')
+    }
+  };
+</script>

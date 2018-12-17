@@ -1,0 +1,29 @@
+<%
+  slug        ||= nil
+  description ||= nil
+  title       ||= Program.find(slug).name
+  color       ||= 'maroon'
+  new_tab     ||= false
+%>
+
+<% target = new_tab ? '_blank' : '' %>
+
+<div class="program-list-item">
+  <% if slug %>
+    <%= link_to link do %>
+      <div class="program-list-item__image" style="background-image: url(<%= image_path(program_image(slug)) %>);"></div>
+    <% end %>
+  <% end %>
+
+  <h4 class="headline">
+    <%= title %>
+  </h4>
+
+  <% if description %>
+    <p class="program-list-item__description">
+      <%= description %>
+    </p>
+  <% end %>
+
+  <%= link_to button_text, link, class: "link link--button link--button-#{color}", target: target %>
+</div>

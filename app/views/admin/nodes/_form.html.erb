@@ -1,0 +1,140 @@
+<%
+  path    = resource.persisted? ? send("admin_#{@path}_node_path", @node.owner, @node) : send("admin_#{@path}_nodes_path")
+  method  = resource.persisted? ? :put : :post
+%>
+
+<%= render partial: 'admin/nodes/name_guide' %>
+
+<%= semantic_form_for [:admin, @path, @node.becomes(Node)], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+    <%= f.semantic_errors *f.object.errors.keys %>
+
+    <% if @node.owner_type != 'IdCardRequest' %>
+      <%= f.inputs 'Node' do %>
+        <%= f.input :type, as: :select, collection: Node::TYPES, include_blank: false %>
+        <%= f.input :name %>
+        <%= f.input :position %>
+      <% end %>
+
+      <%= f.inputs 'Target' do %>
+        <div class="node-editor">
+          <% if @node.owner_type == 'IdCardTemplate' %>
+            <%= image_tag @node.owner.base_photo.file.public_url, id: 'node_base' %>
+          <% end %>
+        </div>
+
+        <%= f.input :x, as: :number %>
+        <%= f.input :y, as: :number %>
+        <%= f.input :width, as: :number %>
+        <%= f.input :height, as: :number %>
+      <% end %>
+
+      <%= f.inputs 'Text', class: 'inputs text-type-fields' do %>
+        <%= f.input :point_size %>
+        <%= f.input :font_family, as: :select, collection: Nodes::Text::FONTS, include_blank: false %>
+        <%= f.input :alignment, as: :select, collection: Nodes::Text::ALIGNMENTS, include_blank: false %>
+        <%= f.input :uppercase, as: :boolean %>
+        <%= f.input :color, as: :string, input_html: { class: 'color-picker' } %>
+      <% end %>
+
+      <div class="text-type-fields">
+        <%= f.semantic_fields_for :phrases do |p| %>
+          <%= render 'phrase_fields', f: p %>
+        <% end %>
+
+        <div class="links">
+          <%= link_to_add_association 'Add phrase', f, :phrases %>
+        </div>
+      </div>
+
+      <%= f.inputs 'Photo', id: 'photo-type-fields' do %>
+        <%= f.input :junior_field, as: :select, collection: Node::JUNIOR_FIELDS %>
+        <%= f.input :mask %>
+
+        <% if @node.mask_url %>
+          <img class="form-preview-image" src="<%= @node.mask_url %>"/>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if @node.owner_type == 'IdCardRequest' %>
+      <%= f.inputs 'Node' do %>
+        <%= f.input :text %>
+      <% end %>
+    <% end %>
+
+    <%= f.actions do %>
+      <%= f.action :submit %>
+      <%= f.action :cancel, label: 'Cancel', button_html: { class: 'btn action'} %>
+    <% end %>
+<% end %>
+
+<script language="javascript">
+  var cropper;
+
+  var updateType = function(value) {
+    if (value == "Nodes::Photo") {
+      $("#barcode-type-fields").css("display", "none");
+      $("#photo-type-fields").css("display", "block");
+      $(".text-type-fields").css("display", "none");
+    } else if (value == "Nodes::Text") {
+      $("#barcode-type-fields").css("display", "none");
+      $("#photo-type-fields").css("display", "none");
+      $(".text-type-fields").css("display", "block");
+    }
+  }
+
+  function updateCropFromInputs() {
+    var x = parseInt($("#node_x").val());
+    var y = parseInt($("#node_y").val());
+    var width = parseInt($("#node_width").val());
+    var height = parseInt($("#node_height").val());
+
+    if (cropper) {
+      cropper.cropper('setData', {
+        x: x,
+        y: y,
+        width: width,
+        height: height
+      });
+    }
+  }
+
+  function updateInputsFromCrop(e) {
+    var x = parseInt(e.x);
+    var y = parseInt(e.y);
+    var width = parseInt(e.width);
+    var height = parseInt(e.height);
+
+    $("#node_x").val(x);
+    $("#node_y").val(y);
+    $("#node_width").val(width);
+    $("#node_height").val(height);
+  }
+
+  cropper = $('#node_base').cropper({
+    viewMode: 1,
+    rotatable: false,
+    scalable: false,
+    zoomable: false,
+    data: {
+      x: <%= @node.x || 50 %>,
+      y: <%= @node.y || 50 %>,
+      width: <%= @node.width || 100 %>,
+      height: <%= @node.height || 100 %>
+    },
+    crop: function(e) {
+      updateInputsFromCrop(e);
+    }
+  });
+
+  $("#node_x").on("change", updateCropFromInputs)
+  $("#node_y").on("change", updateCropFromInputs)
+  $("#node_width").on("change", updateCropFromInputs)
+  $("#node_height").on("change", updateCropFromInputs)
+
+  $("#node_type_input").on("change", function(e) {
+    updateType(e.target.value);
+  });
+
+  updateType($("#node_type_input").find(":selected").text());
+</script>

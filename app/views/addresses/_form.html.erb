@@ -1,0 +1,120 @@
+<% form_root ||= 'booking' %>
+
+<%= content_for :head do %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Address::CONFIG.google_map_api_key %>&libraries=places"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      var initAutocomplete = function() {
+        var defaultBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(49.1181, -123.2112),
+          new google.maps.LatLng(53.7925, -113.0404)
+        )
+
+        var options = {
+          bounds: defaultBounds,
+          types: ['geocode']
+        }
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(document.getElementById('<%= form_root %>' + '_address_attributes_address1'), options);
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      var fillInAddress = function() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        if (!place) {
+          return;
+        }
+
+        var countryCode = getPlaceValue(place, 'country', 'short_name');
+
+        $('#' + '<%= form_root %>' + '_address_attributes_country').val(countryCode);
+        $('#' + '<%= form_root %>' + '_address_attributes_province').val(getPlaceValue(place, 'administrative_area_level_1', 'short_name'));
+
+        $('#' + '<%= form_root %>' + '_address_attributes_address1').val(getPlaceValue(place, 'street_number', 'short_name') + ' ' + getPlaceValue(place, 'route', 'long_name'));
+        $('#' + '<%= form_root %>' + '_address_attributes_city').val(getPlaceValue(place, 'locality', 'long_name'));
+        $('#' + '<%= form_root %>' + '_address_attributes_postal_code').val(getPlaceValue(place, 'postal_code', 'short_name'));
+      }
+
+      var getPlaceValue = function(place, type, attribute) {
+        var addressType, component, i, len, ref;
+
+        ref = place.address_components;
+        for (i = 0, len = ref.length; i < len; i++) {
+          component = ref[i];
+          addressType = component.types[0];
+
+          if (addressType === type) {
+            return component[attribute];
+          }
+        }
+      }
+
+      initAutocomplete();
+
+      // Prevent enter on the auto complete from submitting the form
+      var input = document.getElementById('<%= form_root %>' + '_address_attributes_address1');
+      google.maps.event.addDomListener(input, 'keydown', function(e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+        }
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      var setProvince = function(countryCode) {
+        var target = '#' + '<%= form_root %>' + '_address_attributes_province';
+
+        $(target).find("option[country='" + countryCode + "']").prop('disabled', false);
+        $(target).find("option[country!='" + countryCode + "']").prop('disabled', true);
+
+        // Set the province to the first available one
+        $($(target + " option:enabled")[0]).prop('selected', true)
+      };
+
+      $('#' + '<%= form_root %>' + '_address_attributes_country').on('change', function() {
+        var countryCode = this.value;
+
+        setProvince(countryCode);
+      });
+
+      setProvince($('#' + '<%= form_root %>' + '_address_attributes_country').val());
+
+
+      <% if address.country && address.province %>
+        var target = '#' + '<%= form_root %>' + '_address_attributes_province';
+
+        $(target).find("option[country='CA'][value='<%= address.province %>']").prop('selected', true)
+      <% end %>
+    });
+  </script>
+<% end %>
+
+<%= form.simple_fields_for :address do |a| %>
+  <div class="container">
+    <%= a.input :owner_type, as: :hidden %>
+    <%= a.input :owner_id, as: :hidden %>
+
+    <div class="columns-6 fill-small">
+      <%= a.input :address1, label: 'Street Address (Please select the correct suggestion)', placeholder: '' %>
+      <%= a.input :address2, label: 'Address Line 2' %>
+      <%= a.input :address3, label: 'Address Line 3' %>
+    </div>
+
+    <div class="columns-6 omega fill-small">
+      <%= a.input :country, label: 'Country', collection: options_for_countries.map { |c| [c.name, c.alpha2] }, include_blank: false %>
+      <%= a.input :province, label: 'Province', collection: options_for_provinces.map { |p| [p[0], p[1], country: p[2]] }, include_blank: false %>
+      <%= a.input :city %>
+      <%= a.input :postal_code, label: 'Postal Code / Zipcode' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<div class="electronic-marketings-list-item">
+  <% if Program::BULK_DELIVERY.include? electronic_marketing.school_day_program_code %>
+    <div class='bulk-delivery'>
+      <% if photo_day %>
+        <h3 class="timeline-date" id="photo-day"><%= photo_day.value.to_datetime.strftime("%b #{photo_day.value.to_datetime.day.ordinalize}") %></h3>
+        <h3 class="timeline-date" id="twenty-four-hours-left">+24 HR</h3>
+        <h3 class="timeline-date" id="order-by-day"><%= (photo_day.value.to_datetime + 1.week).strftime("%b #{(photo_day.value.to_datetime + 1.week).day.ordinalize}") %></h3>
+        <h3 class="timeline-date" id="orders-shipped-by-one"><%= (photo_day.value.to_datetime + 2.weeks).strftime("%b #{(photo_day.value.to_datetime + 2.weeks).day.ordinalize}") %></h3>
+        <% if retake_day %>
+          <h3 class="timeline-date" id="absentee-retake-day"><%= retake_day.value.to_datetime.strftime("%b #{retake_day.value.to_datetime.day.ordinalize}") %></h3>
+          <h3 class="timeline-date" id="twenty-four-hours-right">+24 HR</h3>
+          <h3 class="timeline-date" id="absentee-retake-order-by-day"><%= (retake_day.value.to_datetime + 1.week).strftime("%b #{(retake_day.value.to_datetime + 1.week).day.ordinalize}") %></h3>
+          <h3 class="timeline-date" id="final-delivery"><%= (retake_day.value.to_datetime + 2.weeks).strftime("%b #{(retake_day.value.to_datetime + 2.weeks).day.ordinalize}") %></h3>
+        <% end %>
+      <% end %>
+    </div>
+  <% elsif Program::HOME_DELIVERY.include? electronic_marketing.school_day_program_code %>
+    <div class='home-delivery'>
+      <% if photo_day %>
+        <h3 class="timeline-date" id="photo-day"><%= photo_day.value.to_datetime.strftime("%b #{photo_day.value.to_datetime.day.ordinalize}") %></h3>
+        <% if retake_day %>
+          <h3 class="timeline-date" id="absentee-retake-day"><%= retake_day.value.to_datetime.strftime("%b #{retake_day.value.to_datetime.day.ordinalize}") %></h3>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= file_tag electronic_marketing.file.path, electronic_marketing.file.url, electronic_marketing.name %>
+</div>

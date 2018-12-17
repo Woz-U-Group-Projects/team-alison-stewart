@@ -1,0 +1,54 @@
+<div class="static-help">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/help.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Careers</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-container filter-container--light">
+    <div class="container">
+      <%= simple_form_for :job_posting, html: { id: 'job-posting-filter' } do |f| %>
+        <div class="container-flex single-field-form-container">
+          <div class="left-container">
+            <%= f.input :text, label: false, placeholder: 'What do you need help with?' %>
+          </div>
+
+          <div class="right-container">
+            <%= f.submit 'Filter', class: 'link link--button link--button-maroon' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container job-posting-list-items">
+      <% if JobPosting.has_active_postings? %>
+        <i>Click on the job title for more details regarding each position.</i>
+        <% JobType.all.each do |job_type| %>
+          <% @job_postings = JobPosting.job_type(job_type).order(:position) %>
+
+          <% if @job_postings.length > 0 && JobPosting.has_active_postings_for_job_type?(@job_postings,job_type.id) %>
+            <h3 id="<%= job_type.name %>" class="headline"><%= job_type.name.humanize.capitalize %></h3>
+          <% end %>
+
+          <% @job_postings.each do |job_posting| %>
+            <% if !job_posting.is_expired? %>
+              <%= render partial: 'job_postings/list_item', locals: { job_posting: job_posting } %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <p class="filter-empty center">
+          Nothing has matched your filter!
+        </p>
+      <% else %>
+        <p>
+          We currently don't have any open job positions. Check back soon or feel free to email a general application to <a class="link link--underlined link--dark" href="mailto:careers@artona.com">careers@artona.com</a> and tell us more about yourself!
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

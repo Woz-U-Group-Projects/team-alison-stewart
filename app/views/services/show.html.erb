@@ -1,0 +1,95 @@
+<div class="services-show">
+  <div class="hero" style="background-image: url(<%= @service.banner_photo %>);">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title"><%= @service.title%></h1>
+      </div>
+    </div>
+  </div>
+
+  <% if !@service.description.blank? %>
+    <div class="container">
+      <div class="content--small">
+        <div class="columns-8 shift-2 omega fill-small">
+          <%= @service.description&.html_safe %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @service.features.count > 0 %>
+    <div class="content">
+      <div class="container">
+        <% @service.features.each do |feature| %>
+          <%= render partial: 'features/list_item', locals: { feature: feature } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @service.book_link || @service.order_link %>
+    <div class="content center">
+      <div class="container">
+        <ul class="list list--horizontal">
+          <% if @service.book_link %>
+            <li>
+              <%= link_to 'Book Now', book_schools_path, class: 'link link--button link--button-maroon' %>
+            </li>
+          <% end %>
+
+          <% if @service.order_link %>
+            <li>
+              <%= link_to 'View and Order', order_static_path, class: 'link link--button link--button-gold' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @service.look_books.count > 0 %>
+    <div class="content">
+      <div class="container">
+        <h2 class="headline center">Look Books</h2>
+      </div>
+
+        <% @service.look_books.each do |look_book| %>
+          <%= render partial: 'look_books/list_item', locals: { look_book: look_book } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @service.title == 'Digital Business Portraits' %>
+    <% @school = School.find_by code: 'DIGI' %>
+    <% event = Event.find_by school_id: @school.id %>
+    <% sitting = @school.sitting_for_event_type(event.event_type) %>
+    <% program = Program.all[1] %>
+    <% if @school.events.where(event_type_id: program.event_type_ids).count > 0 && sitting %>
+      <div class="content">
+        <div class="container center">
+          <h2 class="headline">Interested in This Service?</h2>
+          <p>
+            <%= link_to 'Book A Sitting', '#', class: 'link link--button link--button-maroon service-booking-button sitting-booking-button', data: { 'modal-id' => "booking-sitting-#{sitting.id}" } %>
+          </p>
+        </div>
+      </div>
+      <%= render partial: 'modals/booking_modal', locals: { id: "booking-sitting-#{sitting.id}", sitting: sitting } %>
+    <% end %>
+  <% elsif !@service.contact_emails.blank? %>
+    <div class="content">
+      <div class="container center">
+        <h2 class="headline">Interested in This Service?</h2>
+        <p>
+          <%= link_to 'Get in touch with our team!', '#', class: 'link link--dark link--underlined', data: { 'modal-id' => 'contact-request' } %>
+        </p>
+      </div>
+    </div>
+    <%= render partial: 'modals/contact_request_modal', locals: { id: 'contact-request', to_emails: @service.contact_emails } %>
+  <% else %>
+    <div class="container center">
+      <%= render partial: 'shared/general_help' %>
+    </div>
+  <% end %>
+
+</div>

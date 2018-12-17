@@ -1,0 +1,19 @@
+<div class="schools-find">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/find.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Book Now</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-container filter-container--light">
+    <div class="container">
+      <%= render partial: 'schools/search' %>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'shared/general_help' %>
+  </div>
+</div>

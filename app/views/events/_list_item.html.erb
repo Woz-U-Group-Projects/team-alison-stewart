@@ -1,0 +1,47 @@
+<% sitting = event.school.sitting_for_event_type(event.event_type) %>
+<% look_book = LookBook.where(program_slug: event.event_type.program_slug).first %>
+
+<div class="event-list-item">
+  <div class="content">
+    <div class="container">
+      <div class="columns-7 fill-small left-container">
+        <i class="fa <%= event_icon(event)%> event-icon"></i>
+        <h4 class="headline headline--sub event-list-item__title">
+          <%= event.event_type.name %>
+        </h4>
+        <h2 class="headline headline--no-spacing headline--no-transform event-list-item__title">
+          <%= event.date %>
+        </h2>
+      </div>
+
+      <div class="columns-5 fill-small omega right-container">
+        <ul class="list list--vertical">
+          <% if event.event_type.program_slug == Program::CONVOCATION_SLUG && event.school.registrations_enabled %>
+            <li>
+              <%= link_to 'Register here.', new_school_registration_path(event.school.code), class: 'link link--dark link--underlined' %>
+            </li>
+          <% end %>
+          <% if event.event_type.program_slug == Program::SCHOOL_PHOTO_SLUG %>
+            <li>
+              <%= link_to 'Your graduation images are here.', school_program_path(event.school.code, Program::GRADUATION_SLUG), class: 'link link--dark link--underlined' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <% if event.event_type.highrise_field == EventType::GRAD_SESSIONS %>
+    <% if look_book %>
+      <div class="content center">
+        <div class="container">
+          <%= render partial: 'look_books/list_item', locals: { look_book: look_book } %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if sitting %>
+    <%= render partial: 'sittings/list_item', locals: { sitting: sitting } %>
+  <% end %>
+</div>

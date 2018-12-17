@@ -1,0 +1,43 @@
+<div class="schools-find">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/find.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Find Your School</h1>
+      </div>
+    </div>
+  </div>
+
+  <% if params.dig(:school, :name) %>
+    <div class="container">
+      <div class="content center">
+        <div class="container">
+          <div class="columns-6 shift-3 fill-medium">
+            <p>
+              We could not find the school you requested.
+            </p>
+
+            <% if @schools.count > 0 %>
+              <h2 class="headline">Suggested Schools</h2>
+
+              <ul class="list list--vertical center">
+                <% @schools.each do |school| %>
+                  <%= link_to school.name, school_path(school.code), class: 'link link--dark' %>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="filter-container filter-container--light">
+    <div class="container">
+      <%= render partial: 'schools/search' %>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'shared/general_help' %>
+  </div>
+</div>

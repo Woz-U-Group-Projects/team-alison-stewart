@@ -1,0 +1,14 @@
+<div class="product-list-item">
+  <div class="product-list-item__image" style="background-image: url(<%= product.preview_photo %>);" data-modal-id="video-product-<%= product.id %>">
+    <div class="product-list-item__title">
+      <h4><%= product.name %></h4>
+    </div>
+  </div>
+  <div class="product-list-item__content">
+    <%= product.description %>
+  </div>
+
+  <% unless product.video_url.blank? %>
+    <%= render partial: 'modals/video_modal', locals: { id: "video-product-#{product.id}", source: product.video_url } %>
+  <% end %>
+</div>

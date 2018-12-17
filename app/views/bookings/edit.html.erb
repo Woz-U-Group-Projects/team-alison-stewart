@@ -1,0 +1,99 @@
+<div class="bookings-edit">
+  <div class="hero" style="background-image: none;">
+    <div class="hero__cycle">
+      <% @school.photos.map(&:file_name).each do |photo_url| %>
+        <div class="hero__image", style="background-image: url(<%= photo_url  %>);"></div>
+      <% end %>
+    </div>
+    <div class="hero__gradient"></div>
+    <div class="container">
+      <div class="hero__content hero__content--large hero__content--left">
+        <%= image_tag @school.logo_photo, class: 'hero__title-logo' %>
+        <h1 class="hero__title headline headline--white headline--regular headline--outlined">Booking</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <%= render partial: 'shared/progress_bar', locals: { items: booking_progress_bar_items(@booking), active: 0 } %>
+
+      <p>Please fill in the form below to book your appointment. All fields are mandatory</p>
+
+      <div class="container">
+        <div class="columns-6 fill-small">
+          <% if @school.name != 'Digital Business Portraits' %>
+            <h5>Student Number</h5>
+            <p><%= @booking.student_number %></p>
+          <% end %>
+
+          <h5>Customer ID</h5>
+          <p><%= @booking.customer_id %></p>
+        </div>
+
+        <div class="columns-6 omega fill-small">
+          <% if @school.name != 'Digital Business Portraits' %>
+            <h5>School</h5>
+          <% else %>
+            <h5>Service</h5>
+          <% end %>
+            <p><%= @booking.customer.school.name %></p>
+
+          <% if @booking.faculty %>
+            <h5>Faculty</h5>
+            <p><%= @booking.faculty.name %></p>
+          <% end %>
+        </div>
+      </div>
+
+      <hr />
+
+      <%= simple_form_for @booking, url: school_booking_path(@school.code, @booking.id), method: :patch do |f| %>
+        <%= f.input :student_number, as: :hidden %>
+        <%= f.input :faculty_school_code, as: :hidden %>
+        <%= f.input :sitting_type, as: :hidden %>
+
+        <h3 class="headline headline--sub ">Name</h3>
+        <div class="container">
+          <div class="columns-6 fill-small">
+            <%= f.input :first_name %>
+          </div>
+
+          <div class="columns-6 omega fill-small">
+            <%= f.input :last_name %>
+          </div>
+        </div>
+
+        <h3 class="headline headline--sub ">Contact Information</h3>
+        <div class="container">
+
+          <% if @school.name == 'Digital Business Portraits' %>
+            <div class="columns-6 fill-small">
+              <%= f.input :phone_student, label: 'Phone Number' %>
+            </div>
+            <div class="columns-6 omega fill-small">
+              <%= f.input :email_student, label: 'Email Address' %>
+              <%= f.input :phone_parent, as: :hidden, input_html: { value: '6041234567' } %>
+            </div>
+          <% else %>
+            <div class="columns-6 fill-small">
+              <%= f.input :phone_student, label: 'Student Phone Number' %>
+              <%= f.input :email_student, label: 'Student Email Address' %>
+            </div>
+            <div class="columns-6 omega fill-small">
+              <%= f.input :phone_parent, label: 'Parent Phone Number' %>
+              <%= f.input :email_parent, label: 'Parent Email Address' %>
+            </div>
+          <% end %>
+        </div>
+
+        <h3 class="headline headline--sub ">Shipping Address</h3>
+        <%= render partial: 'addresses/form', locals: { form: f, address: @booking.address, form_root: 'booking' } %>
+
+        <div class="center">
+          <%= f.submit 'Continue', class: 'link link--button link--button-maroon' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

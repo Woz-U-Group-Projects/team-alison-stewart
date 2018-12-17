@@ -1,0 +1,66 @@
+<%= content_for :head do %>
+  <script>
+    $(document).ready(function() {
+      var clearPaymentFields = function() {
+        $('#payment_credit_card_first_name').val('');
+        $('#payment_credit_card_last_name').val('');
+        $('#payment_credit_card_number').val('');
+        $('#payment_credit_card_verification_value').val('');
+      };
+
+      $("input[name='payment[delayed_payment]'").on('change', function(e) {
+        $form = $('#payment-form')
+        $submit = $('input[type="submit"]')
+        if($(e.currentTarget)[0].checked) {
+          clearPaymentFields();
+
+          $form.hide();
+          $submit.val('Confirm & Proceed')
+        } else {
+          $form.show();
+          $submit.val('Confirm & Pay')
+        }
+      });
+    });
+  </script>
+<% end %>
+
+<div class="payments-new">
+  <div class="hero" style="background-image: none;">
+    <div class="hero__cycle">
+      <% @school.photos.map(&:file_name).each do |photo_url| %>
+        <div class="hero__image", style="background-image: url(<%= photo_url  %>);"></div>
+      <% end %>
+    </div>
+    <div class="hero__gradient"></div>
+    <div class="container">
+      <div class="hero__content hero__content--large hero__content--left">
+        <%= image_tag @school.logo_photo, class: 'hero__title-logo' %>
+        <h1 class="hero__title headline headline--white headline--regular headline--outlined">Booking</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <%= render partial: 'shared/progress_bar', locals: { items: booking_progress_bar_items(@booking), active: 1 } %>
+
+      <%= simple_form_for @payment, url: school_booking_payments_path(@school.code, @booking.id), method: :post do |f| %>
+        <h3 class="headline headline--sub ">Deposit Payment</h3>
+        <p>We require a <strong>$60.00</strong> deposit for this session.</p>
+
+        <p>
+          <%= f.input :delayed_payment, as: :boolean, label: ' No thanks, I would prefer to pay my deposit at the time of my photo.' %>
+        </p>
+
+        <div id="payment-form">
+          <%= render partial: 'shared/form_error_messages', locals: { object: @credit_card } %>
+
+          <%= render partial: 'payments/form', locals: { form: f } %>
+        </div>
+
+        <%= f.submit 'Confirm & Pay', class: 'link link--button link--button-maroon' %>
+      <% end %>
+    </div>
+  </div>
+</div>

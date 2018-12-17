@@ -1,0 +1,3 @@
+<%= simple_form_for :school_select, url: admin_dashboard_path, html: { method: :get } do |f| %>
+  <%= f.input :school_code, label: 'School', input_html: { class: 'select2', style: 'width:100%;' }, as: :select, collection: School.all.order(:name).map { |school| [school.name, school.code] } %>
+<% end %>

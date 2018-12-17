@@ -1,0 +1,59 @@
+<%
+  path    = resource.persisted? ? send("admin_#{@path}_address_path", @owner, @address) : send("admin_#{@path}_addresses_path")
+  method  = resource.persisted? ? :put : :post
+%>
+
+<%= semantic_form_for [:admin, @path, @address], url: path, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :owner_type, as: :hidden %>
+    <%= f.input :owner_id, as: :hidden %>
+
+    <%= f.input :address1, placeholder: '' %>
+    <%= f.input :address2 %>
+    <%= f.input :address3 %>
+
+    <%= f.input :country, as: :select, label: 'Country', collection: options_for_countries.map { |c| [c.name, c.alpha2] }, include_blank: false %>
+    <%= f.input :province, label: 'Province', collection: options_for_provinces.map { |p| [p[0], p[1], country: p[2]] }, include_blank: false %>
+    <%= f.input :city %>
+    <%= f.input :postal_code, label: 'Postal Code / Zipcode' %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit %>
+    <%= f.action :cancel %>
+  <% end %>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    var setProvince = function(countryCode) {
+      var target = '#address_province';
+
+      $(target).find("option[country='" + countryCode + "']").prop('disabled', false);
+      $(target).find("option[country='" + countryCode + "']").css('display', 'block');
+
+      $(target).find("option[country!='" + countryCode + "']").prop('disabled', true);
+      $(target).find("option[country!='" + countryCode + "']").css('display', 'none');
+
+      // Set the province to the first available one
+      $($(target + " option:enabled")[0]).prop('selected', true)
+    };
+
+    $('#address_country').on('change', function() {
+      var countryCode = this.value;
+
+      setProvince(countryCode);
+    });
+
+    setProvince($('#address_country').val());
+
+
+    <% if resource.country && resource.province %>
+      var target = '#address_province';
+
+      $(target).find("option[country='CA'][value='BC']").prop('selected', true)
+    <% end %>
+  });
+</script>

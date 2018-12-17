@@ -1,0 +1,30 @@
+<div class="products-index">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/products.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Products</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <% if @products.count > 0 %>
+        <div class="product-list-items">
+          <% @products.each do |product| %>
+            <%= render partial: 'products/list_item', locals: { product: product } %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="center">
+          <h2 class="headline">No Products Available</h2>
+          <p>Check back soon!</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'shared/general_help' %>
+  </div>
+</div>

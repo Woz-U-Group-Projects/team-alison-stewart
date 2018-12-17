@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="columns-6 border--fade border--bottom border--bottom-padded">
+    <div class="container--narrow">
+      <div class="border--bottom border--bottom-padded">
+        <h3 class="headline headline--sub">Individual Photo Session</h3>
+        <h2 class="headline headline--no-spacing headline--no-transform headline--white event-list-item__title">
+          <%= event.date %>
+        </h2>
+        <%= link_to 'Book This Sitting', '#', class: 'link link--button link--button-maroon sitting-booking-button', data: { 'modal-id' => "booking-sitting-#{sitting.id}" } %>
+      </div>
+      <h4 class="headline headline--sub">What's the session like?</h4>
+      <% if sitting.features.count > 0 %>
+        <div class="columns-10 fill-small">
+          <ul class="list list--vertical list--left-padded list--disc body--white">
+            <% sitting.features[0..2].each do |feature| %>
+              <li><%= feature.description.html_safe %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

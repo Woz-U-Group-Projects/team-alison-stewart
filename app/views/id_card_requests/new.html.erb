@@ -1,0 +1,17 @@
+<div class="id-card-requests-new">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/artona.png') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">ID Card Request</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <%= render partial: 'id_card_requests/form', locals: { id_card_request: @id_card_request, id_card_template: @id_card_template } %>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'id_card_requests/help' %>
+  </div>
+</div>

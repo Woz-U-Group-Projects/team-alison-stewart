@@ -1,0 +1,65 @@
+<footer class="footer">
+  <div class="container">
+    <div class="columns-3 footer__column">
+      <h4 class="footer__title">Students</h4>
+      <hr />
+
+      <ul class="list footer__list">
+        <li><%= link_to 'Find Your School', find_schools_path, class: 'link link--light' %></li>
+        <li><%= link_to 'Book Now', book_schools_path, class: 'link link--light' %></li>
+        <li><%= link_to 'How To Prepare', prepare_static_path, class:'link link--light' %></li>
+        <li><%= link_to 'FAQs', faqs_static_path, class: 'link link--light' %></li>
+        <li><%= link_to 'Blog', 'http://artonagroup.blogspot.ca/', class: 'link link--light' %></li>
+      </ul>
+    </div>
+
+    <div class="columns-3 footer__column">
+      <h4 class="footer__title">Parents & Family</h4>
+      <hr />
+
+      <ul class="list footer__list">
+        <li><%= link_to 'Photo Dates', find_schools_path, class: 'link link--light' %></li>
+        <li><%= link_to 'Location & Maps', contact_static_path, class: 'link link--light' %></li>
+        <li><%= link_to 'Shipping Information', shipping_static_path, class: 'link link--light' %></li>
+        <li><%= link_to 'Community', community_static_path, class: 'link link--light' %></li>
+        <li><%= link_to 'Feedback', new_feedback_path, class: 'link link--light' %></li>
+      </ul>
+    </div>
+
+    <div class="columns-3 footer__column">
+      <h4 class="footer__title">Educators</h4>
+      <hr />
+
+      <ul class="list footer__list">
+        <li><%= link_to 'School Information', find_schools_path, class: 'link link--light' %></li>
+        <li><%= link_to 'Electronic Marketing', find_schools_path, class: 'link link--light' %></li>
+        <li><%= link_to 'ID Card Requests', id_card_requests_path, class:'link link--light' %></li>
+        <li><%= link_to 'Account Manager Directory', employees_path, class:'link link--light' %></li>
+        <li><%= link_to 'Service Inquiries', contact_static_path, class: 'link link--light' %></li>
+      </ul>
+    </div>
+
+    <div class="columns-3 footer__column right footer__logo-container">
+      <a href="/">
+        <%= image_tag('logos/artona-white-small.png', class: 'footer__logo') %>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+      <ul class="list list--vertical footer__meta">
+        <li>
+          <%= link_to 'About', about_static_path, class: 'link link--light footer__meta-link-left' %>
+          |
+          <%= link_to 'Careers', careers_static_path, class: 'link link--light footer__meta-link-left footer__meta-link-right' %>
+          |
+          <%= link_to 'Privacy', privacy_static_path, class: 'link link--light footer__meta-link-left footer__meta-link-right' %>
+          |
+          <%= link_to 'Terms and Conditions', terms_static_path, class: 'link link--light footer__meta-link-right' %>
+        </li>
+        <li>
+          Copyright <%= "\u00A9" %> The Artona Group Incorporated
+        </li>
+      </ul>
+  </div>
+</footer>

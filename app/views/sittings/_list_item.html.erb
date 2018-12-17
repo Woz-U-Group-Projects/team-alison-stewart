@@ -1,0 +1,71 @@
+<div class="sitting-list-item">
+  <div class="container">
+    <div class="sitting-list-item__meta border--fade container--narrow">
+      <h3 class="headline headline--thin">
+        <%= sitting.name %>
+      </h3>
+
+      <div class="container">
+        <div class="columns-8 fill-small meta-left-container">
+          <ul class="list list--horizontal">
+            <% if !sitting.deposit.blank? %>
+            <li>
+              <i class="sitting-list-item__icon fa fa-tag"></i>
+              <strong>Refundable Deposit:</strong> <%= sitting.deposit %>
+            </li>
+            <% end %>
+            <% if !sitting.duration.blank? %>
+              <li>
+                <i class="sitting-list-item__icon fa fa-clock-o">
+                </i><strong>Duration:</strong> <%= sitting.duration %>
+              </li>
+            <% end %>
+            <% if !sitting.sitting_fee.blank? %>
+              <li>
+                <i class="sitting-list-item__icon fa fa-tag"></i>
+                <strong>Sitting Fee:</strong> <%= sitting.sitting_fee %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="columns-4 fill-small omega small-center meta-right-container">
+          <%= link_to 'Book This Sitting', '#', class: 'link link--button link--button-maroon sitting-booking-button', data: { 'modal-id' => "booking-sitting-#{sitting.id}" } %>
+        </div>
+      </div>
+    </div>
+
+      <% if sitting.features.count > 0 %>
+        <% middle = (sitting.features.count / 2.0).ceil %>
+
+        <div class="container--narrow">
+          <div class="sitting-list-item__features">
+            <div class="outer-container">
+              <h4 class="headline headline--sub headline--thin headline--no-top-margin">
+                What's Included?
+              </h4>
+
+              <div class="columns-6 fill-small">
+                <ul class="list list--vertical list--left-padded list--disc">
+                  <% sitting.features[0...middle].each do |feature| %>
+                    <li><%= feature.description.html_safe %></li>
+                  <% end %>
+                </ul>
+              </div>
+
+              <div class="columns-6 fill-small omega">
+                <ul class="list list--vertical list--left-padded list--disc">
+                  <% sitting.features[middle..-1].each do |feature| %>
+                    <li><%= feature.description.html_safe %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render partial: 'modals/booking_modal', locals: { id: "booking-sitting-#{sitting.id}", sitting: sitting } %>
+</div>

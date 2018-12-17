@@ -1,0 +1,84 @@
+<div class="root-show">
+  <div class="hero">
+    <div class="hero-bg">
+      <!-- iOS does not allow auto played videos -->
+      <% if !browser.platform.ios? %>
+        <video class="hero-bg__video" loop muted autoplay poster="https://s3.amazonaws.com/assets.artona.com/videos/artona-demo-frame.png">
+          <source src="https://s3.amazonaws.com/assets.artona.com/videos/artona-demo.mp4" type="video/mp4">
+        </video>
+      <% end %>
+    </div>
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title headline headline--white">#GRAD<%= Utils.photography_year('%Y') %></h1>
+        <p>
+          Book your portrait session with British Columbia's premier destination
+          for graduation, school, and family portraits.
+        </p>
+
+        <a class="link link--button-large link--button-filter-light" href="#" data-modal-id="grad-portraits-1">How do Grad Portraits work?</a>
+      </div>
+    </div>
+
+    <div class="filter-container filter-container--light relative">
+      <div class="container">
+        <%= render partial: 'schools/search' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="content center">
+    <div class="container">
+      <h2 class="headline">
+        Discover the beauty in celebrating achievement
+      </h2>
+      <p>
+        Each portrait is a memento of your life's achievement. Let our
+        photographers capture your smile as a keepsake for years to come.
+      </p>
+    </div>
+  </div>
+
+  <div class="banner center" style="background-image: url(<%= image_path('heroes/artona.png') %>)">
+    <i class="fa fa-play-circle banner__icon" data-modal-id="video-1"></i>
+    <h2 class="banner__title">
+      See what makes us Western Canada's preferred Graduation Photography Studio
+    </h2>
+    <p class="banner_subtitle">
+    The Artona experience is unlike any other.
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="content center">
+      <h2 class="headline">
+        Our image is built on yours
+      </h2>
+      <p>
+        Let our experts take care of all your digital imaging
+        and publishing needs.
+      </p>
+
+      <% if @services.count > 0 %>
+        <div class="container">
+          <% @services.each do |service| %>
+            <div class="link-card">
+              <div class="link-card--square">
+                <%= link_to service_path(service), class: 'link' do %>
+                  <div class="link-card__image" style="background-image: url(<%= service.preview_photo %>)">
+                    <h3 class="headline headline--white link-card__title link-card__title--square">
+                      <%= service.title %>
+                    </h3>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render partial: 'modals/video_modal', locals: { id: 'video-1', source: 'https://s3.amazonaws.com/assets.artona.com/videos/artona-studio.mp4' } %>
+  <%= render partial: 'modals/grad_portraits_modal', locals: { id: 'grad-portraits-1' } %>
+</div>

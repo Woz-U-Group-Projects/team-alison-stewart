@@ -1,0 +1,38 @@
+<% year = Date.today.year %>
+
+<%= form.simple_fields_for :credit_card do |credit_card_form| %>
+  <div class="container">
+    <div class="columns-6 fill-small">
+      <%= credit_card_form.input :first_name %>
+    </div>
+
+    <div class="columns-6 fill-small omega">
+      <%= credit_card_form.input :last_name %>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="columns-6 fill-small">
+      <%= credit_card_form.input :brand, required: true, collection: Payment::CARD_TYPES, prompt: 'Choose a card type', include_blank: false %>
+    </div>
+
+    <div class="columns-6 fill-small omega">
+      <%= credit_card_form.input :number %>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="columns-6 fill-small">
+      <div class="inline-form-select">
+        <%= credit_card_form.input :month, label: 'Expiry Month', required: true, collection: (1..12).to_a.map { |m| m.to_s.rjust(2, '0') }, include_blank: false %>
+      </div>
+      <div class="inline-form-select">
+        <%= credit_card_form.input :year, label: 'Expiry Year', required: true, collection: (year..(year+10)), include_blank: false %>
+      </div>
+    </div>
+
+    <div class="columns-6 fill-small omega">
+      <%= credit_card_form.input :verification_value, label: 'CVV', required: true%>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<%= simple_form_for :settings, url: update_all_admin_settings_path, html: { method: :patch }, builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.inputs 'Seasons' do %>
+    <%= f.input :ordering_season, input_html: { value: Setting.ordering_season }, hint: 'Date must be in format YYYY/MM/DD', required: false %>
+  <% end %>
+
+  <%= f.inputs 'ID Cards' do %>
+    <%= f.input :show_replace_id_card, as: :boolean, input_html: { checked: Setting.show_replace_id_card == '1' }, label: 'Enable the Replacement ID Card Request Form.' %>
+  <% end %>
+
+  <% if current_user.is?(:admin) %>
+    <%= f.inputs 'Payments' do %>
+      <%= f.input :exact_password, label: 'E-Xact Password', input_html: { value: Setting.exact_password }, required: false %>
+    <% end %>
+  <% end %>
+
+  <% if current_user.is?(:admin) %>
+    <%= f.inputs 'Olark' do %>
+      <%= f.input :olark_code, input_html: { value: Setting.olark_code }, required: false %>
+    <% end %>
+  <% end %>
+
+  <%= f.inputs 'API' do %>
+    <%= f.input :api_user, input_html: { value: Setting.api_user } %>
+    <%= f.input :api_password, input_html: { value: Setting.api_password } %>
+  <% end %>
+
+  <%= submit_tag 'Save All Settings' %> <%= link_to 'Cancel', admin_dashboard_path %>
+<% end %>

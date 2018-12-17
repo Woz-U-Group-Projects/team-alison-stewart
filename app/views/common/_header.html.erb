@@ -1,0 +1,98 @@
+<%
+  style ||= nil
+  begin
+    ordering_season = Date.parse(Setting.ordering_season)
+  rescue Exception => e
+    ordering_season = Date.tomorrow
+  end
+%>
+
+<header class="header">
+  <div class="container">
+    <div class="header__logo-container">
+      <%= link_to root_path do %>
+        <% if style == 'light' %>
+          <%= image_tag('logos/artona-dark-small.png', class: 'header__logo') %>
+        <% else %>
+          <%= image_tag('logos/artona-white-small.png', class: 'header__logo') %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="header__links-container">
+      <ul class="right list list--horizontal">
+        <% if Date.today >= ordering_season %>
+          <li>
+            <%= link_to 'View and Order', order_static_path, class: "link link--button link--button-gold link--button-large-radius" %>
+          </li>
+          <li>
+            <%= link_to 'Book Now', book_schools_path, class: "link link--white link--button link--button-large-radius" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to 'Book Now', book_schools_path, class: "link link--button link--button-gold link--button-large-radius" %>
+          </li>
+          <li>
+            <%= link_to 'View and Order', order_static_path, class: "link link--white link--button link--button-large-radius" %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to 'FAQs', faqs_static_path, class: "link link--white link--button link--button-large-radius" %>
+        </li>
+        <li>
+          <%= link_to 'Contact Us', contact_static_path, class: "link link--white link--button link--button-large-radius" %>
+        </li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to 'Logout', session_path, class: "link link--button link--button-logout link--button-large-radius", method: :delete, data: {confirm: "Are you sure you want to sign out?"}  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="header__responsive-link-container header__responsive-link-container--<%= style %> float-right">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+
+  <div class="header__responsive-nav">
+    <ul class="list list--vertical">
+      <% if Date.today >= ordering_season %>
+        <%= link_to order_static_path, class: 'header__responsive-nav-link link link--white' do %>
+          <li>View and Order</li>
+        <% end %>
+        </li>
+        <%= link_to book_schools_path, class: 'header__responsive-nav-link link link--white' do %>
+          <li>Book Now</li>
+        <% end %>
+        </li>
+      <% else %>
+        <%= link_to book_schools_path, class: 'header__responsive-nav-link link link--white' do %>
+          <li>Book Now</li>
+        <% end %>
+        </li>
+        <%= link_to order_static_path, class: 'header__responsive-nav-link link link--white' do %>
+          <li>View and Order</li>
+        <% end %>
+        </li>
+      <% end %>
+      <%= link_to faqs_static_path, class: 'header__responsive-nav-link link link--white' do %>
+        <li>FAQs</li>
+      <% end %>
+      </li>
+      <%= link_to contact_static_path, class: 'header__responsive-nav-link link link--white' do %>
+        <li>Contact Us</li>
+      <% end %>
+      </li>
+      <% if user_signed_in? %>
+          <%= link_to session_path, class: 'header__responsive-nav-link link link--white', method: :delete do %>
+          <li>Logout</li>
+          <% end %>
+          </li>
+      <% end %>
+      <li class="center">
+        <%= link_to root_path do %>
+          <%= image_tag('logos/artona-white-small.png', class: 'header__logo') %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</header>

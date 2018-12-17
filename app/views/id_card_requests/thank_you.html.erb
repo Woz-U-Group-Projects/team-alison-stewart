@@ -1,0 +1,52 @@
+<div class="id-card-requests-thank-you">
+  <div class="hero" style="background-image: url(<%= image_path('heroes/idcards.jpg') %>)">
+    <div class="container">
+      <div class="center hero__content hero__content--right">
+        <h1 class="hero__title">Thank You</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <h2 class="headline">Successfully Submitted!</h2>
+      <p>
+        A confirmation email has been sent to <%= @id_card_request.attention_of_email %>
+        for your records.
+      </p>
+
+      <p>
+        To submit another request, use
+        the <%= link_to 'Replace ID Card Form', find_id_card_requests_path, class: 'link link--underlined link--dark' %>.
+        If you have questions please email
+        <a class="link link--underlined link--dark" href="mailto:idcard@artona.com">idcard@artona.com</a>
+      </p>
+
+      <p>
+        <%= link_to 'Click here', id_card_request_path(@id_card_request.uuid), class: 'link link--underlined link--dark' %>
+        to VIEW your ID card request status.
+      </p>
+
+      <% if !(@id_card_request.processed? || @id_card_request.shipped?) %>
+        <p>
+          <%= link_to 'Click here', edit_id_card_request_path(@id_card_request.uuid), class: 'link link--underlined link--dark' %>
+          to EDIT your ID card request.
+        </p>
+      <% else %>
+        <p>
+          Your card has already been processed or shipped and is no longer editable at this time. Please make a new ID card request or contact us at <a class="link link--underlined link--dark" href="mailto:idcard@artona.com">idcard@artona.com</a> for assistance.
+        </p>
+      <% end %>
+
+      <p>We print ID cards and deliver them to schools every two weeks.</p>
+    </div>
+
+    <div class="content">
+      <%= render partial: 'id_card_requests/meta', locals: { id_card_request: @id_card_request } %>
+    </div>
+  </div>
+
+  <div class="container center">
+    <%= render partial: 'id_card_requests/help' %>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+=================================
++++ School Failed to Import: ++++
+=================================
+
+School: <%= @school.name %>
+
+Error Information
+===================
+<% if @important_date %>
+  Failed to update <%= @important_date.name %> for <%= @school.name %>.
+<% else %>
+  Failed to create an important date for <%= @important_date_type.name %> for <%= @school.name %>
+<% end %>
+  Please double check the value inputed for this field and ensure that it includes a colon (:) betweent the event name and the date.
